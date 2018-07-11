@@ -54,6 +54,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SnakeView.xaml.cs">
+      <DependentUpon>SnakeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TicTacToeView.xaml.cs">
+      <DependentUpon>TicTacToeView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="DoorsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GamesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,12 +76,33 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DoorsView.xaml.cs">
+      <DependentUpon>DoorsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamesView.xaml.cs">
+      <DependentUpon>GamesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PairsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SnakeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TicTacToeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PairsView.xaml.cs">
+      <DependentUpon>PairsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -92,6 +127,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\2.jpg" />
+    <Resource Include="Images\door.jpg" />
+    <Resource Include="Images\door2.jpg" />
+    <Resource Include="Images\door3.jpg" />
+    <Resource Include="Images\door4.jpg" />
+    <Resource Include="Images\door5.jpg" />
+    <Resource Include="Images\doorsGame.jpg" />
+    <Resource Include="Images\For MatchGame\1.png" />
+    <Resource Include="Images\For MatchGame\10.jpg" />
+    <Resource Include="Images\For MatchGame\11.jpg" />
+    <Resource Include="Images\For MatchGame\12.jpg" />
+    <Resource Include="Images\For MatchGame\13.jpg" />
+    <Resource Include="Images\For MatchGame\14.jpg" />
+    <Resource Include="Images\For MatchGame\15.png" />
+    <Resource Include="Images\For MatchGame\2.jpg" />
+    <Resource Include="Images\For MatchGame\3.jpg" />
+    <Resource Include="Images\For MatchGame\4.jpg" />
+    <Resource Include="Images\For MatchGame\5.jpg" />
+    <Resource Include="Images\For MatchGame\6.jpg" />
+    <Resource Include="Images\For MatchGame\8.jpg" />
+    <Resource Include="Images\For MatchGame\9.png" />
+    <Resource Include="Images\pairGame.jpg" />
+    <Resource Include="Images\snakeGame.png" />
+    <Resource Include="Images\ticTacToe.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
