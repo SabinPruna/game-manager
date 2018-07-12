@@ -8,11 +8,11 @@ namespace GameManager.Models
 {
     public class Player : INotifyPropertyChanged
     {
+        private List<GameRecord> _gameRecords;
         private int _id;
-        private string _username;
         private string _password;
         private int _points;
-        private List<GameRecord> _gameRecords;
+        private string _username;
 
         public Player(string username, string password)
         {
@@ -33,7 +33,7 @@ namespace GameManager.Models
                 if (value == _id) return;
                 _id = value;
                 OnPropertyChanged();
-            } 
+            }
         }
 
         public string Username
@@ -54,17 +54,6 @@ namespace GameManager.Models
             {
                 if (value == _password) return;
                 _password = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int Points
-        {
-            get => _points;
-            set
-            {
-                if (value == _points) return;
-                _points = value;
                 OnPropertyChanged();
             }
         }
