@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GameManager"
         mc:Ignorable="d"
          Title="GamesView" Height="747" Width="835">
-    <Grid Height="700" Margin="60,5,60,5" HorizontalAlignment="Center">
+    <Grid HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="350"/>
             <ColumnDefinition Width="350"/>

@@ -26,8 +26,8 @@ namespace GameManager
 
         private void btnPairs_Click(object sender, RoutedEventArgs e)
         {
-            PairsView pairsView = new PairsView();
-            pairsView.Show();
+            LevelSelect levelSelect = new LevelSelect();
+            levelSelect.Show();
         }
         private void btnTicTacToe_Click(object sender, RoutedEventArgs e)
         {
