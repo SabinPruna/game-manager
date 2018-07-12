@@ -19,14 +19,18 @@ namespace GameManager
     /// </summary>
     public partial class GamesView : Window
     {
-        public GamesView()
+        public GamesView(Models.Player player)
         {
             InitializeComponent();
+            (this.DataContext as PairGameVM).Player = player;
+            Username.Text = (this.DataContext as PairGameVM).Player.Username;
+
+
         }
 
         private void btnPairs_Click(object sender, RoutedEventArgs e)
         {
-            LevelSelect levelSelect = new LevelSelect();
+            LevelSelect levelSelect = new LevelSelect((this.DataContext as PairGameVM).Player);
             levelSelect.Show();
         }
         private void btnTicTacToe_Click(object sender, RoutedEventArgs e)

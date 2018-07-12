@@ -11,8 +11,8 @@
         <vms:PairGameHardVM/>
     </Window.DataContext>
 
-
-    <DockPanel HorizontalAlignment="Left" Height="729" LastChildFill="False" VerticalAlignment="Top" Width="1030" Margin="0,0,0,-20.2">
+   
+    <DockPanel HorizontalAlignment="Left" Height="729" LastChildFill="False" VerticalAlignment="Top" Width="1030" Margin="0,0,0,20.2">
 
         <Menu Height="24" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,0,-12,0">
             <MenuItem Name="MenuFile" Header="File" FontSize="15">
@@ -79,25 +79,25 @@
             <Image 
                 Name="Card4"
                 Grid.Row="0" Grid.Column="4"
-                Source="{Binding Cards[4].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,8,0,7" 
+                Source="{Binding Cards[4].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10" 
                 Visibility="Hidden" MouseDown="Card_MouseDown"
              />
             <Image
                 Name="Card5"
                 Grid.Row="0" Grid.Column="5"
-                Source="{Binding Cards[5].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,8,0,7"
+                Source="{Binding Cards[5].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10"
                 Visibility="Hidden" MouseDown="Card_MouseDown"
              />
             <Image 
                 Name="Card6"
                 Grid.Row="0" Grid.Column="6" 
-                Source="{Binding Cards[6].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,8,0,7"
+                Source="{Binding Cards[6].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10"
                 Visibility="Hidden" MouseDown="Card_MouseDown"
              />
             <Image 
                 Name="Card7"
                 Grid.Row="0" Grid.Column="7" 
-                Source="{Binding Cards[7].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,8,0,7"
+                Source="{Binding Cards[7].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10"
                 Visibility="Hidden" MouseDown="Card_MouseDown"
              />
 
@@ -105,50 +105,50 @@
             <Image 
                 Name="Card8"
                 Grid.Row="1" Grid.Column="0"
-                Source="{Binding Cards[8].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,5" 
+                Source="{Binding Cards[8].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10" 
                 Visibility="Hidden" MouseDown="Card_MouseDown"
              />
             <Image
                 Name="Card9"
                 Grid.Row="1" Grid.Column="1"
-                Source="{Binding Cards[9].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,5" 
+                Source="{Binding Cards[9].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10" 
                 Visibility="Hidden" MouseDown="Card_MouseDown"
              />
             <Image 
                 Name="Card10"
                 Grid.Row="1" Grid.Column="2" 
-                Source="{Binding Cards[10].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,5"
+                Source="{Binding Cards[10].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10"
                 Visibility="Hidden" MouseDown="Card_MouseDown"
              />
             <Image 
                 Name="Card11"
                 Grid.Row="1" Grid.Column="3" 
-                Source="{Binding Cards[11].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,5"
+                Source="{Binding Cards[11].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10"
                 Visibility="Hidden" MouseDown="Card_MouseDown"
              />
 
             <Image 
                 Name="Card12"
                 Grid.Row="1" Grid.Column="4"
-                Source="{Binding Cards[12].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0"
+                Source="{Binding Cards[12].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10"
                 Visibility="Hidden" MouseDown="Card_MouseDown"
              />
             <Image
                 Name="Card13"
                 Grid.Row="1" Grid.Column="5"
-                Source="{Binding Cards[13].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0"
+                Source="{Binding Cards[13].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10"
                 Visibility="Hidden" MouseDown="Card_MouseDown"
              />
             <Image 
                 Name="Card14"
                 Grid.Row="1" Grid.Column="6" 
-                Source="{Binding Cards[14].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0"
+                Source="{Binding Cards[14].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10"
                 Visibility="Hidden" MouseDown="Card_MouseDown"
              />
             <Image 
                 Name="Card15"
                 Grid.Row="1" Grid.Column="7" 
-                Source="{Binding Cards[15].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0"
+                Source="{Binding Cards[15].CurrentImageCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10"
                 Visibility="Hidden" MouseDown="Card_MouseDown"
              />
             <Image 

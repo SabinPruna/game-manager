@@ -11,12 +11,13 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
+using GameManager.Models;
 namespace GameManager
 {
 
     public class PairGameHardVM : BaseVM
     {
+        public Player Player { get; set; }
         private ObservableCollection<User> listOfUsers;
         //private List<Card> imagesGame;
         private string image;
@@ -115,10 +116,8 @@ namespace GameManager
             ListOfUsers = new ObservableCollection<User>();
             Cards = new Card[64];
             ImagesGame = new List<string>();
-
-            // ImagesGame.Add("../Images/For MatchGame/1.jpg");
-            // ImagesGame.Add("../Images/For MatchGame/2.jpg");
-            // ImagesGame.Add("../Images/For MatchGame/3.jpg");
+            Player = new Player();
+            
             ImagesGame.Add("../Images/For MatchGame/4.jpg");
             ImagesGame.Add("../Images/For MatchGame/5.jpg");
             ImagesGame.Add("../Images/For MatchGame/6.jpg");

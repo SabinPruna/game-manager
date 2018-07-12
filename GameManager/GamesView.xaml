@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameManager"
         mc:Ignorable="d"
-         Title="GamesView" Height="747" Width="835">
+       xmlns:vms="clr-namespace:GameManager"
+      Title="GamesView" Height="747" Width="835">
+    <Window.DataContext>
+        <vms:PairGameVM/>
+    </Window.DataContext>
     <Grid HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="350"/>
@@ -25,7 +29,7 @@
             </Ellipse.Fill>
         </Ellipse>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="20" Margin="68,1,1,1">Username</TextBlock>
+        <TextBlock Name ="Username" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="20" Margin="68,1,1,1">Username</TextBlock>
         <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="24" Margin="200,0,0,0">Scor:</TextBlock>
         <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="24" Margin="255,1,10,1" TextAlignment="Right">0</TextBlock>
 

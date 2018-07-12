@@ -19,26 +19,27 @@ namespace GameManager
     /// </summary>
     public partial class LevelSelect : Window
     {
-        public LevelSelect()
+        public LevelSelect(Models.Player player)
         {
             InitializeComponent();
+            (this.DataContext as LevelSelectVM).Player = player;
         }
 
         private void Easy_Click(object sender, RoutedEventArgs e)
         {
-            GameEasy gameEasy = new GameEasy();
+            GameEasy gameEasy = new GameEasy((this.DataContext as LevelSelectVM).Player);
             gameEasy.Show();
         }
 
         private void Medium_Click(object sender, RoutedEventArgs e)
         {
-            GameMedium gameMedium = new GameMedium();
+            GameMedium gameMedium = new GameMedium((this.DataContext as LevelSelectVM).Player);
             gameMedium.Show();
         }
 
         private void Hard_Click(object sender, RoutedEventArgs e)
         {
-            GameHard gameHard = new GameHard();
+            GameHard gameHard = new GameHard((this.DataContext as LevelSelectVM).Player);
             gameHard.Show();
         }
     }

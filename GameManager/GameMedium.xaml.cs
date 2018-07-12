@@ -21,47 +21,38 @@ namespace GameManager
     /// </summary>
     public partial class GameMedium : Window
     {
-        public GameMedium()
+        public GameMedium(Models.Player player)
         {
 
             InitializeComponent();
-            // (this.DataContext as GameVM).ListOfUsers = new ObservableCollection<User>();
-            // (this.DataContext as GameVM).CurrentUser = currentUser;
+            (ViewModel).Player = player;
 
         }
-
-
+        public PairGameMediumVM ViewModel  => this.DataContext as PairGameMediumVM;
 
         private void exit_Click(object sender, RoutedEventArgs e)
         {
-            GamesView gamesView = new GamesView();
+            GamesView gamesView = new GamesView((ViewModel ).Player);
             gamesView.Show();
+            (ViewModel).DispatcherTimer.Stop();
+            (ViewModel).State = StateOfGame.GameOver;
             this.Close();
 
         }
 
-        /*    private void Statistics_Click(object sender, RoutedEventArgs e)
-            {
-
-                StatisticsWindow statistic = new StatisticsWindow((this.DataContext as GameVM).ListOfUsers);
-
-                statistic.Show();
-            }
-            */
-
-
+      
         private void NewGame_Click(object sender, RoutedEventArgs e)
         {
-            if ((this.DataContext as PairGameMediumVM).DefaultTime == 0 && (this.DataContext as PairGameMediumVM).Time == 0)
+            if ((ViewModel ).DefaultTime == 0 && (ViewModel ).Time == 0)
             {
-                (this.DataContext as PairGameMediumVM).DefaultTime = 200;
-                (this.DataContext as PairGameMediumVM).OnPropertyChanged("DefaultTime");
-                (this.DataContext as PairGameMediumVM).Time = 200;
+                (ViewModel ).DefaultTime = 200;
+                (ViewModel ).OnPropertyChanged("DefaultTime");
+                (ViewModel ).Time = 200;
             }
 
-            if ((this.DataContext as PairGameMediumVM).State == StateOfGame.GameOver)
+            if ((ViewModel ).State == StateOfGame.GameOver)
             {
-                (this.DataContext as PairGameMediumVM).DispatcherTimer.Start();
+                (ViewModel ).DispatcherTimer.Start();
                 for (int i = 0; i < 36; i++)
                 {
                     gameGrid.Children[i].Visibility = Visibility.Visible;
@@ -69,10 +60,10 @@ namespace GameManager
                 TimeLabel.Visibility = Visibility.Visible;
                 //LevelLabel.Visibility = Visibility.Visible;
 
-                (this.DataContext as PairGameMediumVM).Level = 1;
-                (this.DataContext as PairGameMediumVM).State = StateOfGame.Running;
-                (this.DataContext as PairGameMediumVM).GenerateCards();
-                (this.DataContext as PairGameMediumVM).Time = (this.DataContext as PairGameMediumVM).DefaultTime;
+                (ViewModel ).Level = 1;
+                (ViewModel ).State = StateOfGame.Running;
+                (ViewModel ).GenerateCards();
+                (ViewModel ).Time = (ViewModel ).DefaultTime;
 
             }
             else
@@ -145,7 +136,7 @@ namespace GameManager
 
         private void Card_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if ((this.DataContext as PairGameMediumVM).Time > 0 && (this.DataContext as PairGameMediumVM).State == StateOfGame.Running)
+            if ((ViewModel ).Time > 0 && (ViewModel ).State == StateOfGame.Running)
             {
                 String nameOfTheCard = (sender as Image).Name.ToString();
                 nameOfTheCard = nameOfTheCard.Substring(nameOfTheCard.Length - 2, 2);
@@ -156,44 +147,44 @@ namespace GameManager
                 }
                 indexOfTheCard = int.Parse(nameOfTheCard);
 
-                if ((sender as Image).Visibility == Visibility.Visible && !(this.DataContext as PairGameMediumVM).CardsTurned.Contains(indexOfTheCard))
+                if ((sender as Image).Visibility == Visibility.Visible && !(ViewModel ).CardsTurned.Contains(indexOfTheCard))
                 {
-                    if ((this.DataContext as PairGameMediumVM).CardsTurned.Count == 0) // in momentul in care nu am in carti intoarse si intorc una 
+                    if ((ViewModel ).CardsTurned.Count == 0) // in momentul in care nu am in carti intoarse si intorc una 
                     {
 
-                        (this.DataContext as PairGameMediumVM).CardsTurned.Add(indexOfTheCard);
-                        (this.DataContext as PairGameMediumVM).Cards[indexOfTheCard].ChangeSideOfCard();
-                        (this.DataContext as PairGameMediumVM).OnPropertyChanged("Cards");
+                        (ViewModel ).CardsTurned.Add(indexOfTheCard);
+                        (ViewModel ).Cards[indexOfTheCard].ChangeSideOfCard();
+                        (ViewModel ).OnPropertyChanged("Cards");
 
                     }
-                    else if ((this.DataContext as PairGameMediumVM).CardsTurned.Count == 1) // daca deja am o carte intoarsa
+                    else if ((ViewModel ).CardsTurned.Count == 1) // daca deja am o carte intoarsa
                     {
-                        (this.DataContext as PairGameMediumVM).CardsTurned.Add(indexOfTheCard);
-                        (this.DataContext as PairGameMediumVM).Cards[indexOfTheCard].ChangeSideOfCard();
-                        (this.DataContext as PairGameMediumVM).OnPropertyChanged("Cards");
+                        (ViewModel ).CardsTurned.Add(indexOfTheCard);
+                        (ViewModel ).Cards[indexOfTheCard].ChangeSideOfCard();
+                        (ViewModel ).OnPropertyChanged("Cards");
 
-                        int oldIndex = (this.DataContext as PairGameMediumVM).CardsTurned[0];
-                        if ((this.DataContext as PairGameMediumVM).Cards[oldIndex].CurrentImageCard.Equals((this.DataContext as PairGameMediumVM).Cards[indexOfTheCard].CurrentImageCard)) // daca am nimerit pereche
+                        int oldIndex = (ViewModel ).CardsTurned[0];
+                        if ((ViewModel ).Cards[oldIndex].CurrentImageCard.Equals((ViewModel ).Cards[indexOfTheCard].CurrentImageCard)) // daca am nimerit pereche
                         {
                             Wait(5000);
-                            (this.DataContext as PairGameMediumVM).Cards[oldIndex].ChangeSideOfCard();
-                            (this.DataContext as PairGameMediumVM).Cards[indexOfTheCard].ChangeSideOfCard();
-                            (this.DataContext as PairGameMediumVM).Cards[oldIndex].Visibility = false;
-                            (this.DataContext as PairGameMediumVM).Cards[indexOfTheCard].Visibility = false;
+                            (ViewModel ).Cards[oldIndex].ChangeSideOfCard();
+                            (ViewModel ).Cards[indexOfTheCard].ChangeSideOfCard();
+                            (ViewModel ).Cards[oldIndex].Visibility = false;
+                            (ViewModel ).Cards[indexOfTheCard].Visibility = false;
 
                             gameGrid.Children[oldIndex].Visibility = Visibility.Hidden;
                             gameGrid.Children[indexOfTheCard].Visibility = Visibility.Hidden;
 
-                            if ((this.DataContext as PairGameMediumVM).Win()) // daca toate cartonasele au fost intoarse
+                            if ((ViewModel ).Win()) // daca toate cartonasele au fost intoarse
                             {
 
-                                (this.DataContext as PairGameMediumVM).Level++;
+                                (ViewModel ).Level++;
 
-                                if ((this.DataContext as PairGameMediumVM).Level == 2) // daca am trecut level 2
+                                if ((ViewModel ).Level == 2) // daca am trecut level 2
                                 {
                                     //LevelLabel.Visibility = Visibility.Hidden;
-                                    (this.DataContext as PairGameMediumVM).DispatcherTimer.Stop();
-                                    (this.DataContext as PairGameMediumVM).State = StateOfGame.GameOver;
+                                    (ViewModel ).DispatcherTimer.Stop();
+                                    (ViewModel ).State = StateOfGame.GameOver;
                                     //(this.DataContext as PairGameVM).CurrentUser.NumberWonGames++;
                                     //(this.DataContext as PairGameVM).CurrentUser.PlayedGames++;
 
@@ -215,8 +206,8 @@ namespace GameManager
                                 }
                                 else
                                 {
-                                    (this.DataContext as PairGameMediumVM).GenerateCards();
-                                    for (int i = 0; i < (this.DataContext as PairGameMediumVM).NumberPairs; i++)
+                                    (ViewModel ).GenerateCards();
+                                    for (int i = 0; i < (ViewModel ).NumberPairs; i++)
                                     {
                                         gameGrid.Children[i].Visibility = Visibility.Visible;
                                     }
@@ -227,12 +218,12 @@ namespace GameManager
                         else // daca nu am gasit pereche
                         {
                             Wait(5000);
-                            (this.DataContext as PairGameMediumVM).Cards[oldIndex].ChangeSideOfCard();
-                            (this.DataContext as PairGameMediumVM).Cards[indexOfTheCard].ChangeSideOfCard();
-                            (this.DataContext as PairGameMediumVM).OnPropertyChanged("Cards");
+                            (ViewModel ).Cards[oldIndex].ChangeSideOfCard();
+                            (ViewModel ).Cards[indexOfTheCard].ChangeSideOfCard();
+                            (ViewModel ).OnPropertyChanged("Cards");
                         }
 
-                        (this.DataContext as PairGameMediumVM).CardsTurned.Clear();
+                        (ViewModel ).CardsTurned.Clear();
 
                     }
 
@@ -252,7 +243,7 @@ namespace GameManager
 
         private void Time_Click(object sender, RoutedEventArgs e)
         {
-            if ((this.DataContext as PairGameMediumVM).State == StateOfGame.GameOver)
+            if ((ViewModel ).State == StateOfGame.GameOver)
             {
                 //TimeWindow timeWindow = new TimeWindow((this.DataContext as PairGameVM));
                 //timeWindow.Show();

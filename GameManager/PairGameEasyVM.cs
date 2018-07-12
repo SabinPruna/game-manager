@@ -11,7 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
+using GameManager.Models;
 namespace GameManager
 {
     public enum StateOfGame
@@ -23,6 +23,7 @@ namespace GameManager
     public class PairGameEasyVM : BaseVM
     {
         private ObservableCollection<User> listOfUsers;
+        public Player Player { get; set; }
         //private List<Card> imagesGame;
         private string image;
         public int NumberPairs { get; set; }
@@ -113,6 +114,7 @@ namespace GameManager
 
 
         }
+        public int Score { get; set; }
         public PairGameEasyVM()
         {
             DefaultTime = 200;
@@ -133,7 +135,7 @@ namespace GameManager
             ImagesGame.Add("../Images/For MatchGame/10.jpg");
             ImagesGame.Add("../Images/For MatchGame/11.jpg");
 
-
+            Player = new Player();
             GenerateCards();
             CardsTurned = new List<int>();
 

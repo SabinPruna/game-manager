@@ -27,7 +27,8 @@ namespace GameManager.ViewModels
 
                     if (null != player)
                     {
-                        GamesView mainWindow = new GamesView();
+                        GamesView mainWindow = new GamesView(player);
+                       
                         Application.Current.Windows.OfType<LoginView>().FirstOrDefault()?.Close();
 
                         mainWindow.Show();
