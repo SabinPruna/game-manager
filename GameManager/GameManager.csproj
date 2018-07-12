@@ -82,6 +82,9 @@
     <Compile Include="PairGameHardVM.cs" />
     <Compile Include="PairGameMediumVM.cs" />
     <Compile Include="PairGameVM.cs" />
+    <Compile Include="ShopWindow.xaml.cs">
+      <DependentUpon>ShopWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SnakeView.xaml.cs">
       <DependentUpon>SnakeView.xaml</DependentUpon>
     </Compile>
@@ -144,6 +147,10 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DbContext\GameContext.cs" />
+    <Page Include="ShopWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="SnakeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

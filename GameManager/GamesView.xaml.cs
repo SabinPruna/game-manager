@@ -44,5 +44,12 @@ namespace GameManager
             SnakeView snakeView = new SnakeView();
             snakeView.Show();
         }
+
+        private void Shop_Click(object sender, RoutedEventArgs e)
+        {
+            ShopWindow window = new ShopWindow();
+            window.Show();
+            //this.Close();
+        }
     }
 }

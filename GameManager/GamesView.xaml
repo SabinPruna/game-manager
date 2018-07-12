@@ -65,7 +65,7 @@
         <Button Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="27" FontWeight="Bold" Content="Snake Game" Background="White" BorderBrush="White" Click="btnSnake_Click"/>
         <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontStyle="Italic" Margin="20,0,20,1">descrierea acestui minunat joc<LineBreak/></TextBlock>
 
-        <Button Grid.Row="5" Grid.Column="1" Margin="0,0,1,0" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="20" Content="SHOP" Width="100" Background="#FFDAD5A4" BorderBrush="Black"/>
+        <Button Grid.Row="5" Grid.Column="1" Click="Shop_Click" Margin="0,0,1,0" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="20" Content="SHOP" Width="100" Background="#FFDAD5A4" BorderBrush="Black"/>
 
     </Grid>
 </Window>
