@@ -73,67 +73,7 @@ namespace GameManager
 
         }
 
-        //private void OpenGame_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if ((this.DataContext as PairGameVM).State == StateOfGame.GameOver)
-        //    {
-
-        //        if ((this.DataContext as PairGameVM).CurrentUser.HasGameSaved)
-        //        {
-        //            string currentUserName = (this.DataContext as PairGameVM).CurrentUser.Name;
-        //            string file = currentUserName + " .xml";
-        //            PairGameVM gameSaved = Serialize.DeserializeObject<PairGameVM>(file);
-
-        //            this.DataContext = gameSaved;
-        //            for (int i = 0; i < 16; i++)
-        //            {
-        //                if (gameSaved.Cards[i].Visibility == true)
-        //                    gameGrid.Children[i].Visibility = Visibility.Visible;
-
-        //            }
-        //            TimeLabel.Visibility = Visibility.Visible;
-        //            LevelLabel.Visibility = Visibility.Visible;
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("You don't have any saved game!", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Playing in progress", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-        //    }
-
-        //}
-
-        //private void SaveGame_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if ((this.DataContext as PairGameVM).State == StateOfGame.Running)
-        //    {
-        //        (this.DataContext as PairGameVM).DispatcherTimer.Stop();
-
-        //        string currentUserName = (this.DataContext as PairGameVM).CurrentUser.Name;
-        //        foreach (User user in (this.DataContext as PairGameVM).ListOfUsers)
-        //        {
-        //            if (user.Name.Equals(currentUserName))
-        //            {
-        //                user.HasGameSaved = true;
-        //                (this.DataContext as PairGameVM).CurrentUser.HasGameSaved = true;
-        //                break;
-        //            }
-        //        }
-
-        //        Serialize.SerializeObject((this.DataContext as PairGameVM).ListOfUsers, "C:\\Users\\Isus te iubeste\\Documents\\Visual Studio 2010\\Projects\\Pairs\\Pairs\\bin\\Debug\\users.xml");
-        //        string file = currentUserName + " .xml";
-        //        Serialize.SerializeObject((this.DataContext as PairGameVM), file);
-        //        MessageBox.Show("Game successfully saved", "Message", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("You can't save the game now", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-        //    }
-        //}
-
+     
         private void Card_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if ((ViewModel ).Time > 0 && (ViewModel ).State == StateOfGame.Running)

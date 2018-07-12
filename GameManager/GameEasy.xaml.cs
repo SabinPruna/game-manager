@@ -28,8 +28,10 @@ namespace GameManager
             InitializeComponent();
             ViewModel.Score = 0;
             ViewModel.Player = player;
+
             
         }
+        public GamesView gamesWindow { get; set; }
         public PairGameEasyVM  ViewModel => this.DataContext as PairGameEasyVM;
 
         private void exit_Click(object sender, RoutedEventArgs e)

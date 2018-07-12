@@ -30,8 +30,10 @@ namespace GameManager
 
         private void btnPairs_Click(object sender, RoutedEventArgs e)
         {
-            LevelSelect levelSelect = new LevelSelect((this.DataContext as PairGameVM).Player);
-            levelSelect.Show();
+            LevelSelect levelSelect = new LevelSelect((this.DataContext as PairGameVM).Player, this);
+             levelSelect.Owner = this;
+             levelSelect.ShowDialog();
+            
         }
         private void btnTicTacToe_Click(object sender, RoutedEventArgs e)
         {
