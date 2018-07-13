@@ -62,8 +62,7 @@ namespace GameManager
                     gameGrid.Children[i].Visibility = Visibility.Visible;
                 }
                 TimeLabel.Visibility = Visibility.Visible;
-                //LevelLabel.Visibility = Visibility.Visible;
-
+             
                 ViewModel.Level = 1;
                 ViewModel.State = StateOfGame.Running;
                 ViewModel.GenerateCards();
@@ -121,7 +120,7 @@ namespace GameManager
 
                             if (ViewModel.Win()) // daca toate cartonasele au fost intoarse
                             {
-                                
+                              
                                 ViewModel.Level++;
                                 ViewModel.Score += 100;
 

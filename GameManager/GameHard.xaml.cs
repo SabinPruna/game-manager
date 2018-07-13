@@ -120,6 +120,7 @@ namespace GameManager
                             {
 
                                 ViewModel.Level++;
+                                ViewModel.Score += 100;
 
                                 if (ViewModel.Level == 2) // daca am trecut level 2
                                 {

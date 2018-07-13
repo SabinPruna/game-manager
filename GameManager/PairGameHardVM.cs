@@ -88,8 +88,7 @@ namespace GameManager
                 OnPropertyChanged("Image");
             }
         }
-        //Elements = new List<List<string> >();
-
+        
 
         public Boolean Win()
         {
@@ -109,6 +108,7 @@ namespace GameManager
 
 
         }
+        public int Score { get; set; }
         public PairGameHardVM()
         {
             DefaultTime = 200;

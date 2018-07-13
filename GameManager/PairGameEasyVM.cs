@@ -93,8 +93,7 @@ namespace GameManager
                 OnPropertyChanged("Image");
             }
         }
-        //Elements = new List<List<string> >();
-
+     
 
         public Boolean Win()
         {
@@ -123,9 +122,6 @@ namespace GameManager
             Cards = new Card[16];
             ImagesGame = new List<string>();
 
-            // ImagesGame.Add("../Images/For MatchGame/1.jpg");
-            // ImagesGame.Add("../Images/For MatchGame/2.jpg");
-            // ImagesGame.Add("../Images/For MatchGame/3.jpg");
             ImagesGame.Add("../Images/For MatchGame/4.jpg");
             ImagesGame.Add("../Images/For MatchGame/5.jpg");
             ImagesGame.Add("../Images/For MatchGame/6.jpg");
@@ -169,41 +165,9 @@ namespace GameManager
                 Cards[i] = card;
 
             }
-            // List<string> lista = new List<string>();
-            // Elements.Add(new List<string>());
-            // lista.Add("-------");
-            //  Elements.Add(lista);
-            //  for (int i = 0; i < 16; i++)
-            //  {
-            //     lista.Add(Cards[i]);
-            // }
-            //  Elements.Add(lista);
-            /* List<Card> lista = new List<Card>();
-             int nr=0;
-             for (int i = 0; i < 16; i++)
-             {
-
-                 Elements[i].Add(Cards[i]);
-                /* if (nr % 4 == 0 && nr != 0)
-                 {
-                     nr = 0;
-                     Elements.Add(new List<Card>());
-
-                     lista.Clear();
-
-                 }
-                 else
-                 {
-
-                     lista.Add(Cards[i]);
-                     nr++;
-                 }
-
-             }*/
+           
             OnPropertyChanged("Elements");
-            // OnPropertyChanged("Cards");
-
-
+           
         }
         public void DispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -215,17 +179,7 @@ namespace GameManager
                 DispatcherTimer.Stop();
                 MessageBox.Show("Time is up! You lost!", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
                 State = StateOfGame.GameOver;
-                //CurrentUser.PlayedGames++;
-                //foreach (User user in ListOfUsers)
-                //{
-                //    if ((user.Name).Equals(CurrentUser.Name))
-                //    {
-                //        user.NumberWonGames = CurrentUser.NumberWonGames;
-                //        user.PlayedGames = CurrentUser.PlayedGames;
-
-                //        break;
-                //    }
-                //}
+                
                 State = StateOfGame.GameOver;
                 OnPropertyChanged("ListOfUsers");
             }

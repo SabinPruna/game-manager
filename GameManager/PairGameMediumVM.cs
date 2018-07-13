@@ -109,6 +109,7 @@ namespace GameManager
 
 
         }
+        public int Score { get; set; }
         public PairGameMediumVM()
         {
             DefaultTime = 200;
