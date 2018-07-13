@@ -6,32 +6,31 @@
         xmlns:local="clr-namespace:GameManager"
         xmlns:vms="clr-namespace:GameManager"
         mc:Ignorable="d"
-        Title="Game" Height="550" Width="450" Background="#FFB3B3C7">
+        Title="Game" Height="550" Width="469.2" Background="#FFB3B3C7">
     <Window.DataContext>
         <vms:PairGameEasyVM/>
     </Window.DataContext>
-    <Viewbox>
-        <DockPanel Margin="0,10,0,10" LastChildFill="False">
-            
-            <Menu DockPanel.Dock="Top" FontSize="30">
-                <MenuItem Name="MenuFile" Header="File" FontSize="30">
+    <Viewbox VerticalAlignment="Top">
+        <DockPanel Height="771" Width="685" LastChildFill="False">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Name="MenuFile" Header="File" FontSize="28">
                     <MenuItem Name="NewGame" Header="New Game" FontSize="25" Click="NewGame_Click"/>
                     <Separator/>
                     <MenuItem Name="Exit" Header="Exit" FontSize="25" Click="exit_Click"/>
                 </MenuItem>
 
-                <MenuItem Name ="MenuOptions" Header="Options" FontSize="30">
+                <MenuItem Name ="MenuOptions" Header="Options" FontSize="28">
                     <MenuItem Name="TimeMenu" Header="Time" FontSize="25" Click="Time_Click"/>
                 </MenuItem>
             </Menu>
 
-            <Grid x:Name="gameGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="682">
+            <Grid x:Name="gameGrid" Width="685" Height="731">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60*"/>
-                    <RowDefinition Height="60*"/>
-                    <RowDefinition Height="60*"/>
-                    <RowDefinition Height="60*"/>
-                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -144,7 +143,7 @@
                     Visibility="Hidden" MouseDown="Card_MouseDown"
                  />
 
-                <TextBox Name="TimeLabel" Margin="30,10,0,10" IsReadOnly="True" Text="{Binding DefaultTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="3" FontSize="40" TextAlignment="Right" HorizontalAlignment="Stretch"/>
+                <TextBox Name="TimeLabel" Margin="0,10,10,10" HorizontalAlignment="Right" Width="130" IsReadOnly="True" Text="{Binding DefaultTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="3" FontSize="40" TextAlignment="Right"/>
             </Grid>
         </DockPanel>
     </Viewbox>

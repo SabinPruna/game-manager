@@ -116,29 +116,24 @@ namespace GameManager
             Cards = new Card[36];
             ImagesGame = new List<string>();
 
-            // ImagesGame.Add("../Images/For MatchGame/1.jpg");
-            // ImagesGame.Add("../Images/For MatchGame/2.jpg");
-            // ImagesGame.Add("../Images/For MatchGame/3.jpg");
+            ImagesGame.Add("../Images/For MatchGame/1.png");
+            ImagesGame.Add("../Images/For MatchGame/2.jpg");
+            ImagesGame.Add("../Images/For MatchGame/3.jpg");
             ImagesGame.Add("../Images/For MatchGame/4.jpg");
             ImagesGame.Add("../Images/For MatchGame/5.jpg");
             ImagesGame.Add("../Images/For MatchGame/6.jpg");
+            ImagesGame.Add("../Images/For MatchGame/7.jpg");
+            ImagesGame.Add("../Images/For MatchGame/8.jpg");
+            ImagesGame.Add("../Images/For MatchGame/9.png");
+            ImagesGame.Add("../Images/For MatchGame/10.jpg");
+            ImagesGame.Add("../Images/For MatchGame/11.jpg");
             ImagesGame.Add("../Images/For MatchGame/12.jpg");
-            ImagesGame.Add("../Images/For MatchGame/8.jpg");
-            ImagesGame.Add("../Images/For MatchGame/9.png");
-            ImagesGame.Add("../Images/For MatchGame/10.jpg");
-            ImagesGame.Add("../Images/For MatchGame/11.jpg");
-            ImagesGame.Add("../Images/For MatchGame/4.jpg");
-            ImagesGame.Add("../Images/For MatchGame/5.jpg");
-            ImagesGame.Add("../Images/For MatchGame/6.jpg");
-            ImagesGame.Add("../Images/For MatchGame/12.jpg");
-            ImagesGame.Add("../Images/For MatchGame/8.jpg");
-            ImagesGame.Add("../Images/For MatchGame/9.png");
-            ImagesGame.Add("../Images/For MatchGame/10.jpg");
-            ImagesGame.Add("../Images/For MatchGame/11.jpg");
-            ImagesGame.Add("../Images/For MatchGame/8.jpg");
-            ImagesGame.Add("../Images/For MatchGame/9.png");
-            ImagesGame.Add("../Images/For MatchGame/10.jpg");
-            ImagesGame.Add("../Images/For MatchGame/11.jpg");
+            ImagesGame.Add("../Images/For MatchGame/13.jpg");
+            ImagesGame.Add("../Images/For MatchGame/14.jpg");
+            ImagesGame.Add("../Images/For MatchGame/15.png");
+            ImagesGame.Add("../Images/For MatchGame/16.jpg");
+            ImagesGame.Add("../Images/For MatchGame/17.jpg");
+            ImagesGame.Add("../Images/For MatchGame/18.jpg");
 
 
             GenerateCards();
@@ -169,7 +164,7 @@ namespace GameManager
 
             for (int i = 0; i < 36; i++)
             {
-                Card card = new Card(GetRandomCard(cardImages), "/Images/2.jpg", true);
+                Card card = new Card(GetRandomCard(cardImages), "/Images/For MatchGame/cardBack.jpg", true);
                 cardImages.Remove(card.ImageUp);
                 Cards[i] = card;
 

@@ -5,67 +5,99 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameManager"
         mc:Ignorable="d"
-         Title="GamesView" Height="747" Width="835">
-    <Grid HorizontalAlignment="Center">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="350"/>
-            <ColumnDefinition Width="350"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="85"/>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="85"/>
-            <RowDefinition Height="40"/>
-        </Grid.RowDefinitions>
-        <Ellipse Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="60" Width="60" VerticalAlignment="Center">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="/Images/2.jpg" />
-            </Ellipse.Fill>
-        </Ellipse>
+         Title="GamesView" Height="747" Width="850">
+    <Viewbox>
+        <Grid x:Name="MainGrid" HorizontalAlignment="Center" Margin="50,0,50,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Ellipse Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="100" Width="100" Margin="0,0,0,30" VerticalAlignment="Center">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/Images/2.jpg" />
+                </Ellipse.Fill>
+            </Ellipse>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="20" Margin="68,1,1,1">Username</TextBlock>
-        <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="24" Margin="200,0,0,0">Scor:</TextBlock>
-        <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="24" Margin="255,1,10,1" TextAlignment="Right">0</TextBlock>
+            <Grid x:Name="Grid1" Grid.Column="0" Grid.Row="1" Margin="0,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image RenderOptions.BitmapScalingMode="Fant"
+                       Stretch="Fill"
+                       Grid.Row="0" 
+                       Margin="0,0,3,0"  
+                       Source="/Images/pairGame.jpg" />
+                <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60" FontWeight="Bold" Content="Pairs Game" Background="White" BorderBrush="White" Click="btnPairs_Click"/>
+                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
+                    Pairs is a memory game where you need to match pairs of tiles. <LineBreak/> Playing is very simple: <LineBreak/> you turn over one tile and then try to find a matching tile.
+                </TextBlock>
+            </Grid>
 
-        <Image RenderOptions.BitmapScalingMode="Fant"
-               Stretch="Fill" 
-               Grid.Column="0" 
-               Grid.Row="1" 
-               Margin="0,0,3,0"  
-               Source="/Images/pairGame.jpg" />
-        <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="27" FontWeight="Bold" Content="Pairs Game" Background="White" BorderBrush="White" Click="btnPairs_Click"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontStyle="Italic" Margin="20,0,20,1">descrierea acestui minunat joc<LineBreak/></TextBlock>
+            <Grid Grid.Column="1" Grid.Row="1" Margin="10,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image RenderOptions.BitmapScalingMode="Fant"
+                       Stretch="Fill"
+                       Grid.Row="0" 
+                       Margin="3,0,0,0" 
+                       Source="/Images/ticTacToe.jpg" />    
+                <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60" FontWeight="Bold" Content="Tic Tac Toe" Background="White" BorderBrush="White" Click="btnTicTacToe_Click"/>
+                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
+                    Tic-tac-toe is a game for two players.The player wins by placing <LineBreak/> three of their marks in a horizontal, vertical, or diagonal row. <LineBreak/>
+                </TextBlock>
+            </Grid>
 
-        <Image RenderOptions.BitmapScalingMode="Fant"
-               Stretch="Fill"
-               Grid.Row="1" 
-               Grid.Column="1" 
-               Margin="3,0,0,0" 
-               Source="/Images/ticTacToe.jpg" />
-        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="27" FontWeight="Bold" Content="Tic Tac Toe" Background="White" BorderBrush="White" Click="btnTicTacToe_Click"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontStyle="Italic" Margin="10,0,10,1">descrierea acestui minunat joc<LineBreak/></TextBlock>
+            <Grid Grid.Column="0" Grid.Row="2" Margin="0,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image RenderOptions.BitmapScalingMode="Fant"
+                       Stretch="Fill" 
+                       Grid.Row="0" 
+                       Margin="0,0,3,0"  
+                       Source="/Images/doorsGame.jpg" />
+                <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60" FontWeight="Bold" Content="Doors Game" Background="White" BorderBrush="White" Click="btnDoors_Click"/>
+                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
+                    Doors is a quess game in which the player has to open a door. <LineBreak/> There are three doors to pick from. <LineBreak/> Be very carefull and... try not to find the cat there! <LineBreak/>
+                </TextBlock>
+            </Grid>
 
-        <Image RenderOptions.BitmapScalingMode="Fant"
-               Stretch="Fill" 
-               Grid.Column="0" 
-               Grid.Row="3" 
-               Margin="0,0,3,0"  
-               Source="/Images/doorsGame.jpg" />
-        <Button Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="27" FontWeight="Bold" Content="Doors Game" Background="White" BorderBrush="White" Click="btnDoors_Click"/>
-        <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontStyle="Italic" Margin="20,0,20,1">descrierea acestui minunat joc<LineBreak/></TextBlock>
+            <Grid Grid.Column="1" Grid.Row="2" Margin="10,0,0,0" Width="1000">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image RenderOptions.BitmapScalingMode="Fant"
+                       Stretch="Fill"  
+                       Grid.Row="0"  
+                       Source="/Images/snakeGame.png" />
+                <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60" FontWeight="Bold" Content="Snake Game" Background="White" BorderBrush="White" Click="btnSnake_Click"/>
+                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
+                       Snake is the common name for a video game concept where <LineBreak/> the player maneuvers a line which grows in length, with the line <LineBreak/> itself being a primary obstacle.<LineBreak/>
+                </TextBlock>
+            </Grid>
+            
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="45" Margin="110,0,0,30">Username</TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="800,0,0,30">Scor:</TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="900,0,10,30" TextAlignment="Right">0</TextBlock>
 
-        <Image RenderOptions.BitmapScalingMode="Fant"
-               Stretch="Fill" 
-               Grid.Column="1" 
-               Grid.Row="3" 
-               Margin="3,0,0,0"  
-               Source="/Images/snakeGame.png" />
-        <Button Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="27" FontWeight="Bold" Content="Snake Game" Background="White" BorderBrush="White" Click="btnSnake_Click"/>
-        <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontStyle="Italic" Margin="20,0,20,1">descrierea acestui minunat joc<LineBreak/></TextBlock>
+            <Button Grid.Row="5" Grid.Column="1"  HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="40" Content="SHOP" Width="200" Background="#FFDAD5A4" BorderBrush="Black"/>
 
-        <Button Grid.Row="5" Grid.Column="1" Margin="0,0,1,0" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="20" Content="SHOP" Width="100" Background="#FFDAD5A4" BorderBrush="Black"/>
-
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Window>
