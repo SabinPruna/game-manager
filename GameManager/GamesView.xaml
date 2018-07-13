@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameManager"
         mc:Ignorable="d"
+        xmlns:vms="clr-namespace:GameManager"
          Title="GamesView" Height="747" Width="850">
+      <Window.DataContext>
+           <vms:PairGameVM/>
+      </Window.DataContext>
     <Viewbox>
         <Grid x:Name="MainGrid" HorizontalAlignment="Center" Margin="50,0,50,10">
             <Grid.ColumnDefinitions>
@@ -92,7 +96,7 @@
             </Grid>
             
             
-            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="45" Margin="110,0,0,30">Username</TextBlock>
+            <TextBlock x:Name ="Username" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="45" Margin="110,0,0,30">Username</TextBlock>
             <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="800,0,0,30">Scor:</TextBlock>
             <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="900,0,10,30" TextAlignment="Right">0</TextBlock>
 

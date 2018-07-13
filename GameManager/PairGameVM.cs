@@ -118,15 +118,14 @@ namespace GameManager
             ListOfUsers = new ObservableCollection<User>();
             Cards = new Card[16];
             ImagesGame = new List<string>();
-
+            ImagesGame.Add("../Images/For MatchGame/1.png");
+            ImagesGame.Add("../Images/For MatchGame/2.jpg");
+            ImagesGame.Add("../Images/For MatchGame/3.jpg");
             ImagesGame.Add("../Images/For MatchGame/4.jpg");
             ImagesGame.Add("../Images/For MatchGame/5.jpg");
             ImagesGame.Add("../Images/For MatchGame/6.jpg");
-            ImagesGame.Add("../Images/For MatchGame/12.jpg");
+            ImagesGame.Add("../Images/For MatchGame/7.jpg");
             ImagesGame.Add("../Images/For MatchGame/8.jpg");
-            ImagesGame.Add("../Images/For MatchGame/9.png");
-            ImagesGame.Add("../Images/For MatchGame/10.jpg");
-            ImagesGame.Add("../Images/For MatchGame/11.jpg");
 
             GenerateCards();
             CardsTurned = new List<int>();

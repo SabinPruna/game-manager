@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameManager"
         mc:Ignorable="d"
+        xmlns:vms="clr-namespace:GameManager"
         Title="LevelSelect" Height="285" Width="255">
-
+    <Window.DataContext>
+        <vms:LevelSelectVM/>
+    </Window.DataContext>
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="#FF436572"/>

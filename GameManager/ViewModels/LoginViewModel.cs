@@ -24,6 +24,7 @@ namespace GameManager.ViewModels
                     //get registered account
 
                     Player player = _playerManager.Login(Player);
+                    MessageBox.Show(Player.Password);
 
                     if (null != player)
                     {
