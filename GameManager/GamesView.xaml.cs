@@ -48,8 +48,9 @@ namespace GameManager
         private void Shop_Click(object sender, RoutedEventArgs e)
         {
             ShopWindow window = new ShopWindow();
-            window.Show();
-            //this.Close();
+            window.Owner = this;
+            window.ShowDialog();
+            
         }
     }
 }
