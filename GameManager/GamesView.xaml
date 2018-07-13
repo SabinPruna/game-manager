@@ -100,7 +100,7 @@
             <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="800,0,0,30">Scor:</TextBlock>
             <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="900,0,10,30" TextAlignment="Right">0</TextBlock>
 
-        <Button Grid.Row="5" Grid.Column="1" Click="Shop_Click" Margin="0,0,1,0" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="20" Content="SHOP" Width="100" Background="#FFDAD5A4" BorderBrush="Black"/>
+        <Button Grid.Row="5" Grid.Column="1" Margin="0,0,0,10" Click="Shop_Click" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="48" Content="SHOP" Width="200" Background="#FFDAD5A4" BorderBrush="Black"/>
 
         </Grid>
     </Viewbox>
