@@ -11,12 +11,13 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
+using GameManager.Models;
 namespace GameManager
 {
 
     public class PairGameMediumVM : BaseVM
     {
+        public Player Player { get; set; }
         private ObservableCollection<User> listOfUsers;
         //private List<Card> imagesGame;
         private string image;
@@ -108,6 +109,7 @@ namespace GameManager
 
 
         }
+        public int Score { get; set; }
         public PairGameMediumVM()
         {
             DefaultTime = 200;
@@ -115,6 +117,8 @@ namespace GameManager
             ListOfUsers = new ObservableCollection<User>();
             Cards = new Card[36];
             ImagesGame = new List<string>();
+
+            Player = new Player();
 
             ImagesGame.Add("../Images/For MatchGame/1.png");
             ImagesGame.Add("../Images/For MatchGame/2.jpg");
@@ -169,40 +173,10 @@ namespace GameManager
                 Cards[i] = card;
 
             }
-            // List<string> lista = new List<string>();
-            // Elements.Add(new List<string>());
-            // lista.Add("-------");
-            //  Elements.Add(lista);
-            //  for (int i = 0; i < 16; i++)
-            //  {
-            //     lista.Add(Cards[i]);
-            // }
-            //  Elements.Add(lista);
-            /* List<Card> lista = new List<Card>();
-             int nr=0;
-             for (int i = 0; i < 16; i++)
-             {
-
-                 Elements[i].Add(Cards[i]);
-                /* if (nr % 4 == 0 && nr != 0)
-                 {
-                     nr = 0;
-                     Elements.Add(new List<Card>());
-
-                     lista.Clear();
-
-                 }
-                 else
-                 {
-
-                     lista.Add(Cards[i]);
-                     nr++;
-                 }
-
-             }*/
+         
+      
             OnPropertyChanged("Elements");
-            // OnPropertyChanged("Cards");
-
+          
 
         }
         public void DispatcherTimer_Tick(object sender, EventArgs e)
@@ -215,17 +189,7 @@ namespace GameManager
                 DispatcherTimer.Stop();
                 MessageBox.Show("Time is up! You lost!", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
                 State = StateOfGame.GameOver;
-                //CurrentUser.PlayedGames++;
-                //foreach (User user in ListOfUsers)
-                //{
-                //    if ((user.Name).Equals(CurrentUser.Name))
-                //    {
-                //        user.NumberWonGames = CurrentUser.NumberWonGames;
-                //        user.PlayedGames = CurrentUser.PlayedGames;
-
-                //        break;
-                //    }
-                //}
+                
                 State = StateOfGame.GameOver;
                 OnPropertyChanged("ListOfUsers");
             }

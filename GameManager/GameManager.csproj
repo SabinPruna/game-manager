@@ -77,6 +77,7 @@
     <Compile Include="LevelSelect.xaml.cs">
       <DependentUpon>LevelSelect.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LevelSelectVM.cs" />
     <Compile Include="MeniuVM.cs" />
     <Compile Include="PairGameEasyVM.cs" />
     <Compile Include="PairGameHardVM.cs" />

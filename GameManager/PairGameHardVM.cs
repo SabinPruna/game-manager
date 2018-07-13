@@ -11,12 +11,13 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
+using GameManager.Models;
 namespace GameManager
 {
 
     public class PairGameHardVM : BaseVM
     {
+        public Player Player { get; set; }
         private ObservableCollection<User> listOfUsers;
         //private List<Card> imagesGame;
         private string image;
@@ -87,8 +88,7 @@ namespace GameManager
                 OnPropertyChanged("Image");
             }
         }
-        //Elements = new List<List<string> >();
-
+        
 
         public Boolean Win()
         {
@@ -108,6 +108,7 @@ namespace GameManager
 
 
         }
+        public int Score { get; set; }
         public PairGameHardVM()
         {
             DefaultTime = 200;
@@ -115,6 +116,8 @@ namespace GameManager
             ListOfUsers = new ObservableCollection<User>();
             Cards = new Card[64];
             ImagesGame = new List<string>();
+            Player = new Player();
+            
             
             ImagesGame.Add("../Images/For MatchGame/1.png");
             ImagesGame.Add("../Images/For MatchGame/2.jpg");

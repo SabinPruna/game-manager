@@ -11,13 +11,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
+using GameManager.Models;
 namespace GameManager
 {
     
 
     public class PairGameVM : BaseVM
     {
+        public Player Player { get; set; }
         private ObservableCollection<User> listOfUsers;
         //private List<Card> imagesGame;
         private string image;
@@ -111,15 +112,13 @@ namespace GameManager
         }
         public PairGameVM()
         {
+            Player = new Player();
             DefaultTime = 200;
             State = StateOfGame.GameOver;
             ListOfUsers = new ObservableCollection<User>();
             Cards = new Card[16];
             ImagesGame = new List<string>();
 
-            // ImagesGame.Add("../Images/For MatchGame/1.jpg");
-            // ImagesGame.Add("../Images/For MatchGame/2.jpg");
-            // ImagesGame.Add("../Images/For MatchGame/3.jpg");
             ImagesGame.Add("../Images/For MatchGame/4.jpg");
             ImagesGame.Add("../Images/For MatchGame/5.jpg");
             ImagesGame.Add("../Images/For MatchGame/6.jpg");
@@ -128,7 +127,6 @@ namespace GameManager
             ImagesGame.Add("../Images/For MatchGame/9.png");
             ImagesGame.Add("../Images/For MatchGame/10.jpg");
             ImagesGame.Add("../Images/For MatchGame/11.jpg");
-
 
             GenerateCards();
             CardsTurned = new List<int>();
@@ -163,40 +161,9 @@ namespace GameManager
                 Cards[i] = card;
 
             }
-            // List<string> lista = new List<string>();
-            // Elements.Add(new List<string>());
-            // lista.Add("-------");
-            //  Elements.Add(lista);
-            //  for (int i = 0; i < 16; i++)
-            //  {
-            //     lista.Add(Cards[i]);
-            // }
-            //  Elements.Add(lista);
-            /* List<Card> lista = new List<Card>();
-             int nr=0;
-             for (int i = 0; i < 16; i++)
-             {
-
-                 Elements[i].Add(Cards[i]);
-                /* if (nr % 4 == 0 && nr != 0)
-                 {
-                     nr = 0;
-                     Elements.Add(new List<Card>());
-
-                     lista.Clear();
-
-                 }
-                 else
-                 {
-
-                     lista.Add(Cards[i]);
-                     nr++;
-                 }
-
-             }*/
+           
             OnPropertyChanged("Elements");
-            // OnPropertyChanged("Cards");
-
+         
 
         }
         public void DispatcherTimer_Tick(object sender, EventArgs e)

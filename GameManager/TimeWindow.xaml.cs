@@ -31,7 +31,7 @@ namespace GameManager
             int timeNumber;
             if (int.TryParse(s, out timeNumber) == true)
             {
-                GameEasy g = new GameEasy();
+                GameEasy g = new GameEasy((this.DataContext as PairGameEasyVM).Player);
                 (this.DataContext as PairGameEasyVM).DefaultTime = Convert.ToInt32(textBox1.Text);
                 (this.DataContext as PairGameEasyVM).OnPropertyChanged("DefaultTime");
                 this.Close();
