@@ -159,7 +159,7 @@ namespace GameManager
 
             for (int i = 0; i < 16; i++)
             {
-                Card card = new Card(GetRandomCard(cardImages), "/Images/2.jpg", true);
+                Card card = new Card(GetRandomCard(cardImages), "/Images/For MatchGame/cardBack.jpg", true);
                 cardImages.Remove(card.ImageUp);
                 Cards[i] = card;
 
