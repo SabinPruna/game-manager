@@ -131,8 +131,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\GamesViewModel.cs" />
-    <Compile Include="ViewModels\PlayerViewModels\LoginViewModel.cs" />
-    <Compile Include="ViewModels\PlayerViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="Views\PlayerViews\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
