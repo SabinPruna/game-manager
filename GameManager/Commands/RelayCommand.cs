@@ -8,11 +8,17 @@ namespace GameManager.Commands
         private readonly Func<object, bool> _canExecute;
         private readonly Action<object> _execute;
 
+        #region Constructors
+
         public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
             _execute = execute;
             _canExecute = canExecute;
         }
+
+        #endregion
+
+        #region Interface Implementations
 
         public event EventHandler CanExecuteChanged
         {
@@ -29,5 +35,7 @@ namespace GameManager.Commands
         {
             _execute(parameter);
         }
+
+        #endregion
     }
 }

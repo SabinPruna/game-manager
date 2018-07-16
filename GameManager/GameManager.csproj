@@ -63,60 +63,61 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BaseVM.cs" />
-    <Compile Include="Card.cs" />
-    <Compile Include="GameEasy.xaml.cs">
-      <DependentUpon>GameEasy.xaml</DependentUpon>
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="BussinessLayer\GameRecordManager.cs" />
+    <Compile Include="Models\Card.cs" />
+    <Compile Include="DataAccessLayer\GameRecordRepository.cs" />
+    <Compile Include="ViewModels\Pairs\StateOfGame.cs" />
+    <Compile Include="Views\Pairs\PairGameEasyView.xaml.cs">
+      <DependentUpon>PairGameEasyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GameHard.xaml.cs">
-      <DependentUpon>GameHard.xaml</DependentUpon>
+    <Compile Include="Views\Pairs\PairGameHardView.xaml.cs">
+      <DependentUpon>PairGameHardView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GameMedium.xaml.cs">
-      <DependentUpon>GameMedium.xaml</DependentUpon>
+    <Compile Include="Views\Pairs\PairGameMediumView.xaml.cs">
+      <DependentUpon>PairGameMediumView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LevelSelect.xaml.cs">
-      <DependentUpon>LevelSelect.xaml</DependentUpon>
+    <Compile Include="Views\Pairs\LevelSelectView.xaml.cs">
+      <DependentUpon>LevelSelectView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LevelSelectVM.cs" />
-    <Compile Include="MeniuVM.cs" />
-    <Compile Include="PairGameEasyVM.cs" />
-    <Compile Include="PairGameHardVM.cs" />
-    <Compile Include="PairGameMediumVM.cs" />
-    <Compile Include="PairGameVM.cs" />
-    <Compile Include="ShopWindow.xaml.cs">
+    <Compile Include="ViewModels\Pairs\LevelSelectViewModel.cs" />
+    <Compile Include="ViewModels\Pairs\PairGameEasyViewModel.cs" />
+    <Compile Include="ViewModels\Pairs\PairGameHardViewModel.cs" />
+    <Compile Include="ViewModels\Pairs\PairGameMediumViewModel.cs" />
+    <Compile Include="Views\Shop\ShopWindow.xaml.cs">
       <DependentUpon>ShopWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SnakeView.xaml.cs">
+    <Compile Include="Views\Snake\SnakeView.xaml.cs">
       <DependentUpon>SnakeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TicTacToeView.xaml.cs">
+    <Compile Include="Views\TicTacToe\TicTacToeView.xaml.cs">
       <DependentUpon>TicTacToeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="TimeWindow.xaml.cs">
       <DependentUpon>TimeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
-    <Page Include="DoorsView.xaml">
+    <Compile Include="Models\User.cs" />
+    <Page Include="Views\Doors\DoorsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GameEasy.xaml">
+    <Page Include="Views\Pairs\PairGameEasyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GameHard.xaml">
+    <Page Include="Views\Pairs\PairGameHardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GameMedium.xaml">
+    <Page Include="Views\Pairs\PairGameMediumView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GamesView.xaml">
+    <Page Include="Views\GamesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LevelSelect.xaml">
+    <Page Include="Views\Pairs\LevelSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,35 +129,36 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="ViewModels\RegisterViewModel.cs" />
-    <Compile Include="Views\LoginView.xaml.cs">
+    <Compile Include="ViewModels\GamesViewModel.cs" />
+    <Compile Include="ViewModels\PlayerViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\PlayerViewModels\RegisterViewModel.cs" />
+    <Compile Include="Views\PlayerViews\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RegisterView.xaml.cs">
+    <Compile Include="Views\PlayerViews\RegisterView.xaml.cs">
       <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DoorsView.xaml.cs">
+    <Compile Include="Views\Doors\DoorsView.xaml.cs">
       <DependentUpon>DoorsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GamesView.xaml.cs">
+    <Compile Include="Views\GamesView.xaml.cs">
       <DependentUpon>GamesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DbContext\GameContext.cs" />
-    <Page Include="ShopWindow.xaml">
+    <Page Include="Views\Shop\ShopWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SnakeView.xaml">
+    <Page Include="Views\Snake\SnakeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TicTacToeView.xaml">
+    <Page Include="Views\TicTacToe\TicTacToeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,18 +166,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LoginView.xaml">
+    <Page Include="Views\PlayerViews\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RegisterView.xaml">
+    <Page Include="Views\PlayerViews\RegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\GameRecord.cs" />
-    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\Entities\GameRecord.cs" />
+    <Compile Include="Models\Entities\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -223,13 +225,11 @@
     <Resource Include="Images\ticTacToe.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\For MatchGame\1.png" />
     <Resource Include="Images\For MatchGame\10.jpg" />
     <Resource Include="Images\For MatchGame\11.jpg" />
     <Resource Include="Images\For MatchGame\12.jpg" />
     <Resource Include="Images\For MatchGame\13.jpg" />
     <Resource Include="Images\For MatchGame\14.jpg" />
-    <Resource Include="Images\For MatchGame\15.png" />
     <Resource Include="Images\For MatchGame\16.jpg" />
     <Resource Include="Images\For MatchGame\17.jpg" />
     <Resource Include="Images\For MatchGame\18.jpg" />
@@ -255,10 +255,16 @@
     <Resource Include="Images\For MatchGame\6.jpg" />
     <Resource Include="Images\For MatchGame\7.jpg" />
     <Resource Include="Images\For MatchGame\8.jpg" />
-    <Resource Include="Images\For MatchGame\9.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\For MatchGame\cardBack.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\For MatchGame\1.jpg" />
+    <Resource Include="Images\For MatchGame\15.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\For MatchGame\9.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

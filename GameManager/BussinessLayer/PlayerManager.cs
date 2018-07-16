@@ -1,21 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GameManager.DataAccessLayer;
-using GameManager.Models;
+using GameManager.Models.Entities;
 
 namespace GameManager.BussinessLayer
 {
     public class PlayerManager
     {
-        private PlayerRepository _playerRepository;
+        private readonly PlayerRepository _playerRepository;
+
+        #region Constructors
 
         public PlayerManager()
         {
             _playerRepository = new PlayerRepository();
         }
+
+        #endregion
 
         public Player Login(Player player)
         {
@@ -25,6 +25,11 @@ namespace GameManager.BussinessLayer
         public void Register(Player player)
         {
             _playerRepository.Register(player);
+        }
+
+        public int GetPlayerScore(int? playerId)
+        {
+            return null == playerId ? 0 : _playerRepository.GetPlayerScore(playerId);
         }
     }
 }

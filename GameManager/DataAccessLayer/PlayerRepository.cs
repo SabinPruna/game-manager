@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using GameManager.DbContext;
-using GameManager.Models;
+using GameManager.Models.Entities;
 
 namespace GameManager.DataAccessLayer
 {
@@ -24,6 +24,14 @@ namespace GameManager.DataAccessLayer
 
                     db.SaveChanges();
                 }
+            }
+        }
+
+        public int GetPlayerScore(int? playerId)
+        {
+            using (GameContext db = new GameContext())
+            {
+                return db.Players.Find(playerId)?.GameRecords.Sum(p => p.Score) ?? 0;
             }
         }
     }
