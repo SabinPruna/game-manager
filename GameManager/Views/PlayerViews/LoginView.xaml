@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gm="clr-namespace:GameManager"
         xmlns:playerViewModels="clr-namespace:GameManager.ViewModels.PlayerViewModels"
         Title="Login" Height="407.297" Width="267.202" ResizeMode="CanMinimize"
+        DataContext="{Binding MainViewModel.LoginViewModel,Source={x:Static gm:App.CurrentApp}}"
+        Loaded="Window_Loaded"
         mc:Ignorable="d">
-    <Window.DataContext>
-        <playerViewModels:LoginViewModel />
-    </Window.DataContext>
 
     <Grid>
         <Grid.Background>
@@ -20,7 +20,7 @@
 
             <Label x:Name="Username" Content="Username" VerticalAlignment="Top" HorizontalAlignment="Left"
                    FontSize="9.333" Foreground="White" Margin="0,15,0,0" />
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Player.Username}" />
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Username}" />
 
             <Label x:Name="Password" Content="Password" VerticalAlignment="Top" HorizontalAlignment="Left"
                    FontSize="9.333" Foreground="White" />

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameManager.ViewModels;
+using GameManager.Views;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,24 @@ namespace GameManager
     /// </summary>
     public partial class App : Application
     {
+        public static App CurrentApp => Current as App;
+
+        public GamesViewModel MainViewModel { get; private set; }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            MainViewModel = new GamesViewModel();
+
+            MainWindow = new LoginView();
+            MainWindow.ShowDialog();
+
+            if (MainViewModel.LoginViewModel.Player != null)
+            {
+                MainWindow = new GamesView();
+                MainWindow.ShowDialog();
+            }
+
+            Shutdown();
+        }
     }
 }

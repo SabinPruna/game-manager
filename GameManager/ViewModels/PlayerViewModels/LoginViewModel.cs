@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,6 +12,17 @@ namespace GameManager.ViewModels.PlayerViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
+        private string _username;
+
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                SetProperty(ref _username, value);
+            }
+        }
+
         private readonly PlayerManager _playerManager;
 
         #region Constructors
@@ -18,24 +30,15 @@ namespace GameManager.ViewModels.PlayerViewModels
         public LoginViewModel()
         {
             _playerManager = new PlayerManager();
-            Player = new Player();
 
             LoginCommand = new RelayCommand(param =>
                 {
-                    Player.Password = (param as PasswordBox)?.Password;
+                    var player = new Player(Username, (param as PasswordBox)?.Password);
+                    Player = _playerManager.Login(player);
 
-                    Player player = _playerManager.Login(Player);
-
-                    if (null != player)
-                    {
-                        GamesView mainWindow = new GamesView {DataContext = new GamesViewModel(player)};
-
-                        Application.Current.Windows.OfType<LoginView>().FirstOrDefault()?.Close();
-
-                        mainWindow.Show();
-                    }
+                    LoginEvent?.Invoke(this, EventArgs.Empty);
                 },
-                param => !string.IsNullOrEmpty(Player.Username) &&
+                param => !string.IsNullOrEmpty(Username) &&
                          !string.IsNullOrEmpty((param as PasswordBox)?.Password));
 
             RegisterCommand = new RelayCommand(param =>
@@ -50,9 +53,23 @@ namespace GameManager.ViewModels.PlayerViewModels
 
         #region  Properties
 
-        public Player Player { get; set; }
-        public ICommand LoginCommand { get; set; }
-        public ICommand RegisterCommand { get; set; }
+        private Player _player;
+
+        public Player Player
+        {
+            get { return _player; }
+            private set { SetProperty(ref _player, value); }
+        }
+
+
+        public ICommand LoginCommand { get; private set; }
+        public ICommand RegisterCommand { get; private set; }
+
+        #endregion
+
+        #region Events
+
+        public event EventHandler LoginEvent;
 
         #endregion
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameManager.ViewModels.PlayerViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,27 @@ namespace GameManager.Views
     /// </summary>
     public partial class LoginView : Window
     {
+        private LoginViewModel ViewModel
+        {
+            get
+            {
+                return DataContext as LoginViewModel;
+            }
+        }
+
         public LoginView()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewModel.LoginEvent += ViewModel_LoginEvent;
+        }
+
+        private void ViewModel_LoginEvent(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

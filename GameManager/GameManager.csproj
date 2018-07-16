@@ -67,6 +67,7 @@
     <Compile Include="BussinessLayer\GameRecordManager.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="DataAccessLayer\GameRecordRepository.cs" />
+    <Compile Include="ViewModels\Pairs\PairsGameViewModel.cs" />
     <Compile Include="ViewModels\Pairs\StateOfGame.cs" />
     <Compile Include="Views\Pairs\PairGameEasyView.xaml.cs">
       <DependentUpon>PairGameEasyView.xaml</DependentUpon>

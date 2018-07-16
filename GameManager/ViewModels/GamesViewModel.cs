@@ -1,5 +1,6 @@
 ﻿using GameManager.BussinessLayer;
 using GameManager.Models.Entities;
+using GameManager.ViewModels.PlayerViewModels;
 
 namespace GameManager.ViewModels
 {
@@ -8,6 +9,8 @@ namespace GameManager.ViewModels
         private readonly PlayerManager _playerManager;
         private Player _player;
         private int _score;
+
+        public LoginViewModel LoginViewModel { get; private set; }
 
         #region Constructors
 
@@ -19,6 +22,8 @@ namespace GameManager.ViewModels
 
         public GamesViewModel()
         {
+            LoginViewModel = new LoginViewModel();
+
             _playerManager = new PlayerManager();
         }
 

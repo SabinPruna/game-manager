@@ -3,12 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gm="clr-namespace:GameManager"
+        DataContext="{Binding MainViewModel,Source={x:Static gm:App.CurrentApp}}"
         mc:Ignorable="d"
         xmlns:viewModels="clr-namespace:GameManager.ViewModels"
         Title="Games" Height="747" Width="850">
-    <Window.DataContext>
-        <viewModels:GamesViewModel />
-    </Window.DataContext>
     <Viewbox>
         <Grid x:Name="MainGrid" HorizontalAlignment="Center" Margin="50,0,50,10">
             <Grid.ColumnDefinitions>
@@ -107,8 +106,8 @@
                 </TextBlock>
             </Grid>
 
-            <TextBlock x:Name="Username" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="45"
-                       Margin="110,0,0,30" Text="{Binding Player.Username}" />
+            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="45"
+                       Margin="110,0,0,30" Text="{Binding LoginViewModel.Player.Username}" />
             <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="800,0,0,30">Score:</TextBlock>
             <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="900,0,10,30"
                        TextAlignment="Right" Text="{Binding Score}" />
