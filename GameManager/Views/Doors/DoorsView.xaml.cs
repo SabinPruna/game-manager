@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace GameManager
+namespace GameManager.DoorsGame
 {
     /// <summary>
-    /// Interaction logic for DoorsView.xaml
+    /// Interaction logic for Doors_Game.xaml
     /// </summary>
-    public partial class DoorsView : Window
+    public partial class Doors_Game : Window
     {
-        public DoorsView()
+        public Doors_Game()
         {
             InitializeComponent();
         }

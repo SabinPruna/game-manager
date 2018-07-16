@@ -3,6 +3,7 @@ using GameManager.Models.Entities;
 using GameManager.ViewModels;
 using GameManager.ViewModels.Pairs;
 using GameManager.Views.Pairs;
+using GameManager.DoorsGame;
 
 namespace GameManager.Views
 {
@@ -45,8 +46,8 @@ namespace GameManager.Views
 
         private void BtnDoors_Click(object sender, RoutedEventArgs e)
         {
-            DoorsView doorsView = new DoorsView();
-            doorsView.Show();
+            Doors_Game dg = new Doors_Game();
+            dg.Show();
         }
 
         private void BtnSnake_Click(object sender, RoutedEventArgs e)
