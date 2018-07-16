@@ -65,6 +65,9 @@
     </ApplicationDefinition>
     <Compile Include="BaseVM.cs" />
     <Compile Include="Card.cs" />
+    <Compile Include="DoorsGame\Doors Game.xaml.cs">
+      <DependentUpon>Doors Game.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameEasy.xaml.cs">
       <DependentUpon>GameEasy.xaml</DependentUpon>
     </Compile>
@@ -95,7 +98,7 @@
       <DependentUpon>TimeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
-    <Page Include="DoorsView.xaml">
+    <Page Include="DoorsGame\Doors Game.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,9 +141,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DoorsView.xaml.cs">
-      <DependentUpon>DoorsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GamesView.xaml.cs">
       <DependentUpon>GamesView.xaml</DependentUpon>
@@ -258,6 +258,28 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\For MatchGame\cardBack.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\For ShopWindow\abstract - Copy.jpg" />
+    <Resource Include="Images\For ShopWindow\abstract.jpg" />
+    <Resource Include="Images\For ShopWindow\activity.jpg" />
+    <Resource Include="Images\For ShopWindow\activity1.jpg" />
+    <Resource Include="Images\For ShopWindow\brothersgame1.jpg" />
+    <Resource Include="Images\For ShopWindow\cards1.jpg" />
+    <Resource Include="Images\For ShopWindow\monopoly.jpg" />
+    <Resource Include="Images\For ShopWindow\rubic.jpg" />
+    <Resource Include="Images\For ShopWindow\rubic1.jpg" />
+    <Resource Include="Images\For ShopWindow\rubicleft.jpg" />
+    <Resource Include="Images\For ShopWindow\rubicright.jpg" />
+    <Resource Include="Images\For ShopWindow\rummy.jpg" />
+    <Resource Include="Images\For ShopWindow\sah.jpg" />
+    <Resource Include="Images\For ShopWindow\scrabble.jpg" />
+    <Resource Include="Images\For ShopWindow\shoping.jpg" />
+    <Resource Include="Images\For ShopWindow\shoping2.jpg" />
+    <Resource Include="Images\For ShopWindow\shoping3.jpg" />
+    <Resource Include="Images\For ShopWindow\shoping4.jpg" />
+    <Resource Include="Images\For ShopWindow\stars.jpg" />
+    <Resource Include="Images\For ShopWindow\table.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
