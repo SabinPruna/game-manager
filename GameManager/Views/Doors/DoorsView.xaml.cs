@@ -17,9 +17,9 @@ namespace GameManager.DoorsGame
     /// <summary>
     /// Interaction logic for Doors_Game.xaml
     /// </summary>
-    public partial class Doors_Game : Window
+    public partial class DoorsVIew : Window
     {
-        public Doors_Game()
+        public DoorsVIew()
         {
             InitializeComponent();
         }

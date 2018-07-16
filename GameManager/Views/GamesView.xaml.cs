@@ -46,7 +46,7 @@ namespace GameManager.Views
 
         private void BtnDoors_Click(object sender, RoutedEventArgs e)
         {
-            Doors_Game dg = new Doors_Game();
+            DoorsVIew dg = new DoorsVIew();
             dg.Show();
         }
 

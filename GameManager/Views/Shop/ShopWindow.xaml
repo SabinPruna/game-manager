@@ -21,7 +21,7 @@
     </Window.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Cry\Desktop\toys\abstract.jpg"/>
+            <ImageBrush ImageSource="/Images/For ShopWindow/abstract.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -46,7 +46,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="C:\Users\Cry\Desktop\toys\cards1.jpg"/>
+                <Image Grid.Row="0" Source="/Images/For ShopWindow/cards1.jpg"/>
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Uno Game</TextBlock>
                 <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 2$</TextBlock>
             </Grid>
@@ -56,7 +56,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0"  Source="C:\Users\Cry\Desktop\toys\monopoly.jpg"/>
+                <Image Grid.Row="0"  Source="/Images/For ShopWindow/monopoly.jpg"/>
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Monopoly</TextBlock>
                 <TextBlock Grid.Row="2" Style="{StaticResource Pret}"> Price 30$</TextBlock>
             </Grid>
@@ -66,7 +66,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0"  Source="C:\Users\Cry\Desktop\toys\scrabble.jpg"/>
+                <Image Grid.Row="0"  Source="/Images/For ShopWindow/scrabble.jpg"/>
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Scrubble</TextBlock>
                 <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 30$</TextBlock>
             </Grid>
@@ -76,7 +76,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0"  Source="C:\Users\Cry\Desktop\toys\brothersgame1.jpg"/>
+                <Image Grid.Row="0"  Source="/Images/For ShopWindow/brothersgame1.jpg"/>
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Ludo Game</TextBlock>
                 <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 7$</TextBlock>
             </Grid>
@@ -86,7 +86,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0"  Source="C:\Users\Cry\Desktop\toys\sah.jpg"/>
+                <Image Grid.Row="0"  Source="/Images/For ShopWindow/sah.jpg"/>
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Chess</TextBlock>
                 <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 15$</TextBlock>
             </Grid>
@@ -96,7 +96,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0"  Source="C:\Users\Cry\Desktop\toys\activity1.jpg"/>
+                <Image Grid.Row="0"  Source="/Images/For ShopWindow/activity1.jpg"/>
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Activity</TextBlock>
                 <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 20$</TextBlock>
             </Grid>
@@ -106,7 +106,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0"  Source="C:\Users\Cry\Desktop\toys\table.jpg"/>
+                <Image Grid.Row="0"  Source="/Images/For ShopWindow/table.jpg"/>
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Backgammon</TextBlock>
                 <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 15$</TextBlock>
             </Grid>
@@ -116,21 +116,21 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <Image Grid.Row="0"  Source="C:\Users\Cry\Desktop\toys\rummy.jpg"/>
+            <Image Grid.Row="0"  Source="/Images/For ShopWindow/rummy.jpg"/>
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Rummy</TextBlock>
                 <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 20$</TextBlock>
         </Grid>
      </Grid>
 
 
-        <!--<Image Grid.Column="1" Grid.Row="0" Source="C:\Users\Cry\Desktop\toys\cards1.jpg"/>
-            <Image Grid.Column="1" Grid.Row="0" Source="C:\Users\Cry\Desktop\toys\monopoly.jpg"/>
-            <Image Grid.Column="2" Grid.Row="0" Source="C:\Users\Cry\Desktop\toys\scrabble.jpg"/>
-            <Image Grid.Column="3" Grid.Row="0" Source="C:\Users\Cry\Desktop\toys\brothersgame1.jpg"/>
-            <Image Grid.Column="0" Grid.Row="1" Source="C:\Users\Cry\Desktop\toys\sah.jpg"/>
-            <Image Grid.Column="1" Grid.Row="1" Source="C:\Users\Cry\Desktop\toys\activity1.jpg"/>
-            <Image Grid.Column="2" Grid.Row="1" Source="C:\Users\Cry\Desktop\toys\table.jpg"/>
-            <Image Grid.Column="3" Grid.Row="1" Source="C:\Users\Cry\Desktop\toys\rummy.jpg"/>-->
+        <!--<Image Grid.Column="1" Grid.Row="0" Source="/Images/For ShopWindow/cards1.jpg"/>
+            <Image Grid.Column="1" Grid.Row="0" Source="/Images/For ShopWindow/monopoly.jpg"/>
+            <Image Grid.Column="2" Grid.Row="0" Source="/Images/For ShopWindow/scrabble.jpg"/>
+            <Image Grid.Column="3" Grid.Row="0" Source="/Images/For ShopWindow/brothersgame1.jpg"/>
+            <Image Grid.Column="0" Grid.Row="1" Source="/Images/For ShopWindow/sah.jpg"/>
+            <Image Grid.Column="1" Grid.Row="1" Source="/Images/For ShopWindow/activity1.jpg"/>
+            <Image Grid.Column="2" Grid.Row="1" Source="/Images/For ShopWindow/table.jpg"/>
+            <Image Grid.Column="3" Grid.Row="1" Source="/Images/For ShopWindow/rummy.jpg"/>-->
         </Grid>
 
            

@@ -214,11 +214,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\2.jpg" />
-    <Resource Include="Images\door.jpg" />
-    <Resource Include="Images\door2.jpg" />
-    <Resource Include="Images\door3.jpg" />
-    <Resource Include="Images\door4.jpg" />
-    <Resource Include="Images\door5.jpg" />
+    <Resource Include="Images\Doors\door.jpg" />
+    <Resource Include="Images\Doors\door2.jpg" />
+    <Resource Include="Images\Doors\door3.jpg" />
+    <Resource Include="Images\Doors\door4.jpg" />
+    <Resource Include="Images\Doors\door5.jpg" />
     <Resource Include="Images\doorsGame.jpg" />
     <Resource Include="Images\pairGame.jpg" />
     <Resource Include="Images\snakeGame.png" />
@@ -260,7 +260,6 @@
     <Resource Include="Images\For MatchGame\cardBack.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\For ShopWindow\abstract - Copy.jpg" />
     <Resource Include="Images\For ShopWindow\abstract.jpg" />
     <Resource Include="Images\For ShopWindow\activity.jpg" />
     <Resource Include="Images\For ShopWindow\activity1.jpg" />
@@ -278,7 +277,7 @@
     <Resource Include="Images\For ShopWindow\shoping2.jpg" />
     <Resource Include="Images\For ShopWindow\shoping3.jpg" />
     <Resource Include="Images\For ShopWindow\shoping4.jpg" />
-    <Resource Include="Images\For ShopWindow\stars.jpg" />
+    <Resource Include="Images\Doors\stars.jpg" />
     <Resource Include="Images\For ShopWindow\table.jpg" />
   </ItemGroup>
   <ItemGroup>
