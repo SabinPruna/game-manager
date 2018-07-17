@@ -112,6 +112,10 @@
             <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="900,0,10,30"
                        TextAlignment="Right" Text="{Binding Score}" />
 
+            <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Command="{Binding ScoreboardCommand}"
+                    HorizontalAlignment="Center"
+                     FontSize="48" Content="SCOREBOARD"  Background="#FFDAD5A4"
+                    BorderBrush="Black" />
             <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Command="{Binding ShopCommand}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top" FontSize="48" Content="SHOP" Width="200" Background="#FFDAD5A4"

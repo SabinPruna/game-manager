@@ -3,7 +3,9 @@ using GameManager.BussinessLayer;
 using GameManager.Commands;
 using GameManager.DoorsGame;
 using GameManager.ViewModels.PlayerViewModels;
+using GameManager.ViewModels.Scoreboard;
 using GameManager.Views.Pairs;
+using GameManager.Views.Scoreboard;
 
 namespace GameManager.ViewModels
 {
@@ -17,7 +19,7 @@ namespace GameManager.ViewModels
         public GamesViewModel()
         {
             LoginViewModel = new LoginViewModel();
-
+            ScoreboardViewModel = new ScoreboardViewModel();
             _playerManager = new PlayerManager();
 
             PairsGameCommand = new RelayCommand(param =>
@@ -48,6 +50,13 @@ namespace GameManager.ViewModels
                 ShopWindow shopWindow = new ShopWindow();
                 shopWindow.ShowDialog();
             });
+
+            ScoreboardCommand = new RelayCommand(param =>
+            {
+                ScoreboardViewModel.Refresh();
+                ScoreboardView scoreboardView = new ScoreboardView();
+                scoreboardView.ShowDialog();
+            });
         }
 
         #endregion
@@ -55,6 +64,8 @@ namespace GameManager.ViewModels
         #region  Properties
 
         public LoginViewModel LoginViewModel { get; }
+
+        public ScoreboardViewModel ScoreboardViewModel { get; private set; }
 
         public int Score
         {
@@ -72,6 +83,8 @@ namespace GameManager.ViewModels
         public ICommand TicTacToeGameCommand { get; }
         public ICommand SnakeGameCommand { get; }
         public ICommand ShopCommand { get; }
+        public ICommand ScoreboardCommand { get; }
+
 
         #endregion
     }
