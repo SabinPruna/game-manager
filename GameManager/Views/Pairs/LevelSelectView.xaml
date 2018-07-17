@@ -1,14 +1,14 @@
-﻿<Window x:Class="GameManager.Views.Pairs.LevelSelect"
+﻿<Window x:Class="GameManager.Views.Pairs.LevelSelectView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:pairs="clr-namespace:GameManager.ViewModels.Pairs"
-        Title="Difficulty" Height="285" Width="255">
-    <Window.DataContext>
-        <pairs:LevelSelectViewModel />
-    </Window.DataContext>
+        xmlns:gm="clr-namespace:GameManager"
+        Title="Difficulty" Height="285" Width="255"
+        DataContext="{Binding MainViewModel.LoginViewModel,Source={x:Static gm:App.CurrentApp}}"
+        >
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="#FF436572" />

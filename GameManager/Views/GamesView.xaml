@@ -40,7 +40,7 @@
                        Source="/Images/pairGame.jpg" />
                 <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Pairs Game" Background="White" BorderBrush="White"
-                        Click="BtnPairs_Click" />
+                        Command="{Binding PairsGameCommand}" />
                 <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Pairs is a memory game where you need to match pairs of tiles. <LineBreak /> Playing is very simple:
                     <LineBreak /> you turn over one tile and then try to find a matching tile.
@@ -60,7 +60,7 @@
                        Source="/Images/ticTacToe.jpg" />
                 <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Tic Tac Toe" Background="White" BorderBrush="White"
-                        Click="BtnTicTacToe_Click" />
+                        Command="{Binding TicTacToeGameCommand}" />
                 <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Tic-tac-toe is a game for two players.The player wins by placing <LineBreak /> three of their marks in a horizontal, vertical, or diagonal row.
                     <LineBreak />
@@ -80,7 +80,7 @@
                        Source="/Images/doorsGame.jpg" />
                 <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Doors Game" Background="White" BorderBrush="White"
-                        Click="BtnDoors_Click" />
+                        Command="{Binding DoorsGameCommand}" />
                 <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Doors is a quess game in which the player has to open a door. <LineBreak /> There are three doors to pick from.
                     <LineBreak /> Be very carefull and... try not to find the cat there! <LineBreak />
@@ -99,7 +99,7 @@
                        Source="/Images/snakeGame.png" />
                 <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Snake Game" Background="White" BorderBrush="White"
-                        Click="BtnSnake_Click" />
+                        Command="{Binding SnakeGameCommand}" />
                 <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Snake is the common name for a video game concept where <LineBreak /> the player maneuvers a line which grows in length, with the line
                     <LineBreak /> itself being a primary obstacle.<LineBreak />
@@ -112,7 +112,8 @@
             <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="900,0,10,30"
                        TextAlignment="Right" Text="{Binding Score}" />
 
-            <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Click="Shop_Click" HorizontalAlignment="Right"
+            <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Command="{Binding ShopCommand}"
+                    HorizontalAlignment="Right"
                     VerticalAlignment="Top" FontSize="48" Content="SHOP" Width="200" Background="#FFDAD5A4"
                     BorderBrush="Black" />
         </Grid>
