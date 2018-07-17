@@ -63,12 +63,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\CardTicTacToe.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="BussinessLayer\GameRecordManager.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="DataAccessLayer\GameRecordRepository.cs" />
     <Compile Include="ViewModels\Pairs\PairsGameViewModel.cs" />
     <Compile Include="ViewModels\Pairs\StateOfGame.cs" />
+    <Compile Include="ViewModels\TicTacToe\TicTacToeViewModel.cs" />
     <Compile Include="Views\Pairs\PairGameEasyView.xaml.cs">
       <DependentUpon>PairGameEasyView.xaml</DependentUpon>
     </Compile>
