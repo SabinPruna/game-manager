@@ -6,6 +6,7 @@ using GameManager.ViewModels.PlayerViewModels;
 using GameManager.ViewModels.Scoreboard;
 using GameManager.Views.Pairs;
 using GameManager.Views.Scoreboard;
+using GameManager.ViewModels.TicTacToe;
 
 namespace GameManager.ViewModels
 {
@@ -14,12 +15,16 @@ namespace GameManager.ViewModels
         private readonly PlayerManager _playerManager;
         private int _score;
 
+        public LoginViewModel LoginViewModel { get; private set; }
+        public TicTacToeViewModel TicTacToeViewModel { get; private set; }
+
         #region Constructors
 
         public GamesViewModel()
         {
             LoginViewModel = new LoginViewModel();
             ScoreboardViewModel = new ScoreboardViewModel();
+            TicTacToeViewModel = new TicTacToeViewModel();
             _playerManager = new PlayerManager();
 
             PairsGameCommand = new RelayCommand(param =>
@@ -62,8 +67,6 @@ namespace GameManager.ViewModels
         #endregion
 
         #region  Properties
-
-        public LoginViewModel LoginViewModel { get; }
 
         public ScoreboardViewModel ScoreboardViewModel { get; private set; }
 
