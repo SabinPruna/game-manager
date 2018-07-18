@@ -5,12 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:GameManager"
-        xmlns:ctx="clr-namespace:GameManager.ViewModels.Snake"
+        xmlns:gm="clr-namespace:GameManager"
+    xmlns:ctx="clr-namespace:GameManager.ViewModels.Snake"
         mc:Ignorable="d"
-        Title="SnakeGame" Height="350" Width="470">
-    <Window.DataContext>
-        <ctx:SnakeViewModel/>
-    </Window.DataContext>
+        Title="SnakeGame" Height="350" Width="470"
+        DataContext="{Binding MainViewModel.SnakeViewModel,Source={x:Static gm:App.CurrentApp}}">
     <Window.Resources>
         <ctx:IntToColorConverter x:Key="intToColorConverter" />
     </Window.Resources>

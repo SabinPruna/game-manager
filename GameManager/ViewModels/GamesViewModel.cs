@@ -2,17 +2,18 @@
 using GameManager.BussinessLayer;
 using GameManager.Commands;
 using GameManager.DoorsGame;
-using GameManager.ViewModels.PlayerViewModels;
+using GameManager.ViewModels.Login;
 using GameManager.ViewModels.Scoreboard;
 using GameManager.Views.Pairs;
 using GameManager.Views.Scoreboard;
 using GameManager.ViewModels.TicTacToe;
 using GameManager.ViewModels.Pairs;
 using System.Windows;
+using GameManager.ViewModels.Snake;
 
 namespace GameManager.ViewModels
 {
-    public class GamesViewModel : BaseViewModel
+    public class  GamesViewModel : BaseViewModel
     {
         private readonly PlayerManager _playerManager;
         private int _score;
@@ -20,6 +21,7 @@ namespace GameManager.ViewModels
 
         public LoginViewModel LoginViewModel { get; private set; }
         public TicTacToeViewModel TicTacToeViewModel { get; private set; }
+        public SnakeViewModel  SnakeViewModel{ get; private set; }
 
         #region Constructors
 
@@ -29,7 +31,7 @@ namespace GameManager.ViewModels
             ScoreboardViewModel = new ScoreboardViewModel();
             TicTacToeViewModel = new TicTacToeViewModel();
             PairGameViewModel = new PairGameViewModel();
-
+            SnakeViewModel = new SnakeViewModel();
             _playerManager = new PlayerManager();
 
             NewGameCommand = new RelayCommand(param => StartGame((string)param));
@@ -39,7 +41,7 @@ namespace GameManager.ViewModels
                 ShopWindow shopWindow = new ShopWindow();
                 shopWindow.ShowDialog();
             });
-            
+           
 
             ScoreboardCommand = new RelayCommand(param =>
             {
@@ -65,7 +67,7 @@ namespace GameManager.ViewModels
                 OnPropertyChanged();
             }
         }
-
+       
         public ICommand PairsGameCommand { get; }
         public ICommand DoorsGameCommand { get; }
         public ICommand TicTacToeGameCommand { get; }
@@ -87,7 +89,9 @@ namespace GameManager.ViewModels
             }
             if (param == "TicTacToe")
             {
-                MessageBox.Show("TicTacToe");
+                TicTacToeView ticTacToeView = new TicTacToeView();
+                TicTacToeViewModel.newWindow();
+                ticTacToeView.ShowDialog();
             }
             if (param == "DoorsGame")
             {
@@ -99,6 +103,13 @@ namespace GameManager.ViewModels
                 snake.ShowDialog();
             }
         }
+
+        public void Refresh ()
+        {
+            Score = Score;
+
+        }
+
 
         public ICommand NewGameCommand { get; private set; }
         public object PairsGameView { get; private set; }

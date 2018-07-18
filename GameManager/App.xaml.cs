@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using GameManager.ViewModels;
 using GameManager.Views;
+using GameManager.Views.Login;
 
 namespace GameManager
 {

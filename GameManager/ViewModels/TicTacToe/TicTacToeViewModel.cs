@@ -1,5 +1,7 @@
-﻿using GameManager.Commands;
+﻿using GameManager.BussinessLayer;
+using GameManager.Commands;
 using GameManager.Models;
+using GameManager.Models.Entities;
 using GameManager.Views;
 using System;
 using System.Collections.Generic;
@@ -13,8 +15,10 @@ namespace GameManager.ViewModels.TicTacToe
 {
     public class TicTacToeViewModel : BaseViewModel
     {
+        private readonly GameRecordManager _gameRecordManager;
         private List<CardTicTacToe> cards;
         public int win { get; set; }
+        public int numberOcupatedSpaces { get; set; }
 
 
         public List<CardTicTacToe> Cards
@@ -41,12 +45,16 @@ namespace GameManager.ViewModels.TicTacToe
                 Cards.Add(card);
             }
             win = 0;
+            numberOcupatedSpaces = 0;
+            _gameRecordManager = new GameRecordManager();
 
             TicTacToeCommand = new RelayCommand(param =>
             {
                 Logica((CardTicTacToe)param);
             });
         }
+
+        #endregion
 
         private void Logica(CardTicTacToe card)
         {
@@ -61,31 +69,46 @@ namespace GameManager.ViewModels.TicTacToe
             {
                 int ok = 0;
                 Cards[Cards.IndexOf(card)].Card = "X";
+                numberOcupatedSpaces++;
                 if (Winner() != "X")
-                {
-                    if (win == 0)
-                        do
-                        {
-                            int r = rnd.Next(9);
-                            if (Cards[r].Card.Equals(""))
+                    if (numberOcupatedSpaces < 8)
+                    {
+                        if (win == 0)
+                            do
                             {
-                                Cards[r].Card = "0";
-                                ok = 1;
-                            }                            
-                            else if (Winner() == "0")
-                            {
-                                MessageBox.Show("Player 0 Wins");
-                                win = 2;
-                                break;
-                            }
-                        } while (ok == 0);
-                }
+                                int r = rnd.Next(9);
+                                if (Cards[r].Card.Equals(""))
+                                {
+                                    Cards[r].Card = "0";
+                                    ok = 1;
+                                }
+                                if (Winner() == "0")
+                                {
+                                    MessageBox.Show("Player 0 Wins");
+                                    win = 2;
+                                    break;
+                                }
+                            } while (ok == 0);
+                        numberOcupatedSpaces++;
+                    }
+                    else
+                        return;
                 else
                 {
                     MessageBox.Show("Player X Wins");
                     win = 1;
+                    IsXWinner();
                 }
             }
+        }
+        
+
+        public void newWindow()
+        {
+            for (int i = 0; i < 9; i++)
+                Cards[i].Card = "";
+            win = 0;
+            numberOcupatedSpaces = 0;
         }
 
         public string Winner()
@@ -116,7 +139,22 @@ namespace GameManager.ViewModels.TicTacToe
             return "not";
         }
 
-        #endregion
+        public void IsXWinner()
+        {
+            if (Winner().Equals("X"))
+            {
+                GameRecord game = new GameRecord()
+                {
+                    Date = DateTime.Now,
+                    Game = "TicTacToe",
+                    Score = 100,
+                    Player = App.CurrentApp.MainViewModel.LoginViewModel.Player
+                };
+                _gameRecordManager.Add(game);
+                App.CurrentApp.MainViewModel.Refresh();
+            }
+        }
+
 
         public ICommand TicTacToeCommand { get; private set; }
 
