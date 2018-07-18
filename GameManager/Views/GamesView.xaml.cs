@@ -53,7 +53,9 @@ namespace GameManager.Views
         private void BtnSnake_Click(object sender, RoutedEventArgs e)
         {
             SnakeView snakeView = new SnakeView();
-            snakeView.Show();
+            snakeView.Owner = this;
+            snakeView.ShowDialog();
+           
         }
 
         private void Shop_Click(object sender, RoutedEventArgs e)

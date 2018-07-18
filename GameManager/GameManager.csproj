@@ -40,11 +40,17 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Blend.Interctivity.WPF.v4.0.1.0.3\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Blend.Interctivity.WPF.v4.0.1.0.3\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,12 +69,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Board.cs" />
+    <Compile Include="Models\Husk.cs" />
+    <Compile Include="Models\Snake.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="BussinessLayer\GameRecordManager.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="DataAccessLayer\GameRecordRepository.cs" />
     <Compile Include="ViewModels\Pairs\PairsGameViewModel.cs" />
     <Compile Include="ViewModels\Pairs\StateOfGame.cs" />
+    <Compile Include="ViewModels\Snake\IntToColorConverter.cs" />
+    <Compile Include="ViewModels\Snake\WindowBehaviour.cs" />
+    <Compile Include="ViewModels\Snake\SnakeViewModel.cs" />
     <Compile Include="Views\Pairs\PairGameEasyView.xaml.cs">
       <DependentUpon>PairGameEasyView.xaml</DependentUpon>
     </Compile>
