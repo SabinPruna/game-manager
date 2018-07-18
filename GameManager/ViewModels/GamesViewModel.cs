@@ -87,7 +87,9 @@ namespace GameManager.ViewModels
             }
             if (param == "TicTacToe")
             {
-                MessageBox.Show("TicTacToe");
+                TicTacToeView ticTacToeView = new TicTacToeView();
+                TicTacToeViewModel.newWindow();
+                ticTacToeView.ShowDialog();
             }
             if (param == "DoorsGame")
             {

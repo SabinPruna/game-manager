@@ -15,6 +15,7 @@ namespace GameManager.ViewModels.TicTacToe
     {
         private List<CardTicTacToe> cards;
         public int win { get; set; }
+        public int numberOcupatedSpaces { get; set; }
 
 
         public List<CardTicTacToe> Cards
@@ -41,12 +42,15 @@ namespace GameManager.ViewModels.TicTacToe
                 Cards.Add(card);
             }
             win = 0;
+            numberOcupatedSpaces = 0;
 
             TicTacToeCommand = new RelayCommand(param =>
             {
                 Logica((CardTicTacToe)param);
             });
         }
+
+        #endregion
 
         private void Logica(CardTicTacToe card)
         {
@@ -61,31 +65,45 @@ namespace GameManager.ViewModels.TicTacToe
             {
                 int ok = 0;
                 Cards[Cards.IndexOf(card)].Card = "X";
+                numberOcupatedSpaces++;
                 if (Winner() != "X")
-                {
-                    if (win == 0)
-                        do
-                        {
-                            int r = rnd.Next(9);
-                            if (Cards[r].Card.Equals(""))
+                    if (numberOcupatedSpaces < 8)
+                    {
+                        if (win == 0)
+                            do
                             {
-                                Cards[r].Card = "0";
-                                ok = 1;
-                            }                            
-                            else if (Winner() == "0")
-                            {
-                                MessageBox.Show("Player 0 Wins");
-                                win = 2;
-                                break;
-                            }
-                        } while (ok == 0);
-                }
+                                int r = rnd.Next(9);
+                                if (Cards[r].Card.Equals(""))
+                                {
+                                    Cards[r].Card = "0";
+                                    ok = 1;
+                                }
+                                if (Winner() == "0")
+                                {
+                                    MessageBox.Show("Player 0 Wins");
+                                    win = 2;
+                                    break;
+                                }
+                            } while (ok == 0);
+                        numberOcupatedSpaces++;
+                    }
+                    else
+                        return;
                 else
                 {
                     MessageBox.Show("Player X Wins");
                     win = 1;
                 }
             }
+        }
+        
+
+        public void newWindow()
+        {
+            for (int i = 0; i < 9; i++)
+                Cards[i].Card = "";
+            win = 0;
+            numberOcupatedSpaces = 0;
         }
 
         public string Winner()
@@ -116,7 +134,6 @@ namespace GameManager.ViewModels.TicTacToe
             return "not";
         }
 
-        #endregion
 
         public ICommand TicTacToeCommand { get; private set; }
 
