@@ -14,6 +14,7 @@
             ImageDown = imageDown;
             CurrentImageCard = imageDown;
             Visibility = visibility;
+            Hidden = false;
         }
 
         #endregion
@@ -24,6 +25,7 @@
         public string ImageUp { get; set; }
         public string ImageDown { get; set; }
         public string CurrentImageCard { get; set; }
+        public bool Hidden { get; set; }
 
         #endregion
 
