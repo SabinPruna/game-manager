@@ -7,6 +7,8 @@ using GameManager.ViewModels.Scoreboard;
 using GameManager.Views.Pairs;
 using GameManager.Views.Scoreboard;
 using GameManager.ViewModels.TicTacToe;
+using GameManager.ViewModels.Pairs;
+using System.Windows;
 
 namespace GameManager.ViewModels
 {
@@ -14,6 +16,7 @@ namespace GameManager.ViewModels
     {
         private readonly PlayerManager _playerManager;
         private int _score;
+        public PairGameViewModel PairGameViewModel { get; private set; }
 
         public LoginViewModel LoginViewModel { get; private set; }
         public TicTacToeViewModel TicTacToeViewModel { get; private set; }
@@ -25,36 +28,18 @@ namespace GameManager.ViewModels
             LoginViewModel = new LoginViewModel();
             ScoreboardViewModel = new ScoreboardViewModel();
             TicTacToeViewModel = new TicTacToeViewModel();
+            PairGameViewModel = new PairGameViewModel();
+
             _playerManager = new PlayerManager();
 
-            PairsGameCommand = new RelayCommand(param =>
-            {
-                LevelSelectView levelSelectView = new LevelSelectView();
-                levelSelectView.ShowDialog();
-            });
-
-            DoorsGameCommand = new RelayCommand(param =>
-            {
-                DoorsVIew doorsView = new DoorsVIew();
-                doorsView.ShowDialog();
-            });
-
-            TicTacToeGameCommand = new RelayCommand(param =>
-            {
-                TicTacToeView ticTacToeView = new TicTacToeView();
-                ticTacToeView.ShowDialog();
-            });
-            SnakeGameCommand = new RelayCommand(param =>
-            {
-                SnakeView snakeView = new SnakeView();
-                snakeView.ShowDialog();
-            });
+            NewGameCommand = new RelayCommand(param => StartGame((string)param));
 
             ShopCommand = new RelayCommand(param =>
             {
                 ShopWindow shopWindow = new ShopWindow();
                 shopWindow.ShowDialog();
             });
+            
 
             ScoreboardCommand = new RelayCommand(param =>
             {
@@ -90,5 +75,31 @@ namespace GameManager.ViewModels
 
 
         #endregion
+
+
+        public void StartGame(string param)
+        {
+            if (param == "PairGame")
+            {
+                PairGameView pairGameView = new PairGameView();
+                pairGameView.DataContext= new PairGameViewModel();
+                pairGameView.Show();
+            }
+            if (param == "TicTacToe")
+            {
+                MessageBox.Show("TicTacToe");
+            }
+            if (param == "DoorsGame")
+            {
+                MessageBox.Show("DoorsGame");
+            }
+            if(param== "SnakeGame")
+            {
+                MessageBox.Show("SnakeGame");
+            }
+        }
+
+        public ICommand NewGameCommand { get; private set; }
+        public object PairsGameView { get; private set; }
     }
 }

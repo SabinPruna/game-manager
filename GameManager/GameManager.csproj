@@ -65,31 +65,19 @@
     </ApplicationDefinition>
     <Compile Include="Models\ScoreboardRecord.cs" />
     <Compile Include="Models\CardTicTacToe.cs" />
+    <Compile Include="Convertors\BoolToVisibilityConverter.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="BussinessLayer\GameRecordManager.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="DataAccessLayer\GameRecordRepository.cs" />
-    <Compile Include="ViewModels\Pairs\PairsGameViewModel.cs" />
-    <Compile Include="ViewModels\Pairs\StateOfGame.cs" />
+    <Compile Include="ViewModels\Pairs\CardViewModel.cs" />
+    <Compile Include="ViewModels\Pairs\PairGameViewModel.cs" />
+    <Compile Include="Views\Pairs\PairGameView.xaml.cs">
+      <DependentUpon>PairGameView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\Scoreboard\ScoreboardViewModel.cs" />
     <Compile Include="ViewModels\TicTacToe\TicTacToeViewModel.cs" />
-    <Compile Include="Views\Pairs\PairGameEasyView.xaml.cs">
-      <DependentUpon>PairGameEasyView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pairs\PairGameHardView.xaml.cs">
-      <DependentUpon>PairGameHardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pairs\PairGameMediumView.xaml.cs">
-      <DependentUpon>PairGameMediumView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pairs\LevelSelectView.xaml.cs">
-      <DependentUpon>LevelSelectView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\Pairs\LevelSelectViewModel.cs" />
-    <Compile Include="ViewModels\Pairs\PairGameEasyViewModel.cs" />
-    <Compile Include="ViewModels\Pairs\PairGameHardViewModel.cs" />
-    <Compile Include="ViewModels\Pairs\PairGameMediumViewModel.cs" />
-    <Compile Include="Views\Scoreboard\ScoreboardView.xaml.cs">
+	<Compile Include="Views\Scoreboard\ScoreboardView.xaml.cs">
       <DependentUpon>ScoreboardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Shop\ShopWindow.xaml.cs">
@@ -101,31 +89,12 @@
     <Compile Include="Views\TicTacToe\TicTacToeView.xaml.cs">
       <DependentUpon>TicTacToeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TimeWindow.xaml.cs">
-      <DependentUpon>TimeWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\User.cs" />
     <Page Include="Views\Doors\DoorsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pairs\PairGameEasyView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pairs\PairGameHardView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pairs\PairGameMediumView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\GamesView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pairs\LevelSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,6 +130,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pairs\PairGameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Shop\ShopWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -170,10 +143,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TicTacToe\TicTacToeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TimeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
