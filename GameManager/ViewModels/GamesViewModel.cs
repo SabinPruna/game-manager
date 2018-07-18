@@ -9,6 +9,7 @@ using GameManager.Views.Scoreboard;
 using GameManager.ViewModels.TicTacToe;
 using GameManager.ViewModels.Pairs;
 using System.Windows;
+using GameManager.ViewModels.Snake;
 
 namespace GameManager.ViewModels
 {
@@ -20,6 +21,7 @@ namespace GameManager.ViewModels
 
         public LoginViewModel LoginViewModel { get; private set; }
         public TicTacToeViewModel TicTacToeViewModel { get; private set; }
+        public SnakeViewModel  SnakeViewModel{ get; private set; }
 
         #region Constructors
 
@@ -29,7 +31,7 @@ namespace GameManager.ViewModels
             ScoreboardViewModel = new ScoreboardViewModel();
             TicTacToeViewModel = new TicTacToeViewModel();
             PairGameViewModel = new PairGameViewModel();
-
+            SnakeViewModel = new SnakeViewModel();
             _playerManager = new PlayerManager();
 
             NewGameCommand = new RelayCommand(param => StartGame((string)param));
@@ -39,7 +41,7 @@ namespace GameManager.ViewModels
                 ShopWindow shopWindow = new ShopWindow();
                 shopWindow.ShowDialog();
             });
-            
+           
 
             ScoreboardCommand = new RelayCommand(param =>
             {
@@ -65,7 +67,7 @@ namespace GameManager.ViewModels
                 OnPropertyChanged();
             }
         }
-
+       
         public ICommand PairsGameCommand { get; }
         public ICommand DoorsGameCommand { get; }
         public ICommand TicTacToeGameCommand { get; }
@@ -101,6 +103,13 @@ namespace GameManager.ViewModels
                 snake.ShowDialog();
             }
         }
+
+        public void Refresh ()
+        {
+            Score = Score;
+
+        }
+
 
         public ICommand NewGameCommand { get; private set; }
         public object PairsGameView { get; private set; }
