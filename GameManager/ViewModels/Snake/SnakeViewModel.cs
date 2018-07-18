@@ -7,6 +7,9 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using GameManager.Models;
 using GameManager.Commands;
+using GameManager.Models.Entities;
+using GameManager.BussinessLayer;
+
 namespace GameManager.ViewModels.Snake
 {
     public class SnakeViewModel:BaseViewModel
@@ -56,6 +59,7 @@ namespace GameManager.ViewModels.Snake
                 OnPropertyChanged("Points");
             }
         }
+        private readonly GameRecordManager _gameRecordManager;
 
         #endregion
 
@@ -68,7 +72,7 @@ namespace GameManager.ViewModels.Snake
             Board = new ObservableCollection<int>();
             Snake = new Models.Snake(new Point(5, 2), 5, Direction.Right);
             Run = false;
-
+            _gameRecordManager = new GameRecordManager();
             Movement = 300;
 
             _board = new Board(Width, Height);
@@ -171,15 +175,30 @@ namespace GameManager.ViewModels.Snake
                 Timer.Stop();
                 _timer.Dispose();
                 MessageBox.Show("You lost!");
+
+                GameRecord game = new GameRecord
+                {
+                    Date = DateTime.Now,
+                    Game = "Snake",
+                    Player = App.CurrentApp.MainViewModel.LoginViewModel.Player,
+                    Score = Points
+                };
+                _gameRecordManager.Add(game);
+                App.CurrentApp.MainViewModel.Refresh();
+
+            };
+
+
                 Run = false;
             }
-        }
+        
 
         #endregion
 
         #region Commands
 
-        private ICommand _startButtonClickCommand;
+        private ICommand _startButtonClickCommand { get; set; }
+
         public ICommand StartButtonClick
         {
             get
