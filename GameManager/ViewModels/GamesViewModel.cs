@@ -82,8 +82,8 @@ namespace GameManager.ViewModels
             if (param == "PairGame")
             {
                 PairGameView pairGameView = new PairGameView();
-                pairGameView.DataContext= new PairGameViewModel();
-                pairGameView.Show();
+               
+                pairGameView.ShowDialog();
             }
             if (param == "TicTacToe")
             {

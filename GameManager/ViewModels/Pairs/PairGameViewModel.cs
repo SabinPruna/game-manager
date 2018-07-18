@@ -9,6 +9,8 @@ using System.Windows.Input;
 using GameManager.Views.Pairs;
 using System.Windows.Threading;
 using System.Windows;
+using GameManager.Models.Entities;
+using GameManager.BussinessLayer;
 
 namespace GameManager.ViewModels.Pairs
 {
@@ -20,7 +22,9 @@ namespace GameManager.ViewModels.Pairs
         {
             NewGameCommand = new RelayCommand(param => StartGame((string)param));
             FlipCardCommand = new RelayCommand(param => FlipCard((CardViewModel)param));
+            _gameRecordManager = new GameRecordManager();
             CurrentTime = 200;
+            Score = 0;
         }
 
         #endregion
@@ -53,6 +57,10 @@ namespace GameManager.ViewModels.Pairs
             set { SetProperty(ref _currentTime, value); }
         }
 
+        private int Score { get; set; }
+
+        private GameRecordManager _gameRecordManager;
+
         #endregion
 
         #region Methods
@@ -64,14 +72,17 @@ namespace GameManager.ViewModels.Pairs
                 if (param == "Easy")
                 {
                     GridSize = 4;
+                    Score = 100;
                 }
                 if (param == "Medium")
                 {
                     GridSize = 6;
+                    Score = 200;
                 }
                 if (param == "Hard")
                 {
                     GridSize = 8;
+                    Score = 300;
                 }
 
                 List<CardViewModel> cards = new List<CardViewModel>();
@@ -120,7 +131,7 @@ namespace GameManager.ViewModels.Pairs
             card.Visibility = true;
 
             int nrflipped = Cards.Count(c => c.Visibility && !c.Hidden);
-
+            
             if (nrflipped == 2)
             {
                 var visibleCards = Cards.Where(c => c.Visibility && !c.Hidden).ToList();
@@ -147,6 +158,16 @@ namespace GameManager.ViewModels.Pairs
                 DispatcherTimer.Stop();
                 MessageBox.Show("You Won!", "Message", MessageBoxButton.OK,
                                          MessageBoxImage.Exclamation);
+
+                GameRecord gameRecord = new GameRecord
+                {
+                    Date = DateTime.Now,
+                    Game = "PairGame",
+                    Player = App.CurrentApp.MainViewModel.LoginViewModel.Player,
+                    Score = Score
+                };
+                _gameRecordManager.Add(gameRecord);
+
             }
             else
             if (nrhidden != GridSize * GridSize && CurrentTime == 0)

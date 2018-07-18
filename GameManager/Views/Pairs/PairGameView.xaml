@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:playerViewModels="clr-namespace:GameManager.ViewModels.Pairs"
+        xmlns:gm="clr-namespace:GameManager"
+        DataContext="{Binding MainViewModel.PairGameViewModel,Source={x:Static gm:App.CurrentApp}}"
         xmlns:conv="clr-namespace:GameManager.Convertors"
         Title="PairGame" Height="550" Width="469.2" Background="#FFB3B3C7"
         Name="wndPairs"
