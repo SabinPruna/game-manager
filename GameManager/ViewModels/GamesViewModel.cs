@@ -42,6 +42,7 @@ namespace GameManager.ViewModels
             TicTacToeGameCommand = new RelayCommand(param =>
             {
                 TicTacToeView ticTacToeView = new TicTacToeView();
+                TicTacToeViewModel.newWindow();
                 ticTacToeView.ShowDialog();
             });
             SnakeGameCommand = new RelayCommand(param =>
