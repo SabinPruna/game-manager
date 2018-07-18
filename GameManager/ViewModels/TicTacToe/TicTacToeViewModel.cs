@@ -1,5 +1,7 @@
-﻿using GameManager.Commands;
+﻿using GameManager.BussinessLayer;
+using GameManager.Commands;
 using GameManager.Models;
+using GameManager.Models.Entities;
 using GameManager.Views;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,7 @@ namespace GameManager.ViewModels.TicTacToe
 {
     public class TicTacToeViewModel : BaseViewModel
     {
+        private readonly GameRecordManager _gameRecordManager;
         private List<CardTicTacToe> cards;
         public int win { get; set; }
         public int numberOcupatedSpaces { get; set; }
@@ -43,6 +46,7 @@ namespace GameManager.ViewModels.TicTacToe
             }
             win = 0;
             numberOcupatedSpaces = 0;
+            _gameRecordManager = new GameRecordManager();
 
             TicTacToeCommand = new RelayCommand(param =>
             {
@@ -93,6 +97,7 @@ namespace GameManager.ViewModels.TicTacToe
                 {
                     MessageBox.Show("Player X Wins");
                     win = 1;
+                    IsXWinner();
                 }
             }
         }
@@ -132,6 +137,21 @@ namespace GameManager.ViewModels.TicTacToe
                 if (Cards[8].Card.Equals(Cards[7].Card) && Cards[7].Card.Equals(Cards[6].Card))
                 return Cards[8].Card.ToString();
             return "not";
+        }
+
+        public void IsXWinner()
+        {
+            if (Winner().Equals("X"))
+            {
+                GameRecord game = new GameRecord()
+                {
+                    Date = DateTime.Now,
+                    Game = "TicTacToe",
+                    Score = 100,
+                    Player = App.CurrentApp.MainViewModel.LoginViewModel.Player
+                };
+                _gameRecordManager.Add(game);
+            }
         }
 
 
