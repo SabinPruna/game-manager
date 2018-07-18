@@ -59,7 +59,7 @@ namespace GameManager.ViewModels.Snake
                 OnPropertyChanged("Points");
             }
         }
-        private GameRecordManager _gameRecordManager;
+        private readonly GameRecordManager _gameRecordManager;
 
         #endregion
 
