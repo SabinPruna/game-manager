@@ -16,7 +16,7 @@ namespace GameManager.DataAccessLayer
             }
         }
 
-        public void Register(Player player)
+        public bool Register(Player player)
         {
             using (GameContext db = new GameContext())
             {
@@ -25,7 +25,10 @@ namespace GameManager.DataAccessLayer
                     db.Players.Add(player);
 
                     db.SaveChanges();
+                    return true;
                 }
+
+                return false;
             }
         }
 

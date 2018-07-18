@@ -2,7 +2,7 @@
 using GameManager.BussinessLayer;
 using GameManager.Commands;
 using GameManager.DoorsGame;
-using GameManager.ViewModels.PlayerViewModels;
+using GameManager.ViewModels.Login;
 using GameManager.ViewModels.Scoreboard;
 using GameManager.Views.Pairs;
 using GameManager.Views.Scoreboard;
@@ -13,7 +13,7 @@ using GameManager.ViewModels.Snake;
 
 namespace GameManager.ViewModels
 {
-    public class GamesViewModel : BaseViewModel
+    public class  GamesViewModel : BaseViewModel
     {
         private readonly PlayerManager _playerManager;
         private int _score;

@@ -23,9 +23,9 @@ namespace GameManager.BussinessLayer
             return player != null ? _playerRepository.Login(player) : null;
         }
 
-        public void Register(Player player)
+        public bool Register(Player player)
         {
-            _playerRepository.Register(player);
+            return _playerRepository.Register(player);
         }
 
         public int GetPlayerScore(int? playerId)
