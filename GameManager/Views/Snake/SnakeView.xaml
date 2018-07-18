@@ -3,10 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:GameManager"
+        xmlns:ctx="clr-namespace:GameManager.ViewModels.Snake"
         mc:Ignorable="d"
-        Title="SnakeView" Height="450" Width="800">
+        Title="SnakeGame" Height="350" Width="470">
+    <Window.DataContext>
+        <ctx:SnakeViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <ctx:IntToColorConverter x:Key="intToColorConverter" />
+    </Window.Resources>
+    <i:Interaction.Behaviors>
+        <ctx:WindowBehaviour/>
+    </i:Interaction.Behaviors>
+
     <Grid>
-        
+        <ItemsControl ItemsSource="{Binding Board}" BorderBrush="Black" BorderThickness="1" Margin="0,0,143,0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="{Binding Path=Width}"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Rectangle Fill="{Binding Converter={StaticResource intToColorConverter}, Mode=OneWay}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <GroupBox Header="Stats" Margin="0,0,10,159" HorizontalAlignment="Right" Width="128">
+            <StackPanel Orientation="Vertical" Height="297" VerticalAlignment="Top">
+                <Label Content="Points:"/>
+                <TextBox Height="20" VerticalAlignment="Top" Text="{Binding Points}" TextAlignment="Right" IsReadOnly="True"/>
+                <Label FontSize="10" Content="Movement every(ms):"/>
+                <TextBox Height="20" VerticalAlignment="Top" Text="{Binding Path=Movement}" 
+                         TextAlignment="Right" IsEnabled="{Binding ElementName=startBtn, Path=IsEnabled, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+        </GroupBox>
+        <Button Width="70" Height="25" Margin="0,0,36,63" RenderTransformOrigin="0.412,0.785" 
+                VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Start"
+                Command="{Binding Path=StartButtonClick, UpdateSourceTrigger=PropertyChanged}" x:Name='startBtn'/>
     </Grid>
 </Window>

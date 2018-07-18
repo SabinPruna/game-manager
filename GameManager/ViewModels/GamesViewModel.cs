@@ -95,7 +95,8 @@ namespace GameManager.ViewModels
             }
             if(param== "SnakeGame")
             {
-                MessageBox.Show("SnakeGame");
+                SnakeView snake = new SnakeView();
+                snake.ShowDialog();
             }
         }
 
