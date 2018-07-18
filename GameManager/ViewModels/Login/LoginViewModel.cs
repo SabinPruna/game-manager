@@ -12,18 +12,10 @@ namespace GameManager.ViewModels.PlayerViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private string _username;
-
-        public string Username
-        {
-            get => _username;
-            set
-            {
-                SetProperty(ref _username, value);
-            }
-        }
-
         private readonly PlayerManager _playerManager;
+
+        private Player _player;
+        private string _username;
 
         #region Constructors
 
@@ -33,7 +25,7 @@ namespace GameManager.ViewModels.PlayerViewModels
 
             LoginCommand = new RelayCommand(param =>
                 {
-                    var player = new Player(Username, (param as PasswordBox)?.Password);
+                    Player player = new Player(Username, (param as PasswordBox)?.Password);
                     Player = _playerManager.Login(player);
 
                     LoginEvent?.Invoke(this, EventArgs.Empty);
@@ -41,11 +33,25 @@ namespace GameManager.ViewModels.PlayerViewModels
                 param => !string.IsNullOrEmpty(Username) &&
                          !string.IsNullOrEmpty((param as PasswordBox)?.Password));
 
-            RegisterCommand = new RelayCommand(param =>
+            ShowRegisterCommand = new RelayCommand(param =>
             {
                 RegisterView registerView = new RegisterView();
-                Application.Current.Windows.OfType<LoginView>().FirstOrDefault()?.Close();
                 registerView.Show();
+            });
+
+            RegisterCommand = new RelayCommand(param =>
+                {
+                    Player player = new Player(Username, (param as PasswordBox)?.Password);
+
+                    _playerManager.Register(player);
+
+                    Application.Current.Windows.OfType<RegisterView>().FirstOrDefault()?.Close();
+                }
+            );
+
+            QuitCommand = new RelayCommand(param =>
+            {
+                Application.Current.Windows.OfType<RegisterView>().FirstOrDefault()?.Close();
             });
         }
 
@@ -53,19 +59,25 @@ namespace GameManager.ViewModels.PlayerViewModels
 
         #region  Properties
 
-        private Player _player;
+        public string Username
+        {
+            get => _username;
+            set => SetProperty(ref _username, value);
+        }
 
         public Player Player
         {
-            get { return _player; }
-            private set { SetProperty(ref _player, value); }
+            get => _player;
+            private set => SetProperty(ref _player, value);
         }
 
-
-        public ICommand LoginCommand { get; private set; }
-        public ICommand RegisterCommand { get; private set; }
+        public ICommand LoginCommand { get; }
+        public ICommand ShowRegisterCommand { get; }
+        public ICommand RegisterCommand { get; }
+        public ICommand QuitCommand { get; set; }
 
         #endregion
+
 
         #region Events
 

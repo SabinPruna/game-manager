@@ -63,6 +63,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ScoreboardRecord.cs" />
+    <Compile Include="Models\CardTicTacToe.cs" />
     <Compile Include="Convertors\BoolToVisibilityConverter.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="BussinessLayer\GameRecordManager.cs" />
@@ -72,6 +74,11 @@
     <Compile Include="ViewModels\Pairs\PairGameViewModel.cs" />
     <Compile Include="Views\Pairs\PairGameView.xaml.cs">
       <DependentUpon>PairGameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Scoreboard\ScoreboardViewModel.cs" />
+    <Compile Include="ViewModels\TicTacToe\TicTacToeViewModel.cs" />
+	<Compile Include="Views\Scoreboard\ScoreboardView.xaml.cs">
+      <DependentUpon>ScoreboardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Shop\ShopWindow.xaml.cs">
       <DependentUpon>ShopWindow.xaml</DependentUpon>
@@ -100,8 +107,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\GamesViewModel.cs" />
-    <Compile Include="ViewModels\PlayerViewModels\LoginViewModel.cs" />
-    <Compile Include="ViewModels\PlayerViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="Views\PlayerViews\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -120,6 +126,10 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DbContext\GameContext.cs" />
+    <Page Include="Views\Scoreboard\ScoreboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pairs\PairGameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

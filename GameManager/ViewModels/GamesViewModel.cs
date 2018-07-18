@@ -1,10 +1,13 @@
-﻿using GameManager.BussinessLayer;
-using GameManager.Models.Entities;
-using GameManager.ViewModels.PlayerViewModels;
-using GameManager.ViewModels.Pairs;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using GameManager.BussinessLayer;
 using GameManager.Commands;
+using GameManager.DoorsGame;
+using GameManager.ViewModels.PlayerViewModels;
+using GameManager.ViewModels.Scoreboard;
 using GameManager.Views.Pairs;
+using GameManager.Views.Scoreboard;
+using GameManager.ViewModels.TicTacToe;
+using GameManager.ViewModels.Pairs;
 using System.Windows;
 
 namespace GameManager.ViewModels
@@ -12,47 +15,49 @@ namespace GameManager.ViewModels
     public class GamesViewModel : BaseViewModel
     {
         private readonly PlayerManager _playerManager;
-        private Player _player;
         private int _score;
         public PairGameViewModel PairGameViewModel { get; private set; }
 
         public LoginViewModel LoginViewModel { get; private set; }
+        public TicTacToeViewModel TicTacToeViewModel { get; private set; }
 
         #region Constructors
-
-        public GamesViewModel(Player player)
-        {
-            _player = player;
-            _playerManager = new PlayerManager();
-        }
 
         public GamesViewModel()
         {
             LoginViewModel = new LoginViewModel();
+            ScoreboardViewModel = new ScoreboardViewModel();
+            TicTacToeViewModel = new TicTacToeViewModel();
             PairGameViewModel = new PairGameViewModel();
-            NewGameCommand = new RelayCommand(param => StartGame((string)param));
 
             _playerManager = new PlayerManager();
+
+            NewGameCommand = new RelayCommand(param => StartGame((string)param));
+
+            ShopCommand = new RelayCommand(param =>
+            {
+                ShopWindow shopWindow = new ShopWindow();
+                shopWindow.ShowDialog();
+            });
+            
+
+            ScoreboardCommand = new RelayCommand(param =>
+            {
+                ScoreboardViewModel.Refresh();
+                ScoreboardView scoreboardView = new ScoreboardView();
+                scoreboardView.ShowDialog();
+            });
         }
 
         #endregion
 
         #region  Properties
 
-        public Player Player
-        {
-            get => _player;
-            set
-            {
-                if (Equals(value, _player)) return;
-                _player = value;
-                OnPropertyChanged();
-            }
-        }
+        public ScoreboardViewModel ScoreboardViewModel { get; private set; }
 
         public int Score
         {
-            get => _playerManager.GetPlayerScore(Player?.Id);
+            get => _playerManager.GetPlayerScore(LoginViewModel.Player?.Id);
             set
             {
                 if (value == _score) return;
@@ -60,6 +65,14 @@ namespace GameManager.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public ICommand PairsGameCommand { get; }
+        public ICommand DoorsGameCommand { get; }
+        public ICommand TicTacToeGameCommand { get; }
+        public ICommand SnakeGameCommand { get; }
+        public ICommand ShopCommand { get; }
+        public ICommand ScoreboardCommand { get; }
+
 
         #endregion
 

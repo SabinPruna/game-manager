@@ -1,27 +1,27 @@
-﻿using GameManager.ViewModels;
+﻿using System.Windows;
+using GameManager.ViewModels;
 using GameManager.Views;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace GameManager
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    ///     Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
+        #region  Properties
+
         public static App CurrentApp => Current as App;
 
         public GamesViewModel MainViewModel { get; private set; }
 
+
+        #endregion
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             MainViewModel = new GamesViewModel();
+
 
             MainWindow = new LoginView();
             MainWindow.ShowDialog();

@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:playerViewModels="clr-namespace:GameManager.ViewModels.PlayerViewModels"
+        xmlns:gm="clr-namespace:GameManager"
         mc:Ignorable="d"
-        Title="Register" Height="407.297" Width="267.202" ResizeMode="CanMinimize">
-    <Window.DataContext>
-        <playerViewModels:RegisterViewModel />
-    </Window.DataContext>
+        Title="Register" Height="407.297" Width="267.202" ResizeMode="CanMinimize"
+        DataContext="{Binding MainViewModel.LoginViewModel, Source={x:Static gm:App.CurrentApp}}"
+        >
     <Grid>
        
         <Grid.Background>
@@ -18,22 +18,12 @@
         <StackPanel Margin="30,10">
             <Label x:Name="LabelCopy" Content="Register an account" VerticalAlignment="Top" HorizontalAlignment="Left"
                    FontSize="16" Foreground="White" FontWeight="Bold" Margin="-5,0,0,0" />
-           
-            <!--<Button Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Command="{Binding SelectAvatarCommand}" Template="{DynamicResource PlainTextButton}"
-                    BorderBrush="{x:Null}">
-                <Ellipse Height="70" Width="70" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="{Binding Account.AvatarPath}" />
-                    </Ellipse.Fill>
-                </Ellipse>
-            </Button>-->
 
             <Label x:Name="Username" Content="Full name" VerticalAlignment="Top" HorizontalAlignment="Left"
                    FontSize="9.333" Foreground="White" Margin="-5,15,0,0" />
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Player.Username}" />
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Username}" />
            
-            <Label x:Name="password" Content="Password" VerticalAlignment="Top" HorizontalAlignment="Left"
+            <Label x:Name="Password" Content="Password" VerticalAlignment="Top" HorizontalAlignment="Left"
                    FontSize="9.333" Foreground="White" Margin="-5,0,0,0" />
             <PasswordBox x:Name="PasswordBox" Height="23" />
 
