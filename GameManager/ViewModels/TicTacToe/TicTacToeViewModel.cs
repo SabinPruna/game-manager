@@ -151,6 +151,7 @@ namespace GameManager.ViewModels.TicTacToe
                     Player = App.CurrentApp.MainViewModel.LoginViewModel.Player
                 };
                 _gameRecordManager.Add(game);
+                App.CurrentApp.MainViewModel.Refresh();
             }
         }
 
