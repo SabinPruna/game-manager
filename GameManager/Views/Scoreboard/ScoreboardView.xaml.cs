@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace GameManager
+namespace GameManager.Views.Scoreboard
 {
     /// <summary>
-    /// Interaction logic for TicTacToeView.xaml
+    /// Interaction logic for ScoreboardView.xaml
     /// </summary>
-    public partial class TicTacToeView : Window
+    public partial class ScoreboardView : Window
     {
-        public TicTacToeView()
+        public ScoreboardView()
         {
             InitializeComponent();
         }

@@ -69,6 +69,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ScoreboardRecord.cs" />
+    <Compile Include="Models\CardTicTacToe.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\Husk.cs" />
     <Compile Include="Models\Snake.cs" />
@@ -81,6 +83,8 @@
     <Compile Include="ViewModels\Snake\IntToColorConverter.cs" />
     <Compile Include="ViewModels\Snake\WindowBehaviour.cs" />
     <Compile Include="ViewModels\Snake\SnakeViewModel.cs" />
+    <Compile Include="ViewModels\Scoreboard\ScoreboardViewModel.cs" />
+    <Compile Include="ViewModels\TicTacToe\TicTacToeViewModel.cs" />
     <Compile Include="Views\Pairs\PairGameEasyView.xaml.cs">
       <DependentUpon>PairGameEasyView.xaml</DependentUpon>
     </Compile>
@@ -97,6 +101,9 @@
     <Compile Include="ViewModels\Pairs\PairGameEasyViewModel.cs" />
     <Compile Include="ViewModels\Pairs\PairGameHardViewModel.cs" />
     <Compile Include="ViewModels\Pairs\PairGameMediumViewModel.cs" />
+    <Compile Include="Views\Scoreboard\ScoreboardView.xaml.cs">
+      <DependentUpon>ScoreboardView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shop\ShopWindow.xaml.cs">
       <DependentUpon>ShopWindow.xaml</DependentUpon>
     </Compile>
@@ -162,6 +169,10 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DbContext\GameContext.cs" />
+    <Page Include="Views\Scoreboard\ScoreboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Shop\ShopWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

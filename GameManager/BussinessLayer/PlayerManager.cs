@@ -1,5 +1,6 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using GameManager.DataAccessLayer;
+using GameManager.Models;
 using GameManager.Models.Entities;
 
 namespace GameManager.BussinessLayer
@@ -30,6 +31,11 @@ namespace GameManager.BussinessLayer
         public int GetPlayerScore(int? playerId)
         {
             return null == playerId ? 0 : _playerRepository.GetPlayerScore(playerId);
+        }
+
+        public List<ScoreboardRecord> GetTopPlayers()
+        {
+            return _playerRepository.GetTopPlayers();
         }
     }
 }

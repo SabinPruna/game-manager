@@ -3,14 +3,13 @@ using GameManager.ViewModels.Pairs;
 
 namespace GameManager.Views.Pairs
 {
-    public partial class LevelSelect : Window
+    public partial class LevelSelectView : Window
     {
         #region Constructors
 
-        public LevelSelect(GamesView gamesView)
+        public LevelSelectView()
         {
             InitializeComponent();
-            GamesWindow = gamesView;
         }
 
         #endregion
@@ -30,7 +29,6 @@ namespace GameManager.Views.Pairs
 
             gameEasy.Show();
             Close();
-            GamesWindow.Close();
         }
 
         private void Medium_Click(object sender, RoutedEventArgs e)

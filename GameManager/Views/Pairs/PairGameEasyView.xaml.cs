@@ -42,7 +42,7 @@ namespace GameManager.Views.Pairs
             };
             _gameRecordManager.Add(gameRecord);
 
-            GamesView gamesView = new GamesView(ViewModel.Player);
+            GamesView gamesView = new GamesView();
             gamesView.Show();
             ViewModel.DispatcherTimer.Stop();
             ViewModel.State = StateOfGame.GameOver;
