@@ -117,7 +117,7 @@ namespace GameManager.ViewModels.Pairs
                     };
                     cards.Add(cvm2);
                 }
-                //Shuffle(cards);
+                Shuffle(cards);
                 Cards = cards;
                 StartTimer();
             }
