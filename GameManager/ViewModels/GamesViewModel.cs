@@ -18,7 +18,6 @@ namespace GameManager.ViewModels
         private readonly PlayerManager _playerManager;
         private int _score;
         public PairGameViewModel PairGameViewModel { get; private set; }
-
         public LoginViewModel LoginViewModel { get; private set; }
         public TicTacToeViewModel TicTacToeViewModel { get; private set; }
         public SnakeViewModel  SnakeViewModel{ get; private set; }
@@ -84,7 +83,6 @@ namespace GameManager.ViewModels
             if (param == "PairGame")
             {
                 PairGameView pairGameView = new PairGameView();
-               
                 pairGameView.ShowDialog();
             }
             if (param == "TicTacToe")
@@ -107,11 +105,8 @@ namespace GameManager.ViewModels
         public void Refresh ()
         {
             Score = Score;
-
         }
 
-
         public ICommand NewGameCommand { get; private set; }
-        public object PairsGameView { get; private set; }
     }
 }

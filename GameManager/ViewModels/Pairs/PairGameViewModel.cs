@@ -22,9 +22,11 @@ namespace GameManager.ViewModels.Pairs
         {
             NewGameCommand = new RelayCommand(param => StartGame((string)param));
             FlipCardCommand = new RelayCommand(param => FlipCard((CardViewModel)param));
+            ExitGameCommand = new RelayCommand(param => RefreshGame());
             _gameRecordManager = new GameRecordManager();
             CurrentTime = 200;
             Score = 0;
+            IsEnabled = true;
         }
 
         #endregion
@@ -57,9 +59,19 @@ namespace GameManager.ViewModels.Pairs
             set { SetProperty(ref _currentTime, value); }
         }
 
+
         private int Score { get; set; }
 
         private GameRecordManager _gameRecordManager;
+
+        private bool _isEnabled;
+
+        public bool IsEnabled
+        {
+            get { return _isEnabled; }
+            set { SetProperty(ref _isEnabled, value); }
+        }
+
 
         #endregion
 
@@ -85,6 +97,7 @@ namespace GameManager.ViewModels.Pairs
                     Score = 300;
                 }
 
+                IsEnabled = false;
                 List<CardViewModel> cards = new List<CardViewModel>();
                 for (int i = 0; i < GridSize * GridSize / 2; i++)
                 {
@@ -104,7 +117,7 @@ namespace GameManager.ViewModels.Pairs
                     };
                     cards.Add(cvm2);
                 }
-                Shuffle(cards);
+                //Shuffle(cards);
                 Cards = cards;
                 StartTimer();
             }
@@ -136,7 +149,7 @@ namespace GameManager.ViewModels.Pairs
             {
                 var visibleCards = Cards.Where(c => c.Visibility && !c.Hidden).ToList();
                 int nrDistinctCards = visibleCards.Select(c => c.ImageUp).Distinct().Count();
-                await Task.Delay(1000);
+                await Task.Delay(200);
                 if (nrDistinctCards == 1)
                 {
                     foreach (var c in visibleCards)
@@ -152,13 +165,18 @@ namespace GameManager.ViewModels.Pairs
                     }
                 }
             }
+            else
+                if(nrflipped==3)
+            {
+
+            }
             int nrhidden = Cards.Count(c => c.Hidden);
             if (nrhidden == GridSize * GridSize && CurrentTime > 0)
             {
                 DispatcherTimer.Stop();
-                MessageBox.Show("You Won!", "Message", MessageBoxButton.OK,
+                MessageBox.Show("You Won!", "Winner", MessageBoxButton.OK,
                                          MessageBoxImage.Exclamation);
-
+                
                 GameRecord gameRecord = new GameRecord
                 {
                     Date = DateTime.Now,
@@ -167,14 +185,16 @@ namespace GameManager.ViewModels.Pairs
                     Score = Score
                 };
                 _gameRecordManager.Add(gameRecord);
-
+                App.CurrentApp.MainViewModel.Refresh();
+                RefreshGame();
             }
             else
             if (nrhidden != GridSize * GridSize && CurrentTime == 0)
             {
                 DispatcherTimer.Stop();
-                MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
+                MessageBox.Show("You Lost!", "Loser", MessageBoxButton.OK,
                                        MessageBoxImage.Exclamation);
+                RefreshGame();
             }
         }
 
@@ -192,7 +212,22 @@ namespace GameManager.ViewModels.Pairs
             if (CurrentTime == 0)
             {
                 DispatcherTimer.Stop();
+                MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
+                                       MessageBoxImage.Exclamation);
+                RefreshGame();
             }
+        }
+
+        private void RefreshGame()
+        {
+            DispatcherTimer.Stop();
+            CurrentTime = 200;
+            Score = 0;
+            var visibleCards = Cards.Where(c => !c.Hidden).ToList();
+            foreach (var card in visibleCards)
+                card.Hidden = true;
+            Cards.Clear();
+            IsEnabled = true;
         }
 
         #endregion
@@ -202,6 +237,8 @@ namespace GameManager.ViewModels.Pairs
         public ICommand NewGameCommand { get; private set; }
 
         public ICommand FlipCardCommand { get; private set; }
+
+        public ICommand ExitGameCommand { get; private set; }
 
         #endregion
     }
