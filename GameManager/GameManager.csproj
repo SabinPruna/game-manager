@@ -279,5 +279,13 @@
   <ItemGroup>
     <Resource Include="Images\For MatchGame\9.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TicTacToe.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\For TicTacToe\cat.jpg" />
+    <Resource Include="Images\For TicTacToe\cat1.jpg" />
+    <Resource Include="Images\For TicTacToe\mouse.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
