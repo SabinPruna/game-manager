@@ -68,9 +68,9 @@ namespace GameManager.ViewModels.TicTacToe
             else
             {
                 int ok = 0;
-                Cards[Cards.IndexOf(card)].Card = "X";
+                Cards[Cards.IndexOf(card)].Card = $"../../Images/For TicTacToe/cat.jpg";
                 numberOcupatedSpaces++;
-                if (Winner() != "X")
+                if (Winner() != $"../../Images/For TicTacToe/cat.jpg")
                     if (numberOcupatedSpaces < 8)
                     {
                         if (win == 0)
@@ -79,12 +79,13 @@ namespace GameManager.ViewModels.TicTacToe
                                 int r = rnd.Next(9);
                                 if (Cards[r].Card.Equals(""))
                                 {
-                                    Cards[r].Card = "0";
+                                    Cards[r].Card = $"../../Images/For TicTacToe/mouse.jpg";
                                     ok = 1;
                                 }
-                                if (Winner() == "0")
+                                if (Winner() == $"../../Images/For TicTacToe/mouse.jpg")
                                 {
-                                    MessageBox.Show("Player 0 Wins");
+                                    MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
+                                         MessageBoxImage.Exclamation);
                                     win = 2;
                                     break;
                                 }
@@ -92,10 +93,15 @@ namespace GameManager.ViewModels.TicTacToe
                         numberOcupatedSpaces++;
                     }
                     else
+                    {
+                        MessageBox.Show("Drow!", "Message", MessageBoxButton.OK,
+                                         MessageBoxImage.Exclamation);
                         return;
+                    }
                 else
                 {
-                    MessageBox.Show("Player X Wins");
+                    MessageBox.Show("You Won!", "Message", MessageBoxButton.OK,
+                                         MessageBoxImage.Exclamation);
                     win = 1;
                     IsXWinner();
                 }
