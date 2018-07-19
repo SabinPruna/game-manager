@@ -1,6 +1,6 @@
 ﻿namespace GameManager.Models
 {
-    public class ScoreboardRecord
+    public class TopPlayersScoreboardRecord
     {
         #region Constructors
 

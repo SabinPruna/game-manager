@@ -40,14 +40,33 @@ namespace GameManager.DataAccessLayer
             }
         }
 
-        public List<ScoreboardRecord> GetTopPlayers()
+        public List<TopPlayersScoreboardRecord> GetTopPlayers()
         {
             using (GameContext db = new GameContext())
             {
                 return db.Players.OrderByDescending(p => p.GameRecords.Sum(r => r.Score)).Take(10).ToList()
-                    .Select(p => new ScoreboardRecord {Username = p.Username, Score = p.GameRecords.Sum(r => r.Score)})
+                    .Select(p => new TopPlayersScoreboardRecord {Username = p.Username, Score = p.GameRecords.Sum(r => r.Score)})
                     .ToList();
             }
         }
+
+        public List<TopPlayersScoreboardRecord> GetTopPlayersByGameName(string gameName)
+        {
+            using (GameContext db = new GameContext())
+            {
+                return db.Players.OrderByDescending(p => p.GameRecords.Where(r => r.Game == gameName).Sum(r => r.Score)).Take(10).ToList()
+                    .Select(p => new TopPlayersScoreboardRecord {Username = p.Username, Score = p.GameRecords.Where(r => r.Game == gameName).Sum(r => r.Score)})
+                    .ToList();
+            }
+        }
+
+        public List<GameRecord> GetPlayerGameRecords(string playerName)
+        {
+            using (GameContext gameContext = new GameContext())
+            {
+               return gameContext.Players.FirstOrDefault(p => p.Username == playerName)?.GameRecords.OrderByDescending(r => r.Score).ToList();
+            }
+        }
+
     }
 }
