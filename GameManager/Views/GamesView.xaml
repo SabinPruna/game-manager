@@ -105,8 +105,8 @@
 
             <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="45"
                        Margin="110,0,0,30" Text="{Binding LoginViewModel.Player.Username}" />
-            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="800,0,0,30">Score:</TextBlock>
-            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="900,0,10,30"
+            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="650,0,0,30">Score:</TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="780,0,10,30"
                        TextAlignment="Right" Text="{Binding Score}" />
 
             <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Command="{Binding ScoreboardCommand}"
