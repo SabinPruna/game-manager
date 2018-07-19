@@ -97,8 +97,6 @@ namespace GameManager.ViewModels.Login
 
         public event EventHandler LoginEvent;
 
-        public event EventHandler CloseRegisterViewEvent;
-
         #endregion
     }
 }

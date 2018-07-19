@@ -3,25 +3,88 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GameManager.Views.Scoreboard"
         xmlns:gm="clr-namespace:GameManager"
-        xmlns:scoreboard="clr-namespace:GameManager.ViewModels.Scoreboard"
         mc:Ignorable="d"
         Title="Scoreboard" Height="450" Width="800"
         DataContext="{Binding MainViewModel.ScoreboardViewModel, Source={x:Static gm:App.CurrentApp}}"
         Background="Black">
     <Grid>
-        <GroupBox>
-            <ItemsControl ItemsSource="{Binding TopPlayerRecords}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock FontSize="30" Foreground="AliceBlue" Margin="5" Text="{Binding Path=Username}" />
-                            <TextBlock FontSize="30" Foreground="AliceBlue" Margin="5" Text="{Binding Path=Score}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </GroupBox>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TabControl Background="Black" Grid.RowSpan="2">
+            <TabItem Header="Top Players">
+                <GroupBox>
+                    <ItemsControl ItemsSource="{Binding TopPlayerRecords}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock FontSize="30" Foreground="AliceBlue" Margin="5"
+                                               Text="{Binding Path=Username}" />
+                                    <TextBlock FontSize="30" Foreground="AliceBlue" Margin="5"
+                                               Text="{Binding Path=Score}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </GroupBox>
+            </TabItem>
+            <TabItem Header="Player">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBox Name="PlayerSearchTextBox" Height="23" TextWrapping="Wrap"
+                                 Text="{Binding Path=PlayerSearchCriteria}" />
+                        <Button x:Name="PlayerSearch" IsDefault="True" Command="{Binding PlayerSearchCommand}"
+                                Content="Search" Foreground="#FF5D5D5D" />
+                        <GroupBox>
+                            <ItemsControl ItemsSource="{Binding PlayerGameRecords}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <TextBlock FontSize="30" Foreground="AliceBlue" Margin="5"
+                                                       Text="{Binding Path=Game}" />
+                                            <TextBlock FontSize="30" Foreground="AliceBlue" Margin="5"
+                                                       Text="{Binding Path=Score}" />
+                                            <TextBlock FontSize="30" Foreground="AliceBlue" Margin="5"
+                                                       Text="{Binding Path=Date}" />
+                                        </StackPanel>
+
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Game">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel HorizontalAlignment="Center">
+                        <ComboBox SelectedValue="{Binding GameSearchCriteria}">
+                            <ComboBoxItem>PairGame</ComboBoxItem>
+                            <ComboBoxItem>DoorsGame</ComboBoxItem>
+                            <ComboBoxItem>TicTacToe</ComboBoxItem>
+                            <ComboBoxItem>SnakeGame</ComboBoxItem>
+                        </ComboBox>
+                        <Button x:Name="GameSearch" IsDefault="True" Command="{Binding GameSearchCommand}"
+                                Content="Search" Foreground="#FF5D5D5D" />
+                        <GroupBox>
+                            <ItemsControl ItemsSource="{Binding TopPlayerRecordsByGameName}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <TextBlock FontSize="30" Foreground="AliceBlue" Margin="5"
+                                                       Text="{Binding Path=Username}" />
+                                            <TextBlock FontSize="30" Foreground="AliceBlue" Margin="5"
+                                                       Text="{Binding Path=Score}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
