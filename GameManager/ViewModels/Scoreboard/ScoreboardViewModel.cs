@@ -67,15 +67,22 @@ namespace GameManager.ViewModels.Scoreboard
             set => SetProperty(ref _gameSearchCriteria, value);
         }
 
-        public ICommand PlayerSearchCommand { get; }
-
-        public ICommand GameSearchCommand { get; }
-
         #endregion
+
+        #region Methods
 
         public void Refresh()
         {
             TopPlayerRecords = _playerManager.GetTopPlayers();
         }
+
+        #endregion
+
+        #region Commands
+
+        public ICommand PlayerSearchCommand { get; }
+        public ICommand GameSearchCommand { get; }
+
+        #endregion
     }
 }

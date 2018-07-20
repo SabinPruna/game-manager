@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 
-namespace GameManager.Models
+namespace GameManager.Models.Snake
 {
     public class Snake
     {
@@ -15,13 +15,9 @@ namespace GameManager.Models
         public Husk Tail;
         public Direction CurrentDirection;
 
-        public int Length
-        {
-            get
-            {
-                return Husks.Count;
-            }
-        }
+        #region Constructors
+
+        public Snake() { }
 
         public Snake(Point head, int length, Direction direction)
         {
@@ -39,6 +35,19 @@ namespace GameManager.Models
 
             Tail = new Husk(Direction.Right, Husks.Last().Point);
         }
+
+        #endregion
+
+        #region Properties
+
+        public int Length
+        {
+            get { return Husks.Count; }
+        }
+
+        #endregion
+
+        #region Methods
 
         public void MoveHusks()
         {
@@ -63,7 +72,6 @@ namespace GameManager.Models
                         break;
                 }
             }
-
             Head.Point = Husks.First().Point;
             Tail.Point = Husks.Last().Point;
         }
@@ -71,7 +79,6 @@ namespace GameManager.Models
         internal void AddHusk()
         {
             Point tmpPoint = new Point();
-
             switch (Tail.Direction)
             {
                 case Direction.Left:
@@ -112,5 +119,7 @@ namespace GameManager.Models
             UpdateDirections();
             MoveHusks();
         }
+
+        #endregion
     }
 }
