@@ -19,7 +19,7 @@ namespace GameManager.ViewModels.TicTacToe
         private List<CardTicTacToe> cards;
         
         #region Constructors
-
+        
         public TicTacToeViewModel()
         {
             Cards = new List<CardTicTacToe>();

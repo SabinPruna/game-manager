@@ -5,13 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameManager.DoorsGame"
         mc:Ignorable="d"
-        Title="Doors_Game" Height="450" Width="800">
+        Title="Doors_Game" Height="450" Width="800"
+        Icon="..\..\Images\Icons\doors.ico">
     <Window.Resources>
         <Style TargetType="Grid" x:Key="Imagini">
             <Setter Property="Margin" Value="15"/>
         </Style>
+        <DrawingImage x:Key="Overlay">
+            <DrawingImage.Drawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\doors.ico"></ImageDrawing>
+            </DrawingImage.Drawing>
+        </DrawingImage>
     </Window.Resources>
-
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Doors/stars.jpg"/>

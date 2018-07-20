@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameManager"
         mc:Ignorable="d"
-        Title="ShopWindow" Height="400" Width="650">
+        Title="ShopWindow" Height="450" Width="800"
+        Icon="..\..\Images\Icons\shop.ico">
     <Window.Resources>
         <Style TargetType="Grid" x:Key="Imagini">
             <Setter Property="Margin" Value="10"/>
@@ -18,7 +19,16 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
+        <DrawingImage x:Key="Overlay">
+            <DrawingImage.Drawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\shop.ico"></ImageDrawing>
+            </DrawingImage.Drawing>
+        </DrawingImage>
     </Window.Resources>
+
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/For ShopWindow/abstract.jpg"/>

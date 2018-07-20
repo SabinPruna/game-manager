@@ -9,10 +9,19 @@
     xmlns:ctx="clr-namespace:GameManager.ViewModels.Snake"
         mc:Ignorable="d"
         Title="SnakeGame" Height="350" Width="470"
-        DataContext="{Binding MainViewModel.SnakeViewModel,Source={x:Static gm:App.CurrentApp}}">
+        DataContext="{Binding MainViewModel.SnakeViewModel,Source={x:Static gm:App.CurrentApp}}"
+        Icon="..\..\Images\Icons\snake.ico">
     <Window.Resources>
         <ctx:IntToColorConverter x:Key="intToColorConverter" />
+        <DrawingImage x:Key="Overlay">
+            <DrawingImage.Drawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\snake.ico"></ImageDrawing>
+            </DrawingImage.Drawing>
+        </DrawingImage>
     </Window.Resources>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
     <i:Interaction.Behaviors>
         <ctx:WindowBehaviour/>
     </i:Interaction.Behaviors>
