@@ -65,7 +65,18 @@ namespace GameManager.ViewModels.Login
             QuitCommand = new RelayCommand(param =>
             {
                 Application.Current.Windows.OfType<RegisterView>().FirstOrDefault()?.Close();
+                Application.Current.Windows.OfType<EditView>().FirstOrDefault()?.Close();
             });
+
+            EditCommand = new RelayCommand(param =>
+            {
+                Player player = new Player(Username, (param as PasswordBox)?.Password);
+                Player = _playerManager.Edit(Player.Id, player);
+
+                Application.Current.Windows.OfType<EditView>().FirstOrDefault()?.Close();
+            },
+                param => !string.IsNullOrEmpty(Username) &&
+                         !string.IsNullOrEmpty((param as PasswordBox)?.Password));
         }
 
         #endregion
@@ -92,6 +103,8 @@ namespace GameManager.ViewModels.Login
         public ICommand ShowRegisterCommand { get; }
         public ICommand RegisterCommand { get; }
         public ICommand QuitCommand { get; set; }
+        public ICommand EditCommand { get; }
+
 
         #endregion
 

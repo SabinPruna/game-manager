@@ -49,5 +49,10 @@ namespace GameManager.BussinessLayer
 
             return gameRecords ?? new List<GameRecord>();
         }
+
+        public Player Edit(int playerId, Player player)
+        {
+           return _playerRepository.Edit(playerId, player);
+        }
     }
 }

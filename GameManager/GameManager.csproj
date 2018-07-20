@@ -81,6 +81,9 @@
     <Compile Include="ViewModels\Pairs\CardViewModel.cs" />
     <Compile Include="ViewModels\Pairs\PairGameViewModel.cs" />
     <Compile Include="ViewModels\Scoreboard\ScoreboardViewModel.cs" />
+    <Compile Include="Views\Login\EditView.xaml.cs">
+      <DependentUpon>EditView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pairs\PairGameView.xaml.cs">
       <DependentUpon>PairGameView.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,10 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DbContext\GameContext.cs" />
+    <Page Include="Views\Login\EditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Scoreboard\ScoreboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
