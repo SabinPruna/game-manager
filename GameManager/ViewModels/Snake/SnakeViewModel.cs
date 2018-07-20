@@ -31,9 +31,8 @@ namespace GameManager.ViewModels.Snake
             get { return _movement; }
             set
             {
-
-                SetProperty(ref _movement, value);
-
+                _movement = value;
+                OnPropertyChanged("Movement");
             }
         }
 
@@ -45,7 +44,8 @@ namespace GameManager.ViewModels.Snake
             get { return _run; }
             set
             {
-                SetProperty(ref _run, value);
+                _run = value;
+                OnPropertyChanged("Run");
             }
         }
 
@@ -55,7 +55,8 @@ namespace GameManager.ViewModels.Snake
             get { return _points; }
             set
             {
-                SetProperty(ref _points, value);
+                _points = value;
+                OnPropertyChanged("Points");
             }
         }
         private readonly GameRecordManager _gameRecordManager;
