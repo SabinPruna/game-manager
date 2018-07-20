@@ -109,6 +109,10 @@
             <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="780,0,10,30"
                        TextAlignment="Right" Text="{Binding Score}" />
 
+            <Button Grid.Row="3" Grid.Column="0" Margin="0,0,0,10" Command="{Binding PlayerEditCommand}"
+                    HorizontalAlignment="Left" Width="360"
+                    FontSize="48" Content="EDIT"  Background="#FFDAD5A4"
+                    BorderBrush="Black" />
             <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Command="{Binding ScoreboardCommand}"
                     HorizontalAlignment="Center" Width="360"
                      FontSize="48" Content="SCOREBOARD"  Background="#FFDAD5A4"

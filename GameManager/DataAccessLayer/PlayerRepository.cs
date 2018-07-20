@@ -68,5 +68,21 @@ namespace GameManager.DataAccessLayer
             }
         }
 
+        public Player Edit(int playerId, Player player)
+        {
+            using (GameContext gameContext = new GameContext())
+            {
+                Player dbPlayer = gameContext.Players.Find(playerId);
+                if (dbPlayer != null)
+                {
+                    dbPlayer.Username = player.Username;
+                    dbPlayer.Password = player.Password;
+                }
+
+                gameContext.SaveChanges();
+
+                return dbPlayer;
+            }
+        }
     }
 }

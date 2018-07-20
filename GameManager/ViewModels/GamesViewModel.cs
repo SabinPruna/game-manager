@@ -7,6 +7,7 @@ using GameManager.ViewModels.Pairs;
 using GameManager.ViewModels.Scoreboard;
 using GameManager.ViewModels.Snake;
 using GameManager.ViewModels.TicTacToe;
+using GameManager.Views.Login;
 using GameManager.Views.Pairs;
 using GameManager.Views.Scoreboard;
 
@@ -42,6 +43,12 @@ namespace GameManager.ViewModels
                 ScoreboardView scoreboardView = new ScoreboardView();
                 scoreboardView.ShowDialog();
             });
+
+            PlayerEditCommand = new RelayCommand(param =>
+            {
+                EditView editView = new EditView();
+                editView.ShowDialog();
+            });
         }
 
         #endregion
@@ -63,6 +70,7 @@ namespace GameManager.ViewModels
                 {
                     return;
                 }
+
                 _score = value;
                 OnPropertyChanged();
             }
@@ -124,6 +132,7 @@ namespace GameManager.ViewModels
         public ICommand ShopCommand { get; }
         public ICommand ScoreboardCommand { get; }
         public ICommand NewGameCommand { get; }
+        public ICommand PlayerEditCommand { get; }
 
         #endregion
     }
