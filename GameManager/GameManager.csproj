@@ -69,7 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\ScoreboardRecord.cs" />
+    <Compile Include="Models\TopPlayersScoreboardRecord.cs" />
     <Compile Include="Models\CardTicTacToe.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\Husk.cs" />
@@ -81,13 +81,13 @@
     <Compile Include="DataAccessLayer\GameRecordRepository.cs" />
     <Compile Include="ViewModels\Pairs\CardViewModel.cs" />
     <Compile Include="ViewModels\Pairs\PairGameViewModel.cs" />
+    <Compile Include="ViewModels\Scoreboard\ScoreboardViewModel.cs" />
     <Compile Include="Views\Pairs\PairGameView.xaml.cs">
       <DependentUpon>PairGameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Snake\IntToColorConverter.cs" />
     <Compile Include="ViewModels\Snake\WindowBehaviour.cs" />
     <Compile Include="ViewModels\Snake\SnakeViewModel.cs" />
-    <Compile Include="ViewModels\Scoreboard\ScoreboardViewModel.cs" />
     <Compile Include="ViewModels\TicTacToe\TicTacToeViewModel.cs" />
     <Compile Include="Views\Scoreboard\ScoreboardView.xaml.cs">
       <DependentUpon>ScoreboardView.xaml</DependentUpon>
@@ -120,10 +120,10 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\GamesViewModel.cs" />
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
-    <Compile Include="Views\PlayerViews\LoginView.xaml.cs">
+    <Compile Include="Views\Login\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PlayerViews\RegisterView.xaml.cs">
+    <Compile Include="Views\Login\RegisterView.xaml.cs">
       <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -158,11 +158,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PlayerViews\LoginView.xaml">
+    <Page Include="Views\Login\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PlayerViews\RegisterView.xaml">
+    <Page Include="Views\Login\RegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,6 +278,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\For MatchGame\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TicTacToe.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\For TicTacToe\cat.jpg" />
+    <Resource Include="Images\For TicTacToe\cat1.jpg" />
+    <Resource Include="Images\For TicTacToe\mouse.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

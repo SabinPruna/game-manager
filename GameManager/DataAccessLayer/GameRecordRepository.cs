@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-using GameManager.DbContext;
-using GameManager.Models;
+﻿using GameManager.DbContext;
 using GameManager.Models.Entities;
 
 namespace GameManager.DataAccessLayer
@@ -11,8 +9,8 @@ namespace GameManager.DataAccessLayer
         {
             using (GameContext db = new GameContext())
             {
+                db.Players.Attach(gameRecord.Player);
                 db.GameRecords.Add(gameRecord);
-                db.Entry(gameRecord.Player).State = EntityState.Modified;
 
                 db.SaveChanges();
             }

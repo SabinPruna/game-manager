@@ -23,9 +23,9 @@ namespace GameManager.BussinessLayer
             return player != null ? _playerRepository.Login(player) : null;
         }
 
-        public void Register(Player player)
+        public bool Register(Player player)
         {
-            _playerRepository.Register(player);
+            return _playerRepository.Register(player);
         }
 
         public int GetPlayerScore(int? playerId)
@@ -33,9 +33,21 @@ namespace GameManager.BussinessLayer
             return null == playerId ? 0 : _playerRepository.GetPlayerScore(playerId);
         }
 
-        public List<ScoreboardRecord> GetTopPlayers()
+        public List<TopPlayersScoreboardRecord> GetTopPlayers()
         {
             return _playerRepository.GetTopPlayers();
+        }
+
+        public List<TopPlayersScoreboardRecord> GetTopPlayersByGameName(string gameName)
+        {
+            return _playerRepository.GetTopPlayersByGameName(gameName);
+        }
+
+        public List<GameRecord> GetPlayerGameRecords(string playerName)
+        {
+            List<GameRecord> gameRecords = _playerRepository.GetPlayerGameRecords(playerName);
+
+            return gameRecords ?? new List<GameRecord>();
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Windows.Input;
 using GameManager.BussinessLayer;
 using GameManager.Commands;
 using GameManager.Models.Entities;
-using GameManager.Views;
+using GameManager.Views.Login;
 
-namespace GameManager.ViewModels.PlayerViewModels
+namespace GameManager.ViewModels.Login
 {
     public class LoginViewModel : BaseViewModel
     {
@@ -28,7 +28,15 @@ namespace GameManager.ViewModels.PlayerViewModels
                     Player player = new Player(Username, (param as PasswordBox)?.Password);
                     Player = _playerManager.Login(player);
 
-                    LoginEvent?.Invoke(this, EventArgs.Empty);
+                    if (null == Player)
+                    {
+                        MessageBox.Show("There are no players with given credentials in the database", "Login Error",
+                            MessageBoxButton.OK);
+                    }
+                    else
+                    {
+                        LoginEvent?.Invoke(this, EventArgs.Empty);
+                    }
                 },
                 param => !string.IsNullOrEmpty(Username) &&
                          !string.IsNullOrEmpty((param as PasswordBox)?.Password));
@@ -43,9 +51,15 @@ namespace GameManager.ViewModels.PlayerViewModels
                 {
                     Player player = new Player(Username, (param as PasswordBox)?.Password);
 
-                    _playerManager.Register(player);
-
-                    Application.Current.Windows.OfType<RegisterView>().FirstOrDefault()?.Close();
+                    if (!_playerManager.Register(player))
+                    {
+                        MessageBox.Show("Username already in use.\n Please, pick another.", "Register Error",
+                            MessageBoxButton.OK);
+                    }
+                    else
+                    {
+                        Application.Current.Windows.OfType<RegisterView>().FirstOrDefault()?.Close();
+                    }
                 }
             );
 

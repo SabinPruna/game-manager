@@ -179,7 +179,7 @@ namespace GameManager.ViewModels.Snake
                 GameRecord game = new GameRecord
                 {
                     Date = DateTime.Now,
-                    Game = "Snake",
+                    Game = "SnakeGame",
                     Player = App.CurrentApp.MainViewModel.LoginViewModel.Player,
                     Score = Points
                 };
@@ -187,8 +187,6 @@ namespace GameManager.ViewModels.Snake
                 App.CurrentApp.MainViewModel.Refresh();
                 
             };
-
-
                 Run = false;
             }
         
