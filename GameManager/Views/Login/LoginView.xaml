@@ -6,9 +6,19 @@
         xmlns:gm="clr-namespace:GameManager"
         Title="Login" Height="407.297" Width="267.202" ResizeMode="CanMinimize"
         DataContext="{Binding MainViewModel.LoginViewModel,Source={x:Static gm:App.CurrentApp}}"
+        Icon="..\..\Images\Icons\login.ico"
         Loaded="Window_Loaded"
         mc:Ignorable="d">
-
+    <Window.Resources>
+        <DrawingImage x:Key="Overlay">
+            <DrawingImage.Drawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\login.ico"></ImageDrawing>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Resources>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
     <Grid>
         <Grid.Background>
             <SolidColorBrush Color="#FF436572" />

@@ -22,6 +22,7 @@ namespace GameManager
         public TicTacToeView()
         {
             InitializeComponent();
+           
         }
     }
 }
