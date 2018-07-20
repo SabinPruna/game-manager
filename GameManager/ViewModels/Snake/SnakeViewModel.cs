@@ -185,7 +185,7 @@ namespace GameManager.ViewModels.Snake
                 };
                 _gameRecordManager.Add(game);
                 App.CurrentApp.MainViewModel.Refresh();
-
+                
             };
 
 
