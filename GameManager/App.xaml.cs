@@ -22,8 +22,6 @@ namespace GameManager
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             MainViewModel = new GamesViewModel();
-
-
             MainWindow = new LoginView();
             MainWindow.ShowDialog();
 

@@ -5,25 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace GameManager.Models
+namespace GameManager.Models.Snake
 {
     
     public class Board
    {
-        #region Fields
-
         private int _width;
         private int _height;
         private bool _isColision;
         private Point _luckyPoint;
-
         public int Points;
-
         public int[,] Cells;
 
-        #endregion
-
         #region Constructor
+
+        public Board() { }
 
         public Board(int width, int height)
         {
@@ -36,11 +32,11 @@ namespace GameManager.Models
 
         #endregion
 
-        #region Public Methods
+        #region Methods
+
         public void UpdateBoard(Snake snake)
        {
             ClearBoard();
-
             foreach (var husk in snake.Husks)
             {
                 try
@@ -120,10 +116,6 @@ namespace GameManager.Models
             Cells[(int)_luckyPoint.Y, (int)_luckyPoint.X] += 3;
 
         }
-
-        #endregion
-
-        #region Private Methods
 
         private void ClearBoard()
         {

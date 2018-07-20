@@ -13,16 +13,18 @@ namespace GameManager.ViewModels.Pairs
 {
     public class CardViewModel : BaseViewModel
     {
+        private string _imageUp;
+        private bool _visibility;
         private bool _hidden;
+        private string _imageDown;
+
+        #region Properties
 
         public bool Hidden
         {
             get { return _hidden; }
             set { SetProperty(ref _hidden, value); }
         }
-
-
-        private bool _visibility;
 
         public bool Visibility
         {
@@ -35,16 +37,12 @@ namespace GameManager.ViewModels.Pairs
                 }
             }
         }
-
-        private string _imageUp;
-
+        
         public string ImageUp
         {
             get { return _imageUp; }
             set { SetProperty(ref _imageUp, value); }
         }
-
-        private string _imageDown;
 
         public string ImageDown
         {
@@ -66,5 +64,7 @@ namespace GameManager.ViewModels.Pairs
                 }
             }
         }
+
+        #endregion
     }
 }

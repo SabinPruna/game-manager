@@ -10,6 +10,20 @@ namespace GameManager.Models
     public class CardTicTacToe:BaseViewModel
     {
         private string card;
+        
+        #region Constructors
+
+        public CardTicTacToe() { }
+
+        public CardTicTacToe(string card)
+        {
+            Card = card;
+        }
+
+        #endregion
+
+        #region Properties
+
         public string Card
         {
             get
@@ -23,19 +37,15 @@ namespace GameManager.Models
             }
         }
 
-        public CardTicTacToe()
-        {
+        #endregion
 
-        }
+        #region Methods
 
-        public CardTicTacToe(string card)
-        {
-            Card = card;
-        }
         public override string ToString()
         {
             return card.ToString();
         }
 
+        #endregion
     }
 }
