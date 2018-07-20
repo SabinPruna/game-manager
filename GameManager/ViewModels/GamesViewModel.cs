@@ -8,6 +8,7 @@ using GameManager.ViewModels.Scoreboard;
 using GameManager.ViewModels.Snake;
 using GameManager.ViewModels.TicTacToe;
 using GameManager.Views.Login;
+using GameManager.Views;
 using GameManager.Views.Pairs;
 using GameManager.Views.Scoreboard;
 
@@ -42,6 +43,12 @@ namespace GameManager.ViewModels
                 ScoreboardViewModel.Refresh();
                 ScoreboardView scoreboardView = new ScoreboardView();
                 scoreboardView.ShowDialog();
+            });
+
+            RatingCommand = new RelayCommand(param =>
+            {
+                RatingView ratingView = new RatingView();
+                ratingView.ShowDialog();
             });
 
             PlayerEditCommand = new RelayCommand(param =>
@@ -133,6 +140,7 @@ namespace GameManager.ViewModels
         public ICommand ScoreboardCommand { get; }
         public ICommand NewGameCommand { get; }
         public ICommand PlayerEditCommand { get; }
+        public ICommand RatingCommand { get; }
 
         #endregion
     }
