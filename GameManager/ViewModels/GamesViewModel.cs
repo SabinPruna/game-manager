@@ -1,26 +1,21 @@
-﻿using System.Windows.Input;
+﻿using System.Windows;
+using System.Windows.Input;
 using GameManager.BussinessLayer;
 using GameManager.Commands;
-using GameManager.DoorsGame;
 using GameManager.ViewModels.Login;
+using GameManager.ViewModels.Pairs;
 using GameManager.ViewModels.Scoreboard;
+using GameManager.ViewModels.Snake;
+using GameManager.ViewModels.TicTacToe;
 using GameManager.Views.Pairs;
 using GameManager.Views.Scoreboard;
-using GameManager.ViewModels.TicTacToe;
-using GameManager.ViewModels.Pairs;
-using System.Windows;
-using GameManager.ViewModels.Snake;
 
 namespace GameManager.ViewModels
 {
-    public class  GamesViewModel : BaseViewModel
+    public class GamesViewModel : BaseViewModel
     {
         private readonly PlayerManager _playerManager;
         private int _score;
-        public PairGameViewModel PairGameViewModel { get; private set; }
-        public LoginViewModel LoginViewModel { get; private set; }
-        public TicTacToeViewModel TicTacToeViewModel { get; private set; }
-        public SnakeViewModel  SnakeViewModel{ get; private set; }
 
         #region Constructors
 
@@ -33,14 +28,14 @@ namespace GameManager.ViewModels
             SnakeViewModel = new SnakeViewModel();
             _playerManager = new PlayerManager();
 
-            NewGameCommand = new RelayCommand(param => StartGame((string)param));
+            NewGameCommand = new RelayCommand(param => StartGame((string) param));
 
             ShopCommand = new RelayCommand(param =>
             {
                 ShopWindow shopWindow = new ShopWindow();
                 shopWindow.ShowDialog();
             });
-           
+
 
             ScoreboardCommand = new RelayCommand(param =>
             {
@@ -54,59 +49,62 @@ namespace GameManager.ViewModels
 
         #region  Properties
 
-        public ScoreboardViewModel ScoreboardViewModel { get; private set; }
+        public PairGameViewModel PairGameViewModel { get; }
+        public LoginViewModel LoginViewModel { get; }
+        public TicTacToeViewModel TicTacToeViewModel { get; }
+        public SnakeViewModel SnakeViewModel { get; }
+
+        public ScoreboardViewModel ScoreboardViewModel { get; }
 
         public int Score
         {
             get => _playerManager.GetPlayerScore(LoginViewModel.Player?.Id);
             set
             {
-                if (value == _score) return;
+                if (value == _score)
+                {
+                    return;
+                }
+
                 _score = value;
                 OnPropertyChanged();
             }
         }
-       
-        public ICommand PairsGameCommand { get; }
-        public ICommand DoorsGameCommand { get; }
-        public ICommand TicTacToeGameCommand { get; }
-        public ICommand SnakeGameCommand { get; }
+
         public ICommand ShopCommand { get; }
         public ICommand ScoreboardCommand { get; }
 
+        public ICommand NewGameCommand { get; }
 
         #endregion
 
 
         public void StartGame(string param)
         {
-            if (param == "PairGame")
+            switch (param)
             {
-                PairGameView pairGameView = new PairGameView();
-                pairGameView.ShowDialog();
-            }
-            if (param == "TicTacToe")
-            {
-                TicTacToeView ticTacToeView = new TicTacToeView();
-                TicTacToeViewModel.newWindow();
-                ticTacToeView.ShowDialog();
-            }
-            if (param == "DoorsGame")
-            {
-                MessageBox.Show("DoorsGame");
-            }
-            if(param== "SnakeGame")
-            {
-                SnakeView snake = new SnakeView();
-                snake.ShowDialog();
+                case "PairGame":
+                    PairGameView pairGameView = new PairGameView();
+                    pairGameView.ShowDialog();
+                    break;
+                case "TicTacToe":
+                    TicTacToeView ticTacToeView = new TicTacToeView();
+                    TicTacToeViewModel.newWindow();
+                    ticTacToeView.ShowDialog();
+                    break;
+                case "DoorsGame":
+                    MessageBox.Show("DoorsGame");
+                    break;
+                case "SnakeGame":
+                    SnakeView snake = new SnakeView();
+                    snake.ShowDialog();
+                    break;
             }
         }
 
-        public void Refresh ()
+        public void Refresh()
         {
             Score = Score;
         }
-
-        public ICommand NewGameCommand { get; private set; }
     }
 }
