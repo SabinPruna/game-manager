@@ -16,6 +16,12 @@ namespace GameManager.ViewModels.Pairs
 {
     public class PairGameViewModel : BaseViewModel
     {
+        private int _gridSize;
+        private List<CardViewModel> _cards;
+        private int _currentTime;
+        private GameRecordManager _gameRecordManager;
+        private bool _isEnabled;
+
         #region Constructors
 
         public PairGameViewModel()
@@ -32,26 +38,18 @@ namespace GameManager.ViewModels.Pairs
         #endregion
 
         #region  Properties
-
-        private int _gridSize;
-
+        
         public int GridSize
         {
             get { return _gridSize; }
             set { SetProperty(ref _gridSize, value); }
         }
-
-        private List<CardViewModel> _cards;
-
+        
         public List<CardViewModel> Cards
         {
             get { return _cards; }
             set { SetProperty(ref _cards, value); }
         }
-
-        private DispatcherTimer DispatcherTimer { get; set; }
-
-        private int _currentTime;
 
         public int CurrentTime
         {
@@ -59,19 +57,15 @@ namespace GameManager.ViewModels.Pairs
             set { SetProperty(ref _currentTime, value); }
         }
 
+        private DispatcherTimer DispatcherTimer { get; set; }
 
         private int Score { get; set; }
-
-        private GameRecordManager _gameRecordManager;
-
-        private bool _isEnabled;
 
         public bool IsEnabled
         {
             get { return _isEnabled; }
             set { SetProperty(ref _isEnabled, value); }
         }
-
 
         #endregion
 
@@ -220,7 +214,6 @@ namespace GameManager.ViewModels.Pairs
 
         private void RefreshGame()
         {
-            DispatcherTimer.Stop();
             CurrentTime = 200;
             Score = 0;
             var visibleCards = Cards.Where(c => !c.Hidden).ToList();
@@ -235,9 +228,7 @@ namespace GameManager.ViewModels.Pairs
         #region Commands
 
         public ICommand NewGameCommand { get; private set; }
-
         public ICommand FlipCardCommand { get; private set; }
-
         public ICommand ExitGameCommand { get; private set; }
 
         #endregion

@@ -29,27 +29,27 @@ namespace GameManager.ViewModels.Snake
             switch (e.Key)
             {
                 case Key.Down:
-                    if (vm.Snake.Head.Direction != GameManager.Models.Direction.Up)
+                    if (vm.Snake.Head.Direction != GameManager.Models.Snake.Direction.Up)
                     {
-                        vm.Snake.CurrentDirection = GameManager.Models.Direction.Down;
+                        vm.Snake.CurrentDirection = GameManager.Models.Snake.Direction.Down;
                     }
                     break;
                 case Key.Up:
-                    if (vm.Snake.Head.Direction != GameManager.Models.Direction.Down)
+                    if (vm.Snake.Head.Direction != GameManager.Models.Snake.Direction.Down)
                     {
-                        vm.Snake.CurrentDirection = GameManager.Models.Direction.Up;
+                        vm.Snake.CurrentDirection = GameManager.Models.Snake.Direction.Up;
                     }
                     break;
                 case Key.Left:
-                    if (vm.Snake.Head.Direction != GameManager.Models.Direction.Right)
+                    if (vm.Snake.Head.Direction != GameManager.Models.Snake.Direction.Right)
                     {
-                        vm.Snake.CurrentDirection = GameManager.Models.Direction.Left;
+                        vm.Snake.CurrentDirection = GameManager.Models.Snake.Direction.Left;
                     }
                     break;
                 case Key.Right:
-                    if (vm.Snake.Head.Direction != GameManager.Models.Direction.Left)
+                    if (vm.Snake.Head.Direction != GameManager.Models.Snake.Direction.Left)
                     {
-                        vm.Snake.CurrentDirection = GameManager.Models.Direction.Right;
+                        vm.Snake.CurrentDirection = GameManager.Models.Snake.Direction.Right;
                     }
                     break;
                 case Key.Space:

@@ -13,7 +13,6 @@ namespace GameManager.ViewModels.Login
     public class LoginViewModel : BaseViewModel
     {
         private readonly PlayerManager _playerManager;
-
         private Player _player;
         private string _username;
 
@@ -85,13 +84,16 @@ namespace GameManager.ViewModels.Login
             private set => SetProperty(ref _player, value);
         }
 
+        #endregion
+
+        #region Commands
+
         public ICommand LoginCommand { get; }
         public ICommand ShowRegisterCommand { get; }
         public ICommand RegisterCommand { get; }
         public ICommand QuitCommand { get; set; }
 
         #endregion
-
 
         #region Events
 

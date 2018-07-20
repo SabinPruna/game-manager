@@ -12,9 +12,7 @@ namespace GameManager.Models
 
         #region Constructors
 
-        public User()
-        {
-        }
+        public User() { }
 
         public User(string name, string image, bool hasGameSaved)
         {
@@ -47,10 +45,14 @@ namespace GameManager.Models
 
         #endregion
 
+        #region Methods
+
         public override string ToString()
         {
             return Name;
         }
+
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
 

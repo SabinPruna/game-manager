@@ -9,13 +9,13 @@
         xmlns:gm="clr-namespace:GameManager"
         DataContext="{Binding MainViewModel.TicTacToeViewModel,Source={x:Static gm:App.CurrentApp}}"
         Name="WndTicTacToe"
-        Title="TicTacToeView" Height="400" Width="400" Icon="../../Images/TicTacToe.ico">
+        Title="TicTacToeView" Height="370" Width="350" Icon="../../Images/TicTacToe.ico">
     <Grid>
         <ItemsControl 
             ItemsSource="{Binding Cards}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Rows="3" Columns="3" />
+                    <UniformGrid Rows="3" Columns="3"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
@@ -23,10 +23,7 @@
                     <Button
                         Command="{Binding DataContext.TicTacToeCommand, ElementName=WndTicTacToe}"
                         CommandParameter="{Binding}" Background="#74D0F1">
-                       
-                        <Image 
-                            Source="{Binding Card}"
-                        />
+                        <Image Source="{Binding Card}"/>
                     </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
