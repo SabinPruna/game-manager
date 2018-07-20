@@ -34,7 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>games.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -86,6 +87,9 @@
     <Compile Include="ViewModels\Pairs\CardViewModel.cs" />
     <Compile Include="ViewModels\Pairs\PairGameViewModel.cs" />
     <Compile Include="ViewModels\Scoreboard\ScoreboardViewModel.cs" />
+    <Compile Include="Views\Login\EditView.xaml.cs">
+      <DependentUpon>EditView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pairs\PairGameView.xaml.cs">
       <DependentUpon>PairGameView.xaml</DependentUpon>
     </Compile>
@@ -145,6 +149,10 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DbContext\GameContext.cs" />
+    <Page Include="Views\Login\EditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RatingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -216,7 +224,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="favicon.ico" />
     <Resource Include="Images\Icons\doors.ico" />
     <Resource Include="Images\Icons\games.ico" />
     <Resource Include="Images\Icons\games2.ico" />
@@ -227,12 +234,6 @@
     <Resource Include="Images\Icons\scoreboard2.ico" />
     <Resource Include="Images\Icons\snake.ico" />
     <Resource Include="Images\Icons\tictactoe.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="favicon %283%29.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="games.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\2.jpg" />

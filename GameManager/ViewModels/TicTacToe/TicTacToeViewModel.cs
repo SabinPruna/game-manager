@@ -17,28 +17,7 @@ namespace GameManager.ViewModels.TicTacToe
     {
         private readonly GameRecordManager _gameRecordManager;
         private List<CardTicTacToe> cards;
-        
-        #region Constructors
-        
-        public TicTacToeViewModel()
-        {
-            Cards = new List<CardTicTacToe>();
-            for (int i = 0; i < 9; i++)
-            {
-                CardTicTacToe card = new CardTicTacToe("");
-                Cards.Add(card);
-            }
-            win = 0;
-            numberOcupatedSpaces = 0;
-            _gameRecordManager = new GameRecordManager();
 
-            TicTacToeCommand = new RelayCommand(param =>
-            {
-                Logica((CardTicTacToe)param);
-            });
-        }
-
-        #endregion
 
         #region Properties
 
@@ -59,6 +38,27 @@ namespace GameManager.ViewModels.TicTacToe
 
         #endregion
 
+        #region Constructors
+
+        public TicTacToeViewModel()
+        {
+            Cards = new List<CardTicTacToe>();
+            for (int i = 0; i < 9; i++)
+            {
+                CardTicTacToe card = new CardTicTacToe("");
+                Cards.Add(card);
+            }
+            win = 0;
+            numberOcupatedSpaces = 0;
+            _gameRecordManager = new GameRecordManager();
+                TicTacToeCommand = new RelayCommand(param =>
+                {
+                    Logica((CardTicTacToe)param);
+                });
+        }
+
+        #endregion
+
         #region Methods
 
         private void Logica(CardTicTacToe card)
@@ -68,7 +68,8 @@ namespace GameManager.ViewModels.TicTacToe
             Random rnd = new Random();
             if (!Cards[Cards.IndexOf(card)].Card.Equals(""))
             {
-                MessageBox.Show("Press another one");
+                if (numberOcupatedSpaces <= 8)
+                    MessageBox.Show("Press another one");
             }
             else
             {
