@@ -57,8 +57,9 @@ namespace GameManager.ViewModels.Snake
             get { return _movement; }
             set
             {
-                _movement = value;
-                OnPropertyChanged("Movement");
+                //_movement = value;
+                //OnPropertyChanged("Movement");
+                SetProperty(ref _movement, value);
             }
         }
 
@@ -67,8 +68,9 @@ namespace GameManager.ViewModels.Snake
             get { return _run; }
             set
             {
-                _run = value;
-                OnPropertyChanged("Run");
+                // _run = value;
+                // OnPropertyChanged("Run");
+                SetProperty(ref _run, value);
             }
         }
 
@@ -77,8 +79,9 @@ namespace GameManager.ViewModels.Snake
             get { return _points; }
             set
             {
-                _points = value;
-                OnPropertyChanged("Points");
+                // _points = value;
+                //OnPropertyChanged("Points");
+                SetProperty(ref _points, value);
             }
         }
 
