@@ -93,6 +93,9 @@
     <Compile Include="ViewModels\Snake\WindowBehaviour.cs" />
     <Compile Include="ViewModels\Snake\SnakeViewModel.cs" />
     <Compile Include="ViewModels\TicTacToe\TicTacToeViewModel.cs" />
+    <Compile Include="Views\RatingView.xaml.cs">
+      <DependentUpon>RatingView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Scoreboard\ScoreboardView.xaml.cs">
       <DependentUpon>ScoreboardView.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,10 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DbContext\GameContext.cs" />
+    <Page Include="Views\RatingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Scoreboard\ScoreboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
