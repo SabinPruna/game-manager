@@ -7,7 +7,8 @@
         DataContext="{Binding MainViewModel,Source={x:Static gm:App.CurrentApp}}"
         mc:Ignorable="d"
         xmlns:viewModels="clr-namespace:GameManager.ViewModels"
-        Title="Games" Height="700" Width="800">
+        Title="Games" Height="700" Width="800"
+        Icon="..\Images\Icons\games.ico">
     <Viewbox>
         <Grid x:Name="MainGrid" HorizontalAlignment="Center" Margin="50,0,50,10">
             <Grid.ColumnDefinitions>
@@ -110,7 +111,7 @@
                        TextAlignment="Right" Text="{Binding Score}" />
 
             <Button Grid.Row="3" Grid.Column="0" Margin="0,0,0,10" Command="{Binding PlayerEditCommand}"
-                    HorizontalAlignment="Left" Width="360"
+                    HorizontalAlignment="Left" Width="200"
                     FontSize="48" Content="EDIT"  Background="#FFDAD5A4"
                     BorderBrush="Black" />
             <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Command="{Binding ScoreboardCommand}"

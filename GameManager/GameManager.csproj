@@ -34,7 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>games.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -216,7 +217,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="favicon.ico" />
     <Resource Include="Images\Icons\doors.ico" />
     <Resource Include="Images\Icons\games.ico" />
     <Resource Include="Images\Icons\games2.ico" />
@@ -227,12 +227,6 @@
     <Resource Include="Images\Icons\scoreboard2.ico" />
     <Resource Include="Images\Icons\snake.ico" />
     <Resource Include="Images\Icons\tictactoe.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="favicon %283%29.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="games.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\2.jpg" />
