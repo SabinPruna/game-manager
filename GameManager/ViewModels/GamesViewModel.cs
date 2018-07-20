@@ -36,7 +36,6 @@ namespace GameManager.ViewModels
                 shopWindow.ShowDialog();
             });
 
-
             ScoreboardCommand = new RelayCommand(param =>
             {
                 ScoreboardViewModel.Refresh();
@@ -53,7 +52,6 @@ namespace GameManager.ViewModels
         public LoginViewModel LoginViewModel { get; }
         public TicTacToeViewModel TicTacToeViewModel { get; }
         public SnakeViewModel SnakeViewModel { get; }
-
         public ScoreboardViewModel ScoreboardViewModel { get; }
 
         public int Score
@@ -65,19 +63,14 @@ namespace GameManager.ViewModels
                 {
                     return;
                 }
-
                 _score = value;
                 OnPropertyChanged();
             }
         }
 
-        public ICommand ShopCommand { get; }
-        public ICommand ScoreboardCommand { get; }
-
-        public ICommand NewGameCommand { get; }
-
         #endregion
 
+        #region Methods
 
         public void StartGame(string param)
         {
@@ -106,5 +99,15 @@ namespace GameManager.ViewModels
         {
             Score = Score;
         }
+
+        #endregion
+
+        #region Commands
+
+        public ICommand ShopCommand { get; }
+        public ICommand ScoreboardCommand { get; }
+        public ICommand NewGameCommand { get; }
+
+        #endregion
     }
 }

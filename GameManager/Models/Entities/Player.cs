@@ -13,9 +13,7 @@ namespace GameManager.Models.Entities
             Password = password;
         }
 
-        public Player()
-        {
-        }
+        public Player() { }
 
         #endregion
 

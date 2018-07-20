@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace GameManager.Models
+namespace GameManager.Models.Snake
 {
     public enum Direction
     {
@@ -20,10 +20,16 @@ namespace GameManager.Models
         public Direction Direction;
         public Point Point;
 
+        #region Constructors
+
+        public Husk() { }
+
         public Husk(Direction direction, Point point)
         {
             Direction = direction;
             Point = point;
         }
+
+        #endregion
     }
 }

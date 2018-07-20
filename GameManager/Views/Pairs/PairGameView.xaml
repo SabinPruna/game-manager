@@ -8,16 +8,16 @@
         xmlns:conv="clr-namespace:GameManager.Convertors"
         xmlns:local="clr-namespace:GameManager.ViewModels.Pairs"
         DataContext="{Binding MainViewModel.PairGameViewModel,Source={x:Static gm:App.CurrentApp}}"
-        Title="PairGame" Height="550" Width="469.2" Background="#FFB3B3C7"
+        Title="PairGame" Height="480" Width="400" Background="#FFB3B3C7"
         Name="wndPairs"
         mc:Ignorable="d">
     
     <DockPanel>
         <DockPanel.Resources>
-            <conv:BoolToVisibilityConverter x:Key="boolVisConverter" Invert="True" />
+            <conv:BoolToVisibilityConverter x:Key="boolVisConverter" Invert="True"/>
         </DockPanel.Resources>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Name="MenuFile" Header="File" FontSize="18">
+            <MenuItem Name="MenuFile" Header="File" FontSize="16">
                 <MenuItem Header="New Game Easy" FontSize="12" 
                           IsEnabled="{Binding IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                           Command="{Binding NewGameCommand}" CommandParameter="Easy"/>
@@ -28,7 +28,7 @@
                           IsEnabled="{Binding IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                           Command="{Binding NewGameCommand}" CommandParameter="Hard"/>
                 <Separator />
-                <MenuItem Name="Exit" Header="Exit" FontSize="12" Command="{Binding ExitGameCommand}" Click="Exit_Click" />
+                <MenuItem Name="Exit" Header="Exit" FontSize="12" Command="{Binding ExitGameCommand}" Click="Exit_Click"/>
             </MenuItem>
         </Menu>
 
@@ -40,18 +40,17 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="0" Content="Time" FontSize="16" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" FontSize="18" Margin="2" TextAlignment="Right" Width="60" VerticalAlignment="Center"
+                <Label Grid.Column="0" Content="Time" FontSize="12" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" FontSize="14" Margin="2" TextAlignment="Right" Width="60" VerticalAlignment="Center"
                          IsEnabled="{Binding IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          Text="{Binding CurrentTime,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
             </Grid>
         </Viewbox>
 
         <ItemsControl ItemsSource="{Binding Cards}" DockPanel.Dock="Top">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Rows="{Binding GridSize}" Columns="{Binding GridSize}" />
+                    <UniformGrid Rows="{Binding GridSize}" Columns="{Binding GridSize}"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
@@ -61,9 +60,7 @@
                         CommandParameter="{Binding}" 
                         Visibility="{Binding Hidden, Converter={StaticResource boolVisConverter}}"
                         Margin="2" Background="{x:Null}">
-                        <Image 
-                            Source="{Binding CurrentImageCard}"
-                        />
+                        <Image Source="{Binding CurrentImageCard}"/>
                     </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

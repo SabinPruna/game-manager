@@ -71,13 +71,12 @@
     </ApplicationDefinition>
     <Compile Include="Models\TopPlayersScoreboardRecord.cs" />
     <Compile Include="Models\CardTicTacToe.cs" />
-    <Compile Include="Models\Board.cs" />
-    <Compile Include="Models\Husk.cs" />
-    <Compile Include="Models\Snake.cs" />
+    <Compile Include="Models\Snake\Board.cs" />
+    <Compile Include="Models\Snake\Husk.cs" />
+    <Compile Include="Models\Snake\Snake.cs" />
     <Compile Include="Convertors\BoolToVisibilityConverter.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="BussinessLayer\GameRecordManager.cs" />
-    <Compile Include="Models\Card.cs" />
     <Compile Include="DataAccessLayer\GameRecordRepository.cs" />
     <Compile Include="ViewModels\Pairs\CardViewModel.cs" />
     <Compile Include="ViewModels\Pairs\PairGameViewModel.cs" />

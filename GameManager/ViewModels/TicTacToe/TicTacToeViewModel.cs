@@ -17,23 +17,7 @@ namespace GameManager.ViewModels.TicTacToe
     {
         private readonly GameRecordManager _gameRecordManager;
         private List<CardTicTacToe> cards;
-        public int win { get; set; }
-        public int numberOcupatedSpaces { get; set; }
-
-
-        public List<CardTicTacToe> Cards
-        {
-            get
-            {
-                return cards;
-            }
-            set
-            {
-                cards = value;
-                OnPropertyChanged("Cards");
-            }
-        }
-
+        
         #region Constructors
 
         public TicTacToeViewModel()
@@ -55,6 +39,27 @@ namespace GameManager.ViewModels.TicTacToe
         }
 
         #endregion
+
+        #region Properties
+
+        public int win { get; set; }
+        public int numberOcupatedSpaces { get; set; }
+        public List<CardTicTacToe> Cards
+        {
+            get
+            {
+                return cards;
+            }
+            set
+            {
+                cards = value;
+                OnPropertyChanged("Cards");
+            }
+        }
+
+        #endregion
+
+        #region Methods
 
         private void Logica(CardTicTacToe card)
         {
@@ -107,7 +112,6 @@ namespace GameManager.ViewModels.TicTacToe
                 }
             }
         }
-        
 
         public void newWindow()
         {
@@ -147,7 +151,7 @@ namespace GameManager.ViewModels.TicTacToe
 
         public void IsXWinner()
         {
-            if (Winner().Equals("X"))
+            if (Winner().Equals("../../Images/For TicTacToe/cat.jpg"))
             {
                 GameRecord game = new GameRecord()
                 {
@@ -161,9 +165,12 @@ namespace GameManager.ViewModels.TicTacToe
             }
         }
 
+        #endregion
+
+        #region Commands
 
         public ICommand TicTacToeCommand { get; private set; }
 
-
+        #endregion
     }
 }
