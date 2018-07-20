@@ -6,10 +6,21 @@
         xmlns:local="clr-namespace:GameManager.Views.Scoreboard"
         xmlns:gm="clr-namespace:GameManager"
         xmlns:scoreboard="clr-namespace:GameManager.ViewModels.Scoreboard"
+        Icon="..\..\Images\Icons\scoreboard.ico"
         mc:Ignorable="d"
         Title="Scoreboard" Height="450" Width="800"
         DataContext="{Binding MainViewModel.ScoreboardViewModel, Source={x:Static gm:App.CurrentApp}}"
         Background="Black">
+    <Window.Resources>
+        <DrawingImage x:Key="Overlay">
+            <DrawingImage.Drawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\scoreboard.ico"></ImageDrawing>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Resources>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
     <Grid>
         <GroupBox>
             <ItemsControl ItemsSource="{Binding TopPlayerRecords}">

@@ -8,9 +8,20 @@
         xmlns:conv="clr-namespace:GameManager.Convertors"
         xmlns:local="clr-namespace:GameManager.ViewModels.Pairs"
         DataContext="{Binding MainViewModel.PairGameViewModel,Source={x:Static gm:App.CurrentApp}}"
+        Icon="..\..\Images\Icons\pairs.ico"
         Title="PairGame" Height="550" Width="469.2" Background="#FFB3B3C7"
         Name="wndPairs"
         mc:Ignorable="d">
+    <Window.Resources>
+        <DrawingImage x:Key="Overlay">
+            <DrawingImage.Drawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\pairs.ico"></ImageDrawing>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Resources>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
     
     <DockPanel>
         <DockPanel.Resources>

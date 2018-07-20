@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>games.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -46,8 +49,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Blend.Interctivity.WPF.v4.0.1.0.3\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -280,12 +285,30 @@
     <Resource Include="Images\For MatchGame\9.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\TicTacToe.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\For TicTacToe\cat.jpg" />
     <Resource Include="Images\For TicTacToe\cat1.jpg" />
     <Resource Include="Images\For TicTacToe\mouse.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="favicon %283%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\doors.ico" />
+    <Resource Include="Images\Icons\games.ico" />
+    <Resource Include="Images\Icons\games2.ico" />
+    <Resource Include="Images\Icons\login.ico" />
+    <Resource Include="Images\Icons\pairs.ico" />
+    <Resource Include="Images\Icons\pairs2.ico" />
+    <Resource Include="Images\Icons\scoreboard.ico" />
+    <Resource Include="Images\Icons\scoreboard2.ico" />
+    <Resource Include="Images\Icons\snake.ico" />
+    <Resource Include="Images\Icons\tictactoe.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="games.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

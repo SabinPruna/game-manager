@@ -35,7 +35,7 @@ namespace GameManager.ViewModels.TicTacToe
         }
 
         #region Constructors
-
+        
         public TicTacToeViewModel()
         {
             Cards = new List<CardTicTacToe>();

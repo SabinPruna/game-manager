@@ -9,7 +9,20 @@
         xmlns:gm="clr-namespace:GameManager"
         DataContext="{Binding MainViewModel.TicTacToeViewModel,Source={x:Static gm:App.CurrentApp}}"
         Name="WndTicTacToe"
-        Title="TicTacToeView" Height="400" Width="400" Icon="../../Images/TicTacToe.ico">
+        Title="TicTacToeView" Height="400" Width="400" Icon="../../Images/Icons/tictactoe.ico">
+
+    
+    <Window.Resources>
+        <DrawingImage x:Key="Overlay">
+            <DrawingImage.Drawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\tictactoe.ico"></ImageDrawing>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Resources>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
+
     <Grid>
         <ItemsControl 
             ItemsSource="{Binding Cards}">
