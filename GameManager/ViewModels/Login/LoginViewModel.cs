@@ -39,6 +39,14 @@ namespace GameManager.ViewModels.Login
                     }
                     else
                     {
+                        if (null == player.UserPicture)
+                        {
+                            player.UserPicture =
+                                GetJpgFromImageControl(new BitmapImage(new Uri("../../Images/default.jpg",
+                                    UriKind.Relative)));
+                            Player = _playerManager.Edit(Player.Id, player);
+                        }
+
                         AvatarPath = ByteToImage(Player.UserPicture);
                         LoginEvent?.Invoke(this, EventArgs.Empty);
                         App.CurrentApp.MainViewModel.Refresh();
@@ -150,7 +158,7 @@ namespace GameManager.ViewModels.Login
         #endregion
 
 
-        public byte[] GetJpgFromImageControl(ImageSource imageC)
+        public static byte[] GetJpgFromImageControl(ImageSource imageC)
         {
             MemoryStream memStream = new MemoryStream();
             JpegBitmapEncoder encoder = new JpegBitmapEncoder();
