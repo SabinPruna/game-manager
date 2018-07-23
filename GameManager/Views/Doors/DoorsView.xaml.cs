@@ -17,11 +17,16 @@ namespace GameManager.DoorsGame
     /// <summary>
     /// Interaction logic for Doors_Game.xaml
     /// </summary>
-    public partial class DoorsVIew : Window
+    public partial class DoorsView : Window
     {
-        public DoorsVIew()
+        public DoorsView()
         {
             InitializeComponent();
+        }
+               
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

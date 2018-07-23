@@ -79,6 +79,8 @@
     <Compile Include="BussinessLayer\GameRecordManager.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="DataAccessLayer\GameRecordRepository.cs" />
+    <Compile Include="ViewModels\Doors\DoorsCardViewModel.cs" />
+    <Compile Include="ViewModels\Doors\DoorsGameViewModel.cs" />
     <Compile Include="ViewModels\Pairs\CardViewModel.cs" />
     <Compile Include="ViewModels\Pairs\PairGameViewModel.cs" />
     <Compile Include="Views\Pairs\PairGameView.xaml.cs">
@@ -278,6 +280,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\For MatchGame\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Doors\blackcat.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
