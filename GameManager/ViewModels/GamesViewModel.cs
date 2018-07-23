@@ -9,6 +9,7 @@ using GameManager.ViewModels.Scoreboard;
 using GameManager.ViewModels.Snake;
 using GameManager.ViewModels.TicTacToe;
 using GameManager.Views.Login;
+using GameManager.Views;
 using GameManager.Views.Pairs;
 using GameManager.Views.Scoreboard;
 
@@ -44,6 +45,12 @@ namespace GameManager.ViewModels
                 ScoreboardViewModel.Refresh();
                 ScoreboardView scoreboardView = new ScoreboardView();
                 scoreboardView.ShowDialog();
+            });
+
+            RatingCommand = new RelayCommand(param =>
+            {
+                RatingView ratingView = new RatingView();
+                ratingView.ShowDialog();
             });
 
             PlayerEditCommand = new RelayCommand(param =>
@@ -87,20 +94,37 @@ namespace GameManager.ViewModels
             switch (param)
             {
                 case "PairGame":
+                    
                     PairGameView pairGameView = new PairGameView();
                     pairGameView.ShowDialog();
                     break;
                 case "TicTacToe":
-                    TicTacToeView ticTacToeView = new TicTacToeView();
-                    TicTacToeViewModel.newWindow();
-                    ticTacToeView.ShowDialog();
+                    if (Score > 1500)
+                    {
+                        TicTacToeView ticTacToeView = new TicTacToeView();
+                        TicTacToeViewModel.newWindow();
+                        ticTacToeView.ShowDialog();
+                    }
+                    else
+                        MessageBox.Show("You need at least 1500 points for this game", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
                 case "DoorsGame":
-                    MessageBox.Show("DoorsGame");
+                    if (Score > 2500)
+                    {
+                        MessageBox.Show("DoorsGame");
+                    }
+                    else
+                        MessageBox.Show("You need at least 2500 points for this game", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
                 case "SnakeGame":
-                    SnakeView snake = new SnakeView();
-                    snake.ShowDialog();
+                    if (Score > 3500)
+                    {
+                        SnakeView snake = new SnakeView();
+                        snake.ShowDialog();
+                    }
+                    else
+                        MessageBox.Show("You need at least 3500 points for this game", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+
                     break;
             }
         }
@@ -125,6 +149,7 @@ namespace GameManager.ViewModels
         public ICommand ScoreboardCommand { get; }
         public ICommand NewGameCommand { get; }
         public ICommand PlayerEditCommand { get; }
+        public ICommand RatingCommand { get; }
 
         #endregion
     }
