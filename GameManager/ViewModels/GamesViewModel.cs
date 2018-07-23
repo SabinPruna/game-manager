@@ -12,6 +12,8 @@ using GameManager.Views.Login;
 using GameManager.Views;
 using GameManager.Views.Pairs;
 using GameManager.Views.Scoreboard;
+using GameManager.ViewModels.Doors;
+using GameManager.DoorsGame;
 
 namespace GameManager.ViewModels
 {
@@ -30,7 +32,9 @@ namespace GameManager.ViewModels
             TicTacToeViewModel = new TicTacToeViewModel();
             PairGameViewModel = new PairGameViewModel();
             SnakeViewModel = new SnakeViewModel();
+            DoorsGameViewModel = new DoorsGameViewModel();
             _playerManager = new PlayerManager();
+
 
             NewGameCommand = new RelayCommand(param => StartGame((string) param));
 
@@ -68,6 +72,7 @@ namespace GameManager.ViewModels
         public LoginViewModel LoginViewModel { get; }
         public TicTacToeViewModel TicTacToeViewModel { get; }
         public SnakeViewModel SnakeViewModel { get; }
+        public DoorsGameViewModel DoorsGameViewModel { get; }
         public ScoreboardViewModel ScoreboardViewModel { get; }
 
         public int Score
@@ -109,12 +114,13 @@ namespace GameManager.ViewModels
                         MessageBox.Show("You need at least 1500 points for this game", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
                 case "DoorsGame":
-                    if (Score > 2500)
+                    //if (Score > 2500)
                     {
-                        MessageBox.Show("DoorsGame");
+                        DoorsView dv = new DoorsView();
+                        dv.ShowDialog();
                     }
-                    else
-                        MessageBox.Show("You need at least 2500 points for this game", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //else
+                        //MessageBox.Show("You need at least 2500 points for this game", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
                 case "SnakeGame":
                     if (Score > 3500)
