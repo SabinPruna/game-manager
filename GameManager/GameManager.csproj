@@ -79,6 +79,11 @@
     <Compile Include="Migrations\201807200929272_UserPicture.Designer.cs">
       <DependentUpon>201807200929272_UserPicture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807230759213_AddRating.cs" />
+    <Compile Include="Migrations\201807230759213_AddRating.Designer.cs">
+      <DependentUpon>201807230759213_AddRating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Rating.cs" />
     <Compile Include="Models\TopPlayersScoreboardRecord.cs" />
     <Compile Include="Models\CardTicTacToe.cs" />
     <Compile Include="Models\Snake\Board.cs" />
@@ -92,6 +97,7 @@
     <Compile Include="ViewModels\Doors\DoorsGameViewModel.cs" />
     <Compile Include="ViewModels\Pairs\CardViewModel.cs" />
     <Compile Include="ViewModels\Pairs\PairGameViewModel.cs" />
+    <Compile Include="ViewModels\RatingViewModel.cs" />
     <Compile Include="ViewModels\Scoreboard\ScoreboardViewModel.cs" />
     <Compile Include="Views\Login\EditView.xaml.cs">
       <DependentUpon>EditView.xaml</DependentUpon>
@@ -214,6 +220,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201807120802187_NoUserPoints.resx">
       <DependentUpon>201807120802187_NoUserPoints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807230759213_AddRating.resx">
+      <DependentUpon>201807230759213_AddRating.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807200929272_UserPicture.resx">
       <DependentUpon>201807200929272_UserPicture.cs</DependentUpon>

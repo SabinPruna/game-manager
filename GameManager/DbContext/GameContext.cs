@@ -10,6 +10,7 @@ namespace GameManager.DbContext
 
         public DbSet<Player> Players { get; set; }
         public DbSet<GameRecord> GameRecords { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
         #endregion
     }
