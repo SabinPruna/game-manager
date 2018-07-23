@@ -114,13 +114,13 @@ namespace GameManager.ViewModels
                         MessageBox.Show("You need at least 1500 points for this game", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
                 case "DoorsGame":
-                    //if (Score > 2500)
+                    if (Score > 2500)
                     {
                         DoorsView dv = new DoorsView();
                         dv.ShowDialog();
                     }
-                    //else
-                        //MessageBox.Show("You need at least 2500 points for this game", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    else
+                        MessageBox.Show("You need at least 2500 points for this game", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
                 case "SnakeGame":
                     if (Score > 3500)
