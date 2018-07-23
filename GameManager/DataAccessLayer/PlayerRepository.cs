@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GameManager.DbContext;
 using GameManager.Models;
@@ -83,6 +84,28 @@ namespace GameManager.DataAccessLayer
                 gameContext.SaveChanges();
 
                 return dbPlayer;
+            }
+        }
+
+        public void SetRating(int playerId, string gameName, int rating)
+        {
+            using (GameContext gameContext = new GameContext())
+            {
+                Rating dbRating = gameContext.Ratings.FirstOrDefault(p => p.PlayerId == playerId && p.Game == gameName);
+                if( null!= dbRating)
+                {
+                    dbRating.NumberStars = rating;
+                    gameContext.Players.Attach(dbRating.Player);
+                }
+                else
+                {
+                    Rating dbModifiedRating = new Rating();
+                    dbModifiedRating.NumberStars = rating;
+                    dbModifiedRating.Game = gameName;
+                    dbModifiedRating.PlayerId = playerId;
+                    gameContext.Ratings.Add(dbModifiedRating);
+                }
+                gameContext.SaveChanges();
             }
         }
     }
