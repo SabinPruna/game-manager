@@ -27,6 +27,7 @@ namespace GameManager.ViewModels
             ScoreboardViewModel = new ScoreboardViewModel();
             TicTacToeViewModel = new TicTacToeViewModel();
             PairGameViewModel = new PairGameViewModel();
+            RatingViewModel = new RatingViewModel();
             SnakeViewModel = new SnakeViewModel();
             _playerManager = new PlayerManager();
 
@@ -62,6 +63,7 @@ namespace GameManager.ViewModels
 
         #region  Properties
 
+        public RatingViewModel RatingViewModel { get; }
         public PairGameViewModel PairGameViewModel { get; }
         public LoginViewModel LoginViewModel { get; }
         public TicTacToeViewModel TicTacToeViewModel { get; }
