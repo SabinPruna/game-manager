@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace GameManager.Models.Entities
@@ -24,6 +25,8 @@ namespace GameManager.Models.Entities
         public string Username { get; set; }
 
         public string Password { get; set; }
+
+        public byte[] UserPicture { get; set; }
 
         public virtual List<GameRecord> GameRecords { get; set; }
 

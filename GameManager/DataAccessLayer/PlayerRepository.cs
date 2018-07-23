@@ -77,6 +77,7 @@ namespace GameManager.DataAccessLayer
                 {
                     dbPlayer.Username = player.Username;
                     dbPlayer.Password = player.Password;
+                    dbPlayer.UserPicture = player.UserPicture;
                 }
 
                 gameContext.SaveChanges();

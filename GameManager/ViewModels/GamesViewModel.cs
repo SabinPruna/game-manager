@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using GameManager.BussinessLayer;
 using GameManager.Commands;
 using GameManager.ViewModels.Login;
@@ -17,6 +18,7 @@ namespace GameManager.ViewModels
     {
         private readonly PlayerManager _playerManager;
         private int _score;
+        private ImageSource _userProfilePicture;
 
         #region Constructors
 
@@ -106,6 +108,13 @@ namespace GameManager.ViewModels
         public void Refresh()
         {
             Score = Score;
+            UserProfilePicture = LoginViewModel.UserProfilePicture;
+        }
+
+        public ImageSource UserProfilePicture
+        {
+            get => _userProfilePicture;
+            set => SetProperty(ref _userProfilePicture, value);
         }
 
         #endregion

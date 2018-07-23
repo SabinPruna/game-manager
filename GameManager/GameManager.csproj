@@ -75,6 +75,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\201807200929272_UserPicture.cs" />
+    <Compile Include="Migrations\201807200929272_UserPicture.Designer.cs">
+      <DependentUpon>201807200929272_UserPicture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\TopPlayersScoreboardRecord.cs" />
     <Compile Include="Models\CardTicTacToe.cs" />
     <Compile Include="Models\Snake\Board.cs" />
@@ -150,6 +154,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Resources\UserPictureButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Scoreboard\ScoreboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +206,9 @@
     <EmbeddedResource Include="Migrations\201807120802187_NoUserPoints.resx">
       <DependentUpon>201807120802187_NoUserPoints.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807200929272_UserPicture.resx">
+      <DependentUpon>201807200929272_UserPicture.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -229,7 +240,7 @@
     <Resource Include="Images\Icons\tictactoe.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\2.jpg" />
+    <Resource Include="Images\default.jpg" />
     <Resource Include="Images\doorsGame.jpg" />
     <Resource Include="Images\Doors\door.jpg" />
     <Resource Include="Images\Doors\door2.jpg" />
@@ -298,6 +309,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\shop.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\UserProfiles\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

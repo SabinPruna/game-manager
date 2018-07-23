@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="BackgroundApp">#FF4F4FB2</Color>
+
+    <ControlTemplate x:Key="UserPictureButton" TargetType="{x:Type Button}">
+        <Border
+            x:Name="Border"
+            CornerRadius="2"
+            BorderThickness="1"
+            Background="{x:Null}"
+            BorderBrush="{x:Null}">
+            <ContentPresenter
+                Margin="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                RecognizesAccessKey="True" />
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="#FF323B42" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>
