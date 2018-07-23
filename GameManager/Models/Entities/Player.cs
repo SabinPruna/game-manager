@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace GameManager.Models.Entities
@@ -27,7 +26,6 @@ namespace GameManager.Models.Entities
         public string Password { get; set; }
 
         public byte[] UserPicture { get; set; }
-
         public virtual List<GameRecord> GameRecords { get; set; }
 
         #endregion
