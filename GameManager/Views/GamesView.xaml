@@ -12,8 +12,8 @@
     <Viewbox>
         <Grid x:Name="MainGrid" HorizontalAlignment="Center" Margin="50,0,50,10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -34,22 +34,17 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.ColumnSpan="3" RenderOptions.BitmapScalingMode="Fant"
+                <Image RenderOptions.BitmapScalingMode="Fant"
                        Stretch="Fill"
                        Grid.Row="0"
                        Margin="0,0,3,0"
                        Source="/Images/pairGame.jpg" />
-                <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
+                <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Pair Game" Background="White" BorderBrush="White"
                         Command="{Binding NewGameCommand}" CommandParameter="PairGame" />
-                <TextBlock Margin="0,0,20,0" FontSize="40" Width="auto" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="3"
+                <TextBlock FontSize="40" HorizontalAlignment="Right" Grid.Row="1"
                         Text="{Binding NumberStarsPair}"/>
-                <TextBlock Grid.ColumnSpan="3" Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
+                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Pairs is a memory game where you need to match pairs of tiles. <LineBreak /> Playing is very simple:
                     <LineBreak /> you turn over one tile and then try to find a matching tile.
                 </TextBlock>
@@ -61,21 +56,16 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.ColumnSpan="3" RenderOptions.BitmapScalingMode="Fant"
+                <Image RenderOptions.BitmapScalingMode="Fant"
                        Stretch="Fill"
                        Grid.Row="0"
                        Margin="3,0,0,0"
                        Source="/Images/ticTacToe.jpg" />
-                <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
+                <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Tic Tac Toe" Background="White" BorderBrush="White"  Command="{Binding NewGameCommand}" CommandParameter="TicTacToe"/>
-                <TextBlock Margin="0,0,20,0" FontSize="40" Width="auto" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="3"
+                <TextBlock FontSize="40" HorizontalAlignment="Right" Grid.Row="1"
                         Text="{Binding NumberStarsTicTacToe}"/>
-                <TextBlock Grid.ColumnSpan="3" Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
+                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Tic-tac-toe is a game for two players.The player wins by placing <LineBreak /> three of their marks in a horizontal, vertical, or diagonal row.
                     <LineBreak />
                 </TextBlock>
@@ -87,21 +77,16 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.ColumnSpan="3" RenderOptions.BitmapScalingMode="Fant"
+                <Image RenderOptions.BitmapScalingMode="Fant"
                        Stretch="Fill"
                        Grid.Row="0"
                        Margin="0,0,3,0"
                        Source="/Images/doorsGame.jpg" />
-                <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
+                <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Doors Game" Background="White" BorderBrush="White"  Command="{Binding NewGameCommand}" CommandParameter="DoorsGame"/>
-                <TextBlock Margin="0,0,20,0" FontSize="40" Width="auto" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="3"
+                <TextBlock FontSize="40" HorizontalAlignment="Right" Grid.Row="1"
                         Text="{Binding NumberStarsDoors}"/>
-                <TextBlock Grid.ColumnSpan="3" Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
+                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Doors is a quess game in which the player has to open a door. <LineBreak /> There are three doors to pick from.
                     <LineBreak /> Be very carefull and... try not to find the cat there! <LineBreak />
                 </TextBlock>
@@ -113,20 +98,15 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.ColumnSpan="3" RenderOptions.BitmapScalingMode="Fant"
+                <Image RenderOptions.BitmapScalingMode="Fant"
                        Stretch="Fill"
                        Grid.Row="0"
                        Source="/Images/snakeGame.png" />
-                <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
+                <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Snake Game" Background="White" BorderBrush="White"  Command="{Binding NewGameCommand}" CommandParameter="SnakeGame"/>
-                <TextBlock Margin="0,0,20,0" FontSize="40" Width="auto" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="3"
+                <TextBlock FontSize="40" HorizontalAlignment="Right" Grid.Row="1"
                         Text="{Binding NumberStarsSnake}"/>
-                <TextBlock Grid.ColumnSpan="3" Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
+                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Snake is the common name for a video game concept where <LineBreak /> the player maneuvers a line which grows in length, with the line
                     <LineBreak /> itself being a primary obstacle.<LineBreak />
                 </TextBlock>
@@ -134,18 +114,37 @@
 
             <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="45"
                        Margin="110,0,0,30" Text="{Binding LoginViewModel.Player.Username}" />
-            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="650,0,0,30">Score:</TextBlock>
-            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="45" Margin="780,0,10,30"
-                       TextAlignment="Right" Text="{Binding Score}" />
+
+            <Grid x:Name="SecondGrid" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0"   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45">Money:</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,20,0" Width="300" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="45"
+                           TextAlignment="Right" Text="{Binding Money}" />
+
+
+                <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" FontSize="45" >Score:</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="3"  Width="300" VerticalAlignment="Center" FontSize="45"
+                           TextAlignment="Right" Text="{Binding Score}" />
+            </Grid>
+
+                    
 
             <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Command="{Binding RatingCommand}"
                     HorizontalAlignment="Left" Width="210"
                      FontSize="48" Content="RATING"  Background="#FFDAD5A4"
                     BorderBrush="Black" />
-
             <Button Grid.Row="3" Grid.Column="0" Margin="0,0,0,10" Command="{Binding PlayerEditCommand}"
                     HorizontalAlignment="Left" Width="200"
                     FontSize="48" Content="EDIT"  Background="#FFDAD5A4"
+                    BorderBrush="Black" />
+            <Button Grid.Row="3" Grid.Column="0" Margin="0,0,0,10" Command="{Binding AddMoneyCommand}"
+                    HorizontalAlignment="Center" Width="200"
+                    FontSize="48" Content="BUY"  Background="#FFDAD5A4"
                     BorderBrush="Black" />
             <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Command="{Binding ScoreboardCommand}"
                     HorizontalAlignment="Center" Width="360"

@@ -1,0 +1,92 @@
+﻿<Window x:Class="GameManager.Views.Rating.RatingView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameManager.Views.Rating"
+        xmlns:gm="clr-namespace:GameManager"
+        DataContext="{Binding MainViewModel.RatingViewModel,Source={x:Static gm:App.CurrentApp}}"
+        Icon="..\..\Images\Icons\rating2.ico"
+        mc:Ignorable="d"
+        Title="RatingView" Height="180" Width="300">
+
+    <Window.Resources>
+        <DrawingImage x:Key="Overlay">
+            <DrawingImage.Drawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\rating2.ico"></ImageDrawing>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Resources>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
+
+    <!--<Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#c9d4e5"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FDF200"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>-->
+    <Viewbox MaxWidth="700">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Rating" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
+            <ComboBox SelectedValuePath="Content" SelectedValue="{Binding Path=GameName}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Width="140" Margin="10,0,5,0">
+                <ComboBoxItem Content="PairGame"/>
+                <ComboBoxItem Content="DoorsGame"/>
+                <ComboBoxItem Content="TicTacToe"/>
+                <ComboBoxItem Content="SnakeGame"/>
+            </ComboBox>
+            <ComboBox SelectedIndex="{Binding Path=NumberStars}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Width="140" Margin="5,0,10,0">
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal" Height="20">
+                        <Image Source="..\..\Images\star.png"></Image>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal" Height="20">
+                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png"></Image>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal" Height="20">
+                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png"></Image>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal" Height="20">
+                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png"></Image>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal" Height="20">
+                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png"></Image>
+                    </StackPanel>
+                </ComboBoxItem>
+            </ComboBox>
+            <Button Grid.ColumnSpan="2" Grid.Row="2" Content="OK" Height="25" VerticalAlignment="Top" Margin="0,20,0,10" Width="70" FontSize="14" Background="#c9d4e5" Command="{Binding RateGameCommand}"/>
+        </Grid>
+    </Viewbox>
+</Window>

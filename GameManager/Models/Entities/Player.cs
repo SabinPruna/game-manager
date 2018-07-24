@@ -26,7 +26,11 @@ namespace GameManager.Models.Entities
         public string Password { get; set; }
 
         public byte[] UserPicture { get; set; }
+
+        public int Money { get; set; }
+
         public virtual List<GameRecord> GameRecords { get; set; }
+
 
         #endregion
     }

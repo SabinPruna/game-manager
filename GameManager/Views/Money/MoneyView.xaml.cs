@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace GameManager.Views
+namespace GameManager.Views.Money
 {
     /// <summary>
-    /// Interaction logic for RatingView.xaml
+    /// Interaction logic for MoneyView.xaml
     /// </summary>
-    public partial class RatingView : Window
+    public partial class MoneyView : Window
     {
-        public RatingView()
+        public MoneyView()
         {
             InitializeComponent();
         }
