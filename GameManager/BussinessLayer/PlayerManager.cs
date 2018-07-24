@@ -76,5 +76,10 @@ namespace GameManager.BussinessLayer
            return _playerRepository.GetPlayerMoney(playerId);
         }
 
+        public void SetGameState(int playerId, string gameName, string saveState)
+        {
+            _playerRepository.SetGameState(playerId, gameName, saveState);
+        }
+
     }
 }

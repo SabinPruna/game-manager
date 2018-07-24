@@ -24,6 +24,7 @@ namespace GameManager.ViewModels.Pairs
         private GameRecordManager _gameRecordManager;
         private bool _isEnabled;
         private string _output;
+        private readonly PlayerManager _playerManager;
 
         #region Constructors
 
@@ -38,6 +39,7 @@ namespace GameManager.ViewModels.Pairs
             CurrentTime = 200;
             Score = 0;
             IsEnabled = true;
+            _playerManager = new PlayerManager();
         }
 
         #endregion
@@ -81,12 +83,14 @@ namespace GameManager.ViewModels.Pairs
         #endregion
 
         #region Methods
+
         public void SaveGame()
         {
             PairsSerialize ps = new PairsSerialize();
             ps.Cards = Cards;
             ps.CurrentTime = CurrentTime;
             Output=JsonConvert.SerializeObject(ps);
+            _playerManager.SetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame", Output);
         }
 
         public void OpenGame()

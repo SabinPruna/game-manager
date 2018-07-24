@@ -90,6 +90,7 @@
     <Compile Include="Migrations\201807240744493_MoneyFunctionality.Designer.cs">
       <DependentUpon>201807240744493_MoneyFunctionality.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\GameState.cs" />
     <Compile Include="Models\Entities\Rating.cs" />
     <Compile Include="Models\SerializeObject\PairsSerialize.cs" />
     <Compile Include="Models\SerializeObject\TicTacToeSerialize.cs" />
