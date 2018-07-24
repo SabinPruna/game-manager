@@ -181,6 +181,7 @@ namespace GameManager.ViewModels
                     if (Score > 2500)
                     {
                         DoorsView dv = new DoorsView();
+                        DoorsGameViewModel.ResetGame();
                         dv.ShowDialog();
                     }
                     else
