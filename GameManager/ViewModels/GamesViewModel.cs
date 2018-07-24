@@ -3,7 +3,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using GameManager.BussinessLayer;
 using GameManager.Commands;
+using GameManager.DoorsGame;
+using GameManager.ViewModels.Doors;
 using GameManager.ViewModels.Login;
+using GameManager.ViewModels.Money;
 using GameManager.ViewModels.Pairs;
 using GameManager.ViewModels.Scoreboard;
 using GameManager.ViewModels.Snake;
@@ -11,10 +14,11 @@ using GameManager.ViewModels.TicTacToe;
 using GameManager.ViewModels.Rating;
 using GameManager.Views.Login;
 using GameManager.Views.Rating;
+using GameManager.Views;
+using GameManager.Views.Login;
+using GameManager.Views.Money;
 using GameManager.Views.Pairs;
 using GameManager.Views.Scoreboard;
-using GameManager.ViewModels.Doors;
-using GameManager.DoorsGame;
 
 namespace GameManager.ViewModels
 {
@@ -27,6 +31,9 @@ namespace GameManager.ViewModels
         private double? _numberStarsDoors;
         private double? _numberStarsTicTacToe;
         private double? _numberStarsSnake;
+        private int _score;
+        private ImageSource _userProfilePicture;
+        private int _money;
 
         #region Constructors
 
@@ -39,6 +46,8 @@ namespace GameManager.ViewModels
             RatingViewModel = new RatingViewModel();
             SnakeViewModel = new SnakeViewModel();
             DoorsGameViewModel = new DoorsGameViewModel();
+            MoneyViewModel = new MoneyViewModel();
+
             _playerManager = new PlayerManager();
 
 
@@ -68,6 +77,12 @@ namespace GameManager.ViewModels
                 EditView editView = new EditView();
                 editView.ShowDialog();
             });
+
+            AddMoneyCommand = new RelayCommand(param =>
+            {
+                MoneyView moneyView = new MoneyView();
+                moneyView.ShowDialog();
+            });
         }
 
         #endregion
@@ -81,6 +96,7 @@ namespace GameManager.ViewModels
         public SnakeViewModel SnakeViewModel { get; }
         public DoorsGameViewModel DoorsGameViewModel { get; }
         public ScoreboardViewModel ScoreboardViewModel { get; }
+        public MoneyViewModel MoneyViewModel { get; set; }
 
         public double? NumberStarsPair
         {
@@ -156,6 +172,12 @@ namespace GameManager.ViewModels
             }
         }
 
+        public int Money
+        {
+            get => _playerManager.GetPlayerMoney(LoginViewModel.Player?.Id);
+            set => SetProperty(ref _money, value);      
+        }
+
         #endregion
 
         #region Methods
@@ -176,7 +198,11 @@ namespace GameManager.ViewModels
                         ticTacToeView.ShowDialog();
                     }
                     else
-                        MessageBox.Show("You need at least 1500 points for this game", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    {
+                        MessageBox.Show("You need at least 1500 points for this game", "Message", MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+
                     break;
                 case "DoorsGame":
                     if (Score > 2500)
@@ -186,7 +212,11 @@ namespace GameManager.ViewModels
                         dv.ShowDialog();
                     }
                     else
-                        MessageBox.Show("You need at least 2500 points for this game", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    {
+                        MessageBox.Show("You need at least 2500 points for this game", "Message", MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
+
                     break;
                 case "SnakeGame":
                     if (Score > 3500)
@@ -195,7 +225,10 @@ namespace GameManager.ViewModels
                         snake.ShowDialog();
                     }
                     else
-                        MessageBox.Show("You need at least 3500 points for this game", "Message", MessageBoxButton.OK, MessageBoxImage.Error);
+                    {
+                        MessageBox.Show("You need at least 3500 points for this game", "Message", MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                    }
 
                     break;
             }
@@ -204,6 +237,7 @@ namespace GameManager.ViewModels
         public void Refresh()
         {
             Score = Score;
+            Money = Money;
             UserProfilePicture = LoginViewModel.UserProfilePicture;
             NumberStarsPair = NumberStarsPair;
             NumberStarsDoors = NumberStarsDoors;
@@ -226,6 +260,7 @@ namespace GameManager.ViewModels
         public ICommand NewGameCommand { get; }
         public ICommand PlayerEditCommand { get; }
         public ICommand RatingCommand { get; }
+        public ICommand AddMoneyCommand { get; }
 
         #endregion
     }

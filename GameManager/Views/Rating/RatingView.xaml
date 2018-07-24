@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GameManager.Views.Rating"
         xmlns:gm="clr-namespace:GameManager"
         DataContext="{Binding MainViewModel.RatingViewModel,Source={x:Static gm:App.CurrentApp}}"
-        Icon="..\..\Images\Icons\rating2.ico"
+        Icon="\..\Images\Icons\rating2.ico"
         mc:Ignorable="d"
         Title="RatingView" Height="180" Width="300">
 

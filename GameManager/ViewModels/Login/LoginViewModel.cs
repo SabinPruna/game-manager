@@ -39,7 +39,7 @@ namespace GameManager.ViewModels.Login
                     }
                     else
                     {
-                        if (null == player.UserPicture)
+                        if (null == Player.UserPicture)
                         {
                             player.UserPicture =
                                 GetJpgFromImageControl(new BitmapImage(new Uri("../../Images/default.jpg",

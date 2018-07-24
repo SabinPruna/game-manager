@@ -83,6 +83,10 @@
     <Compile Include="Migrations\201807230759213_AddRating.Designer.cs">
       <DependentUpon>201807230759213_AddRating.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807240744493_MoneyFunctionality.cs" />
+    <Compile Include="Migrations\201807240744493_MoneyFunctionality.Designer.cs">
+      <DependentUpon>201807240744493_MoneyFunctionality.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\Rating.cs" />
     <Compile Include="Models\TopPlayersScoreboardRecord.cs" />
     <Compile Include="Models\CardTicTacToe.cs" />
@@ -95,12 +99,16 @@
     <Compile Include="DataAccessLayer\GameRecordRepository.cs" />
     <Compile Include="ViewModels\Doors\DoorsCardViewModel.cs" />
     <Compile Include="ViewModels\Doors\DoorsGameViewModel.cs" />
+    <Compile Include="ViewModels\Money\MoneyViewModel.cs" />
     <Compile Include="ViewModels\Pairs\CardViewModel.cs" />
     <Compile Include="ViewModels\Pairs\PairGameViewModel.cs" />
     <Compile Include="ViewModels\Rating\RatingViewModel.cs" />
     <Compile Include="ViewModels\Scoreboard\ScoreboardViewModel.cs" />
     <Compile Include="Views\Login\EditView.xaml.cs">
       <DependentUpon>EditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Money\MoneyView.xaml.cs">
+      <DependentUpon>MoneyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pairs\PairGameView.xaml.cs">
       <DependentUpon>PairGameView.xaml</DependentUpon>
@@ -165,6 +173,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Money\MoneyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Resources\UserPictureButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -226,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807200929272_UserPicture.resx">
       <DependentUpon>201807200929272_UserPicture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807240744493_MoneyFunctionality.resx">
+      <DependentUpon>201807240744493_MoneyFunctionality.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
