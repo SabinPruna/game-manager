@@ -145,5 +145,28 @@ namespace GameManager.DataAccessLayer
                 gameContext.SaveChanges();
             }
         }
+
+        public void SetGameState(int playerId, string gameName, string saveState)
+        {
+            using (GameContext gameContext = new GameContext())
+            {
+                GameState dbGameState = gameContext.GameStates.FirstOrDefault(p => p.PlayerId == playerId && p.Game == gameName);
+                if (null != dbGameState)
+                {
+                    dbGameState.SaveState = saveState;
+                    gameContext.Players.Attach(dbGameState.Player);
+                }
+                else
+                {
+                    GameState dbModifiedGameState = new GameState();
+                    dbModifiedGameState.SaveState = saveState;
+                    dbModifiedGameState.Game = gameName;
+                    dbModifiedGameState.PlayerId = playerId;
+                    gameContext.GameStates.Add(dbModifiedGameState);
+                }
+
+                gameContext.SaveChanges();
+            }
+        }
     }
 }
