@@ -116,7 +116,7 @@ namespace GameManager.DataAccessLayer
             }
         }
 
-        public double? GetRating(string gameName)
+        public double GetRating(string gameName)
         {
             using (GameContext gameContext = new GameContext())
             {
