@@ -19,6 +19,7 @@ using GameManager.Views.Login;
 using GameManager.Views.Money;
 using GameManager.Views.Pairs;
 using GameManager.Views.Scoreboard;
+using System;
 
 namespace GameManager.ViewModels
 {
@@ -27,10 +28,10 @@ namespace GameManager.ViewModels
         private readonly PlayerManager _playerManager;
         private int _score;
         private ImageSource _userProfilePicture;
-        private double? _numberStarsPair;
-        private double? _numberStarsDoors;
-        private double? _numberStarsTicTacToe;
-        private double? _numberStarsSnake;
+        private double _numberStarsPair;
+        private double _numberStarsDoors;
+        private double _numberStarsTicTacToe;
+        private double _numberStarsSnake;
         private int _money;
 
         #region Constructors
@@ -96,9 +97,9 @@ namespace GameManager.ViewModels
         public ScoreboardViewModel ScoreboardViewModel { get; }
         public MoneyViewModel MoneyViewModel { get; set; }
 
-        public double? NumberStarsPair
+        public double NumberStarsPair
         {
-            get => _playerManager.GetRating("PairGame");
+            get => Math.Round(_playerManager.GetRating("PairGame"), 2);
             set
             {
                 if (value == _numberStarsPair)
@@ -111,9 +112,9 @@ namespace GameManager.ViewModels
             }
         }
 
-        public double? NumberStarsDoors
+        public double NumberStarsDoors
         {
-            get => _playerManager.GetRating("DoorsGame");
+            get => Math.Round(_playerManager.GetRating("DoorsGame"), 2);
             set
             {
                 if (value == _numberStarsDoors)
@@ -126,9 +127,9 @@ namespace GameManager.ViewModels
             }
         }
 
-        public double? NumberStarsTicTacToe
+        public double NumberStarsTicTacToe
         {
-            get => _playerManager.GetRating("TicTacToe");
+            get => Math.Round(_playerManager.GetRating("TicTacToe"), 2);
             set
             {
                 if (value == _numberStarsTicTacToe)
@@ -141,9 +142,9 @@ namespace GameManager.ViewModels
             }
         }
 
-        public double? NumberStarsSnake
+        public double NumberStarsSnake
         {
-            get => _playerManager.GetRating("SnakeGame");
+            get => Math.Round(_playerManager.GetRating("SnakeGame"), 2);
             set {
                 if (value == _numberStarsSnake)
                 {
