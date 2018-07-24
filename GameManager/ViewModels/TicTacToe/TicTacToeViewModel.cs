@@ -2,7 +2,9 @@
 using GameManager.Commands;
 using GameManager.Models;
 using GameManager.Models.Entities;
+using GameManager.Models.SerializeObject;
 using GameManager.Views;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,8 @@ namespace GameManager.ViewModels.TicTacToe
     {
         private readonly GameRecordManager _gameRecordManager;
         private List<CardTicTacToe> cards;
+        private string _output;
+
 
 
         #region Properties
@@ -35,6 +39,11 @@ namespace GameManager.ViewModels.TicTacToe
                 OnPropertyChanged("Cards");
             }
         }
+        public string Output
+        {
+            get { return _output; }
+            set { SetProperty(ref _output, value); }
+        }
 
         #endregion
 
@@ -51,15 +60,34 @@ namespace GameManager.ViewModels.TicTacToe
             win = 0;
             numberOcupatedSpaces = 0;
             _gameRecordManager = new GameRecordManager();
-                TicTacToeCommand = new RelayCommand(param =>
-                {
-                    Logica((CardTicTacToe)param);
-                });
+                TicTacToeCommand = new RelayCommand(param =>Logica((CardTicTacToe)param));
+
+            SaveTicTacToeCommand = new RelayCommand(param => SaveGame());
+            OpenTicTacToeCommand = new RelayCommand(param => OpenGame());
         }
 
         #endregion
 
         #region Methods
+
+
+        public void SaveGame()
+        {
+            TicTacToeSerialize ttts = new TicTacToeSerialize();
+            ttts.Cards = Cards;
+            ttts.numberOcupatedSpaces = numberOcupatedSpaces;
+            ttts.win= win;
+            Output = JsonConvert.SerializeObject(ttts);
+        }
+
+       /* public void OpenGame()
+        {
+            TicTacToeViewModel deserializedObject = JsonConvert.DeserializeObject<TicTacToeViewModel>(Output);
+            Cards = deserializedObject.Cards;
+            win = deserializedObject.win;
+            numberOcupatedSpaces = deserializedObject.numberOcupatedSpaces;
+            MessageBox.Show(Cards[0].Card.ToString());
+        }*/
 
         private void Logica(CardTicTacToe card)
         {
@@ -171,6 +199,9 @@ namespace GameManager.ViewModels.TicTacToe
         #region Commands
 
         public ICommand TicTacToeCommand { get; private set; }
+        public ICommand SaveTicTacToeCommand { get; private set; }
+        public ICommand OpenTicTacToeCommand { get; private set; }
+
 
         #endregion
     }

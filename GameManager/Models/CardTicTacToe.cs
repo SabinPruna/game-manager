@@ -32,8 +32,6 @@ namespace GameManager.Models
             }
             set
             {
-                //card = value;
-                //OnPropertyChanged("Card");
                 SetProperty(ref card, value);
             }
         }
