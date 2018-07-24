@@ -39,6 +39,8 @@
                           IsEnabled="{Binding IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                           Command="{Binding NewGameCommand}" CommandParameter="Hard"/>
                 <Separator />
+                <MenuItem Name="Save" Header="Save" FontSize="12" Command="{Binding SaveGameCommand}"/>
+                <MenuItem Name="Open" Header="Open" FontSize="12" Command="{Binding OpenGameCommand}" CommandParameter="Output"/>
                 <MenuItem Name="Exit" Header="Exit" FontSize="12" Command="{Binding ExitGameCommand}" Click="Exit_Click"/>
             </MenuItem>
         </Menu>

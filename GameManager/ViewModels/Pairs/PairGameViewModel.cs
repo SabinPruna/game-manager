@@ -11,6 +11,8 @@ using System.Windows.Threading;
 using System.Windows;
 using GameManager.Models.Entities;
 using GameManager.BussinessLayer;
+using Newtonsoft.Json;
+using GameManager.Models.SerializeObject;
 
 namespace GameManager.ViewModels.Pairs
 {
@@ -21,6 +23,7 @@ namespace GameManager.ViewModels.Pairs
         private int _currentTime;
         private GameRecordManager _gameRecordManager;
         private bool _isEnabled;
+        private string _output;
 
         #region Constructors
 
@@ -29,6 +32,8 @@ namespace GameManager.ViewModels.Pairs
             NewGameCommand = new RelayCommand(param => StartGame((string)param));
             FlipCardCommand = new RelayCommand(param => FlipCard((CardViewModel)param));
             ExitGameCommand = new RelayCommand(param => RefreshGame());
+            SaveGameCommand = new RelayCommand(param => SaveGame());
+            OpenGameCommand = new RelayCommand(param => OpenGame());
             _gameRecordManager = new GameRecordManager();
             CurrentTime = 200;
             Score = 0;
@@ -38,6 +43,12 @@ namespace GameManager.ViewModels.Pairs
         #endregion
 
         #region  Properties
+
+        public string Output
+        {
+            get { return _output; }
+            set { SetProperty(ref _output, value); }
+        }
         
         public int GridSize
         {
@@ -70,6 +81,20 @@ namespace GameManager.ViewModels.Pairs
         #endregion
 
         #region Methods
+        public void SaveGame()
+        {
+            PairsSerialize ps = new PairsSerialize();
+            ps.Cards = Cards;
+            ps.CurrentTime = CurrentTime;
+            Output=JsonConvert.SerializeObject(ps);
+        }
+
+        public void OpenGame()
+        {
+            PairGameViewModel deserializedObject = JsonConvert.DeserializeObject<PairGameViewModel>(Output);
+            Cards = deserializedObject.Cards;
+            CurrentTime = deserializedObject.CurrentTime;
+        }
 
         public void StartGame(string param)
         {
@@ -230,6 +255,8 @@ namespace GameManager.ViewModels.Pairs
         public ICommand NewGameCommand { get; private set; }
         public ICommand FlipCardCommand { get; private set; }
         public ICommand ExitGameCommand { get; private set; }
+        public ICommand SaveGameCommand { get; private set; }
+        public ICommand OpenGameCommand { get; private set; }
 
         #endregion
     }
