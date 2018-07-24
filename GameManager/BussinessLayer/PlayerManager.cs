@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameManager.DataAccessLayer;
 using GameManager.Models;
 using GameManager.Models.Entities;
@@ -14,6 +15,11 @@ namespace GameManager.BussinessLayer
         public PlayerManager()
         {
             _playerRepository = new PlayerRepository();
+        }
+
+        internal void AddMoney(int playerId, int money)
+        {
+            _playerRepository.AddMoney(playerId, money);
         }
 
         #endregion
@@ -64,5 +70,11 @@ namespace GameManager.BussinessLayer
         {
             return _playerRepository.GetRating(playerId, gameName);
         }
+
+        public int GetPlayerMoney(int? playerId)
+        {
+           return _playerRepository.GetPlayerMoney(playerId);
+        }
+
     }
 }

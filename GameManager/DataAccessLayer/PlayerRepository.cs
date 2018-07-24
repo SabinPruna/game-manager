@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using GameManager.DbContext;
 using GameManager.Models;
@@ -46,7 +45,8 @@ namespace GameManager.DataAccessLayer
             using (GameContext db = new GameContext())
             {
                 return db.Players.OrderByDescending(p => p.GameRecords.Sum(r => r.Score)).Take(10).ToList()
-                    .Select(p => new TopPlayersScoreboardRecord {Username = p.Username, Score = p.GameRecords.Sum(r => r.Score)})
+                    .Select(p =>
+                        new TopPlayersScoreboardRecord {Username = p.Username, Score = p.GameRecords.Sum(r => r.Score)})
                     .ToList();
             }
         }
@@ -55,8 +55,13 @@ namespace GameManager.DataAccessLayer
         {
             using (GameContext db = new GameContext())
             {
-                return db.Players.OrderByDescending(p => p.GameRecords.Where(r => r.Game == gameName).Sum(r => r.Score)).Take(10).ToList()
-                    .Select(p => new TopPlayersScoreboardRecord {Username = p.Username, Score = p.GameRecords.Where(r => r.Game == gameName).Sum(r => r.Score)})
+                return db.Players.OrderByDescending(p => p.GameRecords.Where(r => r.Game == gameName).Sum(r => r.Score))
+                    .Take(10).ToList()
+                    .Select(p => new TopPlayersScoreboardRecord
+                    {
+                        Username = p.Username,
+                        Score = p.GameRecords.Where(r => r.Game == gameName).Sum(r => r.Score)
+                    })
                     .ToList();
             }
         }
@@ -65,7 +70,8 @@ namespace GameManager.DataAccessLayer
         {
             using (GameContext gameContext = new GameContext())
             {
-               return gameContext.Players.FirstOrDefault(p => p.Username == playerName)?.GameRecords.OrderByDescending(r => r.Score).ToList();
+                return gameContext.Players.FirstOrDefault(p => p.Username == playerName)?.GameRecords
+                    .OrderByDescending(r => r.Score).ToList();
             }
         }
 
@@ -92,7 +98,7 @@ namespace GameManager.DataAccessLayer
             using (GameContext gameContext = new GameContext())
             {
                 Rating dbRating = gameContext.Ratings.FirstOrDefault(p => p.PlayerId == playerId && p.Game == gameName);
-                if( null!= dbRating)
+                if (null != dbRating)
                 {
                     dbRating.NumberStars = rating;
                     gameContext.Players.Attach(dbRating.Player);
@@ -105,6 +111,7 @@ namespace GameManager.DataAccessLayer
                     dbModifiedRating.PlayerId = playerId;
                     gameContext.Ratings.Add(dbModifiedRating);
                 }
+
                 gameContext.SaveChanges();
             }
         }
@@ -113,8 +120,30 @@ namespace GameManager.DataAccessLayer
         {
             using (GameContext gameContext = new GameContext())
             {
-                // return gameContext.Ratings.FirstOrDefault(p => p.PlayerId == playerId && p.Game == gameName).NumberStars;
-                return gameContext.Ratings.FirstOrDefault(p => p.PlayerId == playerId && p.Game == gameName)?.NumberStars ?? 0;
+                return gameContext.Ratings.FirstOrDefault(p => p.PlayerId == playerId && p.Game == gameName)
+                           ?.NumberStars ?? 0;
+            }
+        }
+
+        public int GetPlayerMoney(int? playerId)
+        {
+            using (GameContext gameContext = new GameContext())
+            {
+                return gameContext.Players.FirstOrDefault(p => p.Id == playerId)?.Money ?? 0;
+            }
+        }
+
+        public void AddMoney(int playerId, int money)
+        {
+            using (GameContext gameContext = new GameContext())
+            {
+                Player dbPlayer = gameContext.Players.Find(playerId);
+                if (dbPlayer != null)
+                {
+                    dbPlayer.Money += money;
+                }
+
+                gameContext.SaveChanges();
             }
         }
     }
