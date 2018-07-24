@@ -26,6 +26,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Name="File" Header="File" FontSize="12">
+                <MenuItem Name="NewGame" Header="New Game" FontSize="12" Command="{Binding NewGameCommand}"/>
                 <MenuItem Name="Save" Header="Save" FontSize="12" Command="{Binding SaveTicTacToeCommand}"/>
                 <MenuItem Name="Open" Header="Open" FontSize="12" Command="{Binding OpenTicTacToeCommand}" CommandParameter="Output"/>
             </MenuItem>
