@@ -22,10 +22,10 @@ namespace GameManager.ViewModels
         private readonly PlayerManager _playerManager;
         private int _score;
         private ImageSource _userProfilePicture;
-        private int? _numberStarsPair;
-        private int? _numberStarsDoors;
-        private int? _numberStarsTicTacToe;
-        private int? _numberStarsSnake;
+        private double? _numberStarsPair;
+        private double? _numberStarsDoors;
+        private double? _numberStarsTicTacToe;
+        private double? _numberStarsSnake;
 
         #region Constructors
 
@@ -81,9 +81,9 @@ namespace GameManager.ViewModels
         public DoorsGameViewModel DoorsGameViewModel { get; }
         public ScoreboardViewModel ScoreboardViewModel { get; }
 
-        public int? NumberStarsPair
+        public double? NumberStarsPair
         {
-            get => _playerManager.GetRating(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame");
+            get => _playerManager.GetRating("PairGame");
             set
             {
                 if (value == _numberStarsPair)
@@ -96,9 +96,9 @@ namespace GameManager.ViewModels
             }
         }
 
-        public int? NumberStarsDoors
+        public double? NumberStarsDoors
         {
-            get => _playerManager.GetRating(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "DoorsGame");
+            get => _playerManager.GetRating("DoorsGame");
             set
             {
                 if (value == _numberStarsDoors)
@@ -111,9 +111,9 @@ namespace GameManager.ViewModels
             }
         }
 
-        public int? NumberStarsTicTacToe
+        public double? NumberStarsTicTacToe
         {
-            get => _playerManager.GetRating(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "TicTacToe");
+            get => _playerManager.GetRating("TicTacToe");
             set
             {
                 if (value == _numberStarsTicTacToe)
@@ -126,9 +126,9 @@ namespace GameManager.ViewModels
             }
         }
 
-        public int? NumberStarsSnake
+        public double? NumberStarsSnake
         {
-            get => _playerManager.GetRating(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "SnakeGame");
+            get => _playerManager.GetRating("SnakeGame");
             set {
                 if (value == _numberStarsSnake)
                 {
