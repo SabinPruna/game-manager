@@ -108,5 +108,14 @@ namespace GameManager.DataAccessLayer
                 gameContext.SaveChanges();
             }
         }
+
+        public int? GetRating(int? playerId, string gameName)
+        {
+            using (GameContext gameContext = new GameContext())
+            {
+                // return gameContext.Ratings.FirstOrDefault(p => p.PlayerId == playerId && p.Game == gameName).NumberStars;
+                return gameContext.Ratings.FirstOrDefault(p => p.PlayerId == playerId && p.Game == gameName)?.NumberStars ?? 0;
+            }
+        }
     }
 }

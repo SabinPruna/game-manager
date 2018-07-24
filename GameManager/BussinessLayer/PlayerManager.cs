@@ -59,5 +59,10 @@ namespace GameManager.BussinessLayer
         {
             _playerRepository.SetRating(playerId, gameName, rating);
         }
+
+        public int? GetRating(int? playerId, string gameName)
+        {
+            return _playerRepository.GetRating(playerId, gameName);
+        }
     }
 }

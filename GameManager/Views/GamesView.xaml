@@ -34,15 +34,22 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image RenderOptions.BitmapScalingMode="Fant"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.ColumnSpan="3" RenderOptions.BitmapScalingMode="Fant"
                        Stretch="Fill"
                        Grid.Row="0"
                        Margin="0,0,3,0"
                        Source="/Images/pairGame.jpg" />
-                <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
+                <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Pair Game" Background="White" BorderBrush="White"
                         Command="{Binding NewGameCommand}" CommandParameter="PairGame" />
-                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
+                <TextBlock Margin="0,0,20,0" FontSize="40" Width="auto" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="3"
+                        Text="{Binding NumberStarsPair}"/>
+                <TextBlock Grid.ColumnSpan="3" Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Pairs is a memory game where you need to match pairs of tiles. <LineBreak /> Playing is very simple:
                     <LineBreak /> you turn over one tile and then try to find a matching tile.
                 </TextBlock>
@@ -54,14 +61,21 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image RenderOptions.BitmapScalingMode="Fant"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.ColumnSpan="3" RenderOptions.BitmapScalingMode="Fant"
                        Stretch="Fill"
                        Grid.Row="0"
                        Margin="3,0,0,0"
                        Source="/Images/ticTacToe.jpg" />
-                <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
+                <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Tic Tac Toe" Background="White" BorderBrush="White"  Command="{Binding NewGameCommand}" CommandParameter="TicTacToe"/>
-                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
+                <TextBlock Margin="0,0,20,0" FontSize="40" Width="auto" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="3"
+                        Text="{Binding NumberStarsTicTacToe}"/>
+                <TextBlock Grid.ColumnSpan="3" Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Tic-tac-toe is a game for two players.The player wins by placing <LineBreak /> three of their marks in a horizontal, vertical, or diagonal row.
                     <LineBreak />
                 </TextBlock>
@@ -73,14 +87,21 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image RenderOptions.BitmapScalingMode="Fant"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.ColumnSpan="3" RenderOptions.BitmapScalingMode="Fant"
                        Stretch="Fill"
                        Grid.Row="0"
                        Margin="0,0,3,0"
                        Source="/Images/doorsGame.jpg" />
-                <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
+                <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Doors Game" Background="White" BorderBrush="White"  Command="{Binding NewGameCommand}" CommandParameter="DoorsGame"/>
-                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
+                <TextBlock Margin="0,0,20,0" FontSize="40" Width="auto" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="3"
+                        Text="{Binding NumberStarsDoors}"/>
+                <TextBlock Grid.ColumnSpan="3" Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Doors is a quess game in which the player has to open a door. <LineBreak /> There are three doors to pick from.
                     <LineBreak /> Be very carefull and... try not to find the cat there! <LineBreak />
                 </TextBlock>
@@ -92,13 +113,20 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image RenderOptions.BitmapScalingMode="Fant"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.ColumnSpan="3" RenderOptions.BitmapScalingMode="Fant"
                        Stretch="Fill"
                        Grid.Row="0"
                        Source="/Images/snakeGame.png" />
-                <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
+                <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Snake Game" Background="White" BorderBrush="White"  Command="{Binding NewGameCommand}" CommandParameter="SnakeGame"/>
-                <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
+                <TextBlock Margin="0,0,20,0" FontSize="40" Width="auto" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="3"
+                        Text="{Binding NumberStarsSnake}"/>
+                <TextBlock Grid.ColumnSpan="3" Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Snake is the common name for a video game concept where <LineBreak /> the player maneuvers a line which grows in length, with the line
                     <LineBreak /> itself being a primary obstacle.<LineBreak />
                 </TextBlock>

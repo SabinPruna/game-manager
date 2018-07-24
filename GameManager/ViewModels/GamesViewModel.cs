@@ -22,6 +22,10 @@ namespace GameManager.ViewModels
         private readonly PlayerManager _playerManager;
         private int _score;
         private ImageSource _userProfilePicture;
+        private int? _numberStarsPair;
+        private int? _numberStarsDoors;
+        private int? _numberStarsTicTacToe;
+        private int? _numberStarsSnake;
 
         #region Constructors
 
@@ -77,6 +81,65 @@ namespace GameManager.ViewModels
         public DoorsGameViewModel DoorsGameViewModel { get; }
         public ScoreboardViewModel ScoreboardViewModel { get; }
 
+        public int? NumberStarsPair
+        {
+            get => _playerManager.GetRating(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame");
+            set
+            {
+                if (value == _numberStarsPair)
+                {
+                    return;
+                }
+
+                _numberStarsPair = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int? NumberStarsDoors
+        {
+            get => _playerManager.GetRating(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "DoorsGame");
+            set
+            {
+                if (value == _numberStarsDoors)
+                {
+                    return;
+                }
+
+                _numberStarsDoors = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int? NumberStarsTicTacToe
+        {
+            get => _playerManager.GetRating(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "TicTacToe");
+            set
+            {
+                if (value == _numberStarsTicTacToe)
+                {
+                    return;
+                }
+
+                _numberStarsTicTacToe = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int? NumberStarsSnake
+        {
+            get => _playerManager.GetRating(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "SnakeGame");
+            set {
+                if (value == _numberStarsSnake)
+                {
+                    return;
+                }
+
+                _numberStarsSnake = value;
+                OnPropertyChanged();
+            }
+        }
+
         public int Score
         {
             get => _playerManager.GetPlayerScore(LoginViewModel.Player?.Id);
@@ -101,7 +164,6 @@ namespace GameManager.ViewModels
             switch (param)
             {
                 case "PairGame":
-                    
                     PairGameView pairGameView = new PairGameView();
                     pairGameView.ShowDialog();
                     break;
@@ -141,6 +203,10 @@ namespace GameManager.ViewModels
         {
             Score = Score;
             UserProfilePicture = LoginViewModel.UserProfilePicture;
+            NumberStarsPair = NumberStarsPair;
+            NumberStarsDoors = NumberStarsDoors;
+            NumberStarsTicTacToe = NumberStarsTicTacToe;
+            NumberStarsSnake = NumberStarsSnake;
         }
 
         public ImageSource UserProfilePicture

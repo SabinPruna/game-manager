@@ -24,6 +24,7 @@ namespace GameManager.ViewModels
             RateGameCommand = new RelayCommand(param =>
             {
                 _playerManager.SetRating(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, GameName.Substring(38), Int32.Parse(NumberStars.Substring(38)));
+                App.CurrentApp.MainViewModel.Refresh();
             });
         }
 
