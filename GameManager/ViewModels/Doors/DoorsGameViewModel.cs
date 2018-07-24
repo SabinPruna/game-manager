@@ -25,7 +25,6 @@ namespace GameManager.ViewModels.Doors
 
         public DoorsGameViewModel()
         {
-            //doorsCards = _DoorsCards;
             flippegImage = false;
             IsEnabled = true;
             Score = 0;
@@ -48,12 +47,18 @@ namespace GameManager.ViewModels.Doors
         public RelayCommand FlipCardCommand { get; }
         public string backImage { get; private set; }
         public string frontImage { get; private set; }
+
+        public void ResetScore()
+        {
+            Score = 0;
+        }
         public void ResetGame()
         {
             DoorsCards = new List<DoorsCardViewModel>();
         }
-        private int score;
 
+        private int score;
+       
         public int Score
         {
             get { return score; }
@@ -165,6 +170,7 @@ namespace GameManager.ViewModels.Doors
                     _gameRecordManager.Add(gameRecord);
                     App.CurrentApp.MainViewModel.Refresh();
                     ResetGame();
+                    ResetScore();
                     
                 }
             }
