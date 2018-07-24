@@ -30,13 +30,10 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Name="MenuFile" Header="File" FontSize="16">
                 <MenuItem Header="New Game Easy" FontSize="12" 
-                          IsEnabled="{Binding IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                           Command="{Binding NewGameCommand}" CommandParameter="Easy"/>
                 <MenuItem Header="New Game Medium" FontSize="12" 
-                          IsEnabled="{Binding IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                           Command="{Binding NewGameCommand}" CommandParameter="Medium"/>
                 <MenuItem Header="New Game Hard" FontSize="12" 
-                          IsEnabled="{Binding IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                           Command="{Binding NewGameCommand}" CommandParameter="Hard"/>
                 <Separator />
                 <MenuItem Name="Save" Header="Save" FontSize="12" Command="{Binding SaveGameCommand}"/>

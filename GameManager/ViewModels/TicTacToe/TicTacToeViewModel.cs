@@ -20,16 +20,15 @@ namespace GameManager.ViewModels.TicTacToe
         private readonly GameRecordManager _gameRecordManager;
         private List<CardTicTacToe> cards;
         private string _output;
+        private readonly PlayerManager _playerManager;
+
         #region Properties
 
         public int win { get; set; }
         public int numberOcupatedSpaces { get; set; }
         public List<CardTicTacToe> Cards
         {
-            get
-            {
-                return cards;
-            }
+            get { return cards; }
             set
             {
                 cards = value;
@@ -48,6 +47,7 @@ namespace GameManager.ViewModels.TicTacToe
 
         public TicTacToeViewModel()
         {
+            _playerManager = new PlayerManager();
             Cards = new List<CardTicTacToe>();
             for (int i = 0; i < 9; i++)
             {
@@ -85,6 +85,7 @@ namespace GameManager.ViewModels.TicTacToe
             ttts.numberOcupatedSpaces = numberOcupatedSpaces;
             ttts.win= win;
             Output = JsonConvert.SerializeObject(ttts);
+            _playerManager.SetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "TicTacToe", Output);
         }
 
        public void OpenGame()

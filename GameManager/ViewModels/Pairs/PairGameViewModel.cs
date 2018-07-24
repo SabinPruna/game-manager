@@ -19,10 +19,10 @@ namespace GameManager.ViewModels.Pairs
     public class PairGameViewModel : BaseViewModel
     {
         private int _gridSize;
+        private int _gridSizeSave;
         private List<CardViewModel> _cards;
         private int _currentTime;
         private GameRecordManager _gameRecordManager;
-        private bool _isEnabled;
         private string _output;
         private readonly PlayerManager _playerManager;
 
@@ -38,7 +38,6 @@ namespace GameManager.ViewModels.Pairs
             _gameRecordManager = new GameRecordManager();
             CurrentTime = 200;
             Score = 0;
-            IsEnabled = true;
             _playerManager = new PlayerManager();
         }
 
@@ -57,7 +56,13 @@ namespace GameManager.ViewModels.Pairs
             get { return _gridSize; }
             set { SetProperty(ref _gridSize, value); }
         }
-        
+
+        public int GridSizeSave
+        {
+            get { return _gridSizeSave; }
+            set { SetProperty(ref _gridSizeSave, value); }
+        }
+
         public List<CardViewModel> Cards
         {
             get { return _cards; }
@@ -74,12 +79,6 @@ namespace GameManager.ViewModels.Pairs
 
         private int Score { get; set; }
 
-        public bool IsEnabled
-        {
-            get { return _isEnabled; }
-            set { SetProperty(ref _isEnabled, value); }
-        }
-
         #endregion
 
         #region Methods
@@ -91,10 +90,12 @@ namespace GameManager.ViewModels.Pairs
             ps.CurrentTime = CurrentTime;
             Output=JsonConvert.SerializeObject(ps);
             _playerManager.SetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame", Output);
+            GridSizeSave = (int) Math.Sqrt(Cards.Count);
         }
 
         public void OpenGame()
         {
+            GridSize = GridSizeSave;
             PairGameViewModel deserializedObject = JsonConvert.DeserializeObject<PairGameViewModel>(Output);
             Cards = deserializedObject.Cards;
             CurrentTime = deserializedObject.CurrentTime;
@@ -120,7 +121,7 @@ namespace GameManager.ViewModels.Pairs
                     Score = 300;
                 }
 
-                IsEnabled = false;
+                RefreshGame();
                 List<CardViewModel> cards = new List<CardViewModel>();
                 for (int i = 0; i < GridSize * GridSize / 2; i++)
                 {
@@ -188,11 +189,7 @@ namespace GameManager.ViewModels.Pairs
                     }
                 }
             }
-            else
-                if(nrflipped==3)
-            {
 
-            }
             int nrhidden = Cards.Count(c => c.Hidden);
             if (nrhidden == GridSize * GridSize && CurrentTime > 0)
             {
@@ -245,11 +242,7 @@ namespace GameManager.ViewModels.Pairs
         {
             CurrentTime = 200;
             Score = 0;
-            var visibleCards = Cards.Where(c => !c.Hidden).ToList();
-            foreach (var card in visibleCards)
-                card.Hidden = true;
-            Cards.Clear();
-            IsEnabled = true;
+            Cards = new List<CardViewModel>();
         }
 
         #endregion
