@@ -1,4 +1,6 @@
-﻿using GameManager.Commands;
+﻿using GameManager.BussinessLayer;
+using GameManager.Commands;
+using GameManager.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using GameManager.ViewModels;
 
 namespace GameManager.ViewModels.Doors
 {
@@ -16,17 +19,24 @@ namespace GameManager.ViewModels.Doors
 
         public static bool flippegImage { get; set; }
         public static string lastParam;
+        private GameRecordManager _gameRecordManager;
+
+
 
         public DoorsGameViewModel()
         {
             //doorsCards = _DoorsCards;
             flippegImage = false;
+            IsEnabled = true;
+            Score = 0;
+            _gameRecordManager = new GameRecordManager();
             NewGameCommand = new RelayCommand(param => StartGame((string)param));
             FlipCardCommand = new RelayCommand(param => DoorsCardFlipped((DoorsCardViewModel)param));
         }
 
                 
         private List<DoorsCardViewModel> doorsCards;
+        private bool isEnabled;
 
         public List<DoorsCardViewModel> DoorsCards
         {
@@ -38,7 +48,23 @@ namespace GameManager.ViewModels.Doors
         public RelayCommand FlipCardCommand { get; }
         public string backImage { get; private set; }
         public string frontImage { get; private set; }
+        public void ResetGame()
+        {
+            DoorsCards = new List<DoorsCardViewModel>();
+        }
+        private int score;
 
+        public int Score
+        {
+            get { return score; }
+            set { SetProperty(ref score, value); }
+        }
+
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set { SetProperty(ref isEnabled, value); }
+        }
 
 
         public void StartGame(string param)
@@ -51,6 +77,7 @@ namespace GameManager.ViewModels.Doors
             {
                 nrcartiBune = 2;
                 nrcartiRele = 1;
+                
             }
             if (param == "Medium")
             {
@@ -63,7 +90,7 @@ namespace GameManager.ViewModels.Doors
                 nrcartiRele = 3;
             }
 
-
+            IsEnabled = false;
             List<DoorsCardViewModel> doorsCards = new List<DoorsCardViewModel>();
             for (int i = 0; i < nrcartiBune; i++)
             {
@@ -120,6 +147,7 @@ namespace GameManager.ViewModels.Doors
                                              MessageBoxImage.Exclamation);
                     flippegImage = true;
                     StartGame(lastParam);
+                    Score += 10;
                 }
                 else
               if (DoorsCards[DoorsCards.IndexOf(card)].FrontImage == $"../../Images/Doors/blackcat.jpg")
@@ -127,6 +155,17 @@ namespace GameManager.ViewModels.Doors
                     MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
                                            MessageBoxImage.Exclamation);
                     flippegImage = true;
+                    GameRecord gameRecord = new GameRecord
+                    {
+                        Date = DateTime.Now,
+                        Game = "DoorsGame",
+                        Player = App.CurrentApp.MainViewModel.LoginViewModel.Player,
+                        Score = Score
+                    };
+                    _gameRecordManager.Add(gameRecord);
+                    App.CurrentApp.MainViewModel.Refresh();
+                    ResetGame();
+                    
                 }
             }
         }
