@@ -63,7 +63,7 @@ namespace GameManager.ViewModels.TicTacToe
                 TicTacToeCommand = new RelayCommand(param =>Logica((CardTicTacToe)param));
 
             SaveTicTacToeCommand = new RelayCommand(param => SaveGame());
-            OpenTicTacToeCommand = new RelayCommand(param => OpenGame());
+            //OpenTicTacToeCommand = new RelayCommand(param => OpenGame());
         }
 
         #endregion
