@@ -353,5 +353,8 @@
     <Resource Include="Images\Icons\rating.ico" />
     <Resource Include="Images\Icons\rating2.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\star.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

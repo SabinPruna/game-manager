@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using GameManager.Models.Entities;
 using System.Windows.Input;
 using GameManager.Commands;
+using System.Windows;
 
 namespace GameManager.ViewModels.Rating
 {
     public class RatingViewModel:BaseViewModel
     {
         private readonly PlayerManager _playerManager;
-        private string _numberStars;
+        private int _numberStars;
         private string _gameName;
 
         #region Constructors
@@ -23,7 +24,8 @@ namespace GameManager.ViewModels.Rating
             _playerManager = new PlayerManager();
             RateGameCommand = new RelayCommand(param =>
             {
-                _playerManager.SetRating(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, GameName.Substring(38), Int32.Parse(NumberStars.Substring(38)));
+                _playerManager.SetRating(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, GameName, NumberStars+1);
+                MessageBox.Show("Thank you for your feedback!");
                 App.CurrentApp.MainViewModel.Refresh();
             });
         }
@@ -32,7 +34,7 @@ namespace GameManager.ViewModels.Rating
 
         #region Properties
 
-        public string NumberStars
+        public int NumberStars
         {
             get { return _numberStars; }
             set { SetProperty(ref _numberStars, value); }
