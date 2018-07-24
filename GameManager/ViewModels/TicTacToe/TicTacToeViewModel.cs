@@ -97,8 +97,12 @@ namespace GameManager.ViewModels.TicTacToe
             List<CardTicTacToe> list = new List<CardTicTacToe>();
             list = deserializedObject.Cards;
             for (int i = 0; i < list.Count; i++)
-                if (list[i].Card != Cards[i].Card)
+            {
+                if (list[i].Card == "" && Cards[i].Card != "")
                     Cards[i].Card = "";
+                if (list[i].Card != "" && Cards[i].Card == "")
+                    Cards[i].Card = list[i].Card;
+            }
         }
 
         private void Logica(CardTicTacToe card)
