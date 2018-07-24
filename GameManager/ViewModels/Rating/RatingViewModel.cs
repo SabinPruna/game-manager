@@ -8,7 +8,7 @@ using GameManager.Models.Entities;
 using System.Windows.Input;
 using GameManager.Commands;
 
-namespace GameManager.ViewModels
+namespace GameManager.ViewModels.Rating
 {
     public class RatingViewModel:BaseViewModel
     {

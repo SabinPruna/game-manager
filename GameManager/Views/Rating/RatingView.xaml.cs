@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace GameManager.Views
+namespace GameManager.Views.Rating
 {
     /// <summary>
     /// Interaction logic for RatingView.xaml

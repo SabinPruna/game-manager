@@ -97,7 +97,7 @@
     <Compile Include="ViewModels\Doors\DoorsGameViewModel.cs" />
     <Compile Include="ViewModels\Pairs\CardViewModel.cs" />
     <Compile Include="ViewModels\Pairs\PairGameViewModel.cs" />
-    <Compile Include="ViewModels\RatingViewModel.cs" />
+    <Compile Include="ViewModels\Rating\RatingViewModel.cs" />
     <Compile Include="ViewModels\Scoreboard\ScoreboardViewModel.cs" />
     <Compile Include="Views\Login\EditView.xaml.cs">
       <DependentUpon>EditView.xaml</DependentUpon>
@@ -109,7 +109,7 @@
     <Compile Include="ViewModels\Snake\WindowBehaviour.cs" />
     <Compile Include="ViewModels\Snake\SnakeViewModel.cs" />
     <Compile Include="ViewModels\TicTacToe\TicTacToeViewModel.cs" />
-    <Compile Include="Views\RatingView.xaml.cs">
+    <Compile Include="Views\Rating\RatingView.xaml.cs">
       <DependentUpon>RatingView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Scoreboard\ScoreboardView.xaml.cs">
@@ -169,7 +169,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RatingView.xaml">
+    <Page Include="Views\Rating\RatingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
