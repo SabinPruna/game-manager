@@ -121,8 +121,6 @@ namespace GameManager.DataAccessLayer
             using (GameContext gameContext = new GameContext())
             {
                 return gameContext.Ratings.Where(p => p.Game == gameName).Select(p => p.NumberStars).DefaultIfEmpty(0).Average();
-                return gameContext.Ratings.FirstOrDefault(p => p.PlayerId == playerId && p.Game == gameName)
-                           ?.NumberStars ?? 0;
             }
         }
 

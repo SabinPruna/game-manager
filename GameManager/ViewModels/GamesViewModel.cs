@@ -31,8 +31,6 @@ namespace GameManager.ViewModels
         private double? _numberStarsDoors;
         private double? _numberStarsTicTacToe;
         private double? _numberStarsSnake;
-        private int _score;
-        private ImageSource _userProfilePicture;
         private int _money;
 
         #region Constructors
