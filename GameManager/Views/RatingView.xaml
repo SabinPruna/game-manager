@@ -6,8 +6,20 @@
         xmlns:local="clr-namespace:GameManager.Views"
         xmlns:gm="clr-namespace:GameManager"
         DataContext="{Binding MainViewModel.RatingViewModel,Source={x:Static gm:App.CurrentApp}}"
+        Icon="..\..\Images\Icons\rating2.ico"
         mc:Ignorable="d"
         Title="RatingView" Height="180" Width="300">
+
+    <Window.Resources>
+        <DrawingImage x:Key="Overlay">
+            <DrawingImage.Drawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\rating2.ico"></ImageDrawing>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Resources>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
 
     <!--<Window.Resources>
         <Style TargetType="Button">
@@ -19,7 +31,7 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>-->
-    <Viewbox>
+    <Viewbox MaxWidth="700">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

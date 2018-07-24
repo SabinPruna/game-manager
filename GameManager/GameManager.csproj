@@ -334,5 +334,9 @@
   <ItemGroup>
     <Resource Include="Images\Doors\blackcat.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\rating.ico" />
+    <Resource Include="Images\Icons\rating2.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
