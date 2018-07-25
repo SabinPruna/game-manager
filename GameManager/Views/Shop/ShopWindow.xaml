@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameManager"
         mc:Ignorable="d"
-        Title="ShopWindow" Height="450" Width="800"
+        Title="Shop" Height="450" Width="800"
+        DataContext="{Binding MainViewModel,Source={x:Static local:App.CurrentApp}}"
         Icon="..\..\Images\Icons\shop.ico">
     <Window.Resources>
         <Style TargetType="Grid" x:Key="Imagini">
@@ -15,7 +16,7 @@
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="ExtraBold"/>
         </Style>
-        <Style TargetType="TextBlock" x:Key="Pret">
+        <Style TargetType="Button" x:Key="Pret">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
@@ -30,6 +31,10 @@
         <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
     </Window.TaskbarItemInfo>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/For ShopWindow/abstract.jpg"/>
         </Grid.Background>
@@ -38,8 +43,11 @@
             <ColumnDefinition Width="10*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-       
-        <Grid Grid.Column="1">
+
+        <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,20,0" Width="300" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25"
+                   TextAlignment="Left" Text="{Binding Money, StringFormat='Money: {0}'}" />
+        
+        <Grid Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -51,14 +59,18 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Grid.Column="0" Grid.Row="0" Style="{StaticResource Imagini}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="22*"/>
+                    <ColumnDefinition Width="123*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="/Images/For ShopWindow/cards1.jpg"/>
-                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Uno Game</TextBlock>
-                <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 2$</TextBlock>
+                <Image Stretch="Fill" Grid.Row="0" Source="/Images/For ShopWindow/cards1.jpg" Grid.ColumnSpan="2"/>
+                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" Grid.ColumnSpan="2" HorizontalAlignment="Center">Uno Game</TextBlock>
+                <Button Grid.Row="2" Style="{StaticResource Pret}" Grid.ColumnSpan="2" Command="{Binding BuyItemCommand}" CommandParameter="2">Price 2$</Button>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="0" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
@@ -66,9 +78,9 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0"  Source="/Images/For ShopWindow/monopoly.jpg"/>
-                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Monopoly</TextBlock>
-                <TextBlock Grid.Row="2" Style="{StaticResource Pret}"> Price 30$</TextBlock>
+                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/monopoly.jpg"/>
+                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Monopoly</TextBlock>
+                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="30"> Price 30$</Button>
             </Grid>
             <Grid Grid.Column="2" Grid.Row="0" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
@@ -76,9 +88,9 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0"  Source="/Images/For ShopWindow/scrabble.jpg"/>
-                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Scrubble</TextBlock>
-                <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 30$</TextBlock>
+                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/scrabble.jpg"/>
+                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Scrubble</TextBlock>
+                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="30">Price 30$</Button>
             </Grid>
             <Grid Grid.Column="3" Grid.Row="0" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
@@ -86,9 +98,9 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0"  Source="/Images/For ShopWindow/brothersgame1.jpg"/>
-                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Ludo Game</TextBlock>
-                <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 7$</TextBlock>
+                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/brothersgame1.jpg"/>
+                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Ludo Game</TextBlock>
+                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="7">Price 7$</Button>
             </Grid>
             <Grid Grid.Column="0" Grid.Row="1" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
@@ -96,9 +108,9 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0"  Source="/Images/For ShopWindow/sah.jpg"/>
-                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Chess</TextBlock>
-                <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 15$</TextBlock>
+                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/sah.jpg"/>
+                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Chess</TextBlock>
+                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="15">Price 15$</Button>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="1" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
@@ -106,9 +118,9 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0"  Source="/Images/For ShopWindow/activity1.jpg"/>
-                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Activity</TextBlock>
-                <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 20$</TextBlock>
+                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/activity1.jpg"/>
+                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Activity</TextBlock>
+                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="20">Price 20$</Button>
             </Grid>
             <Grid Grid.Column="2" Grid.Row="1" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
@@ -116,32 +128,20 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0"  Source="/Images/For ShopWindow/table.jpg"/>
-                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Backgammon</TextBlock>
-                <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 15$</TextBlock>
+                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/table.jpg"/>
+                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Backgammon</TextBlock>
+                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="15">Price 15$</Button>
             </Grid>
             <Grid Grid.Column="3" Grid.Row="1" Style="{StaticResource Imagini}">
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Image Grid.Row="0"  Source="/Images/For ShopWindow/rummy.jpg"/>
-                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}">Rummy</TextBlock>
-                <TextBlock Grid.Row="2" Style="{StaticResource Pret}">Price 20$</TextBlock>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/rummy.jpg"/>
+                <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Rummy</TextBlock>
+                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="20">Price 20$</Button>
+            </Grid>
         </Grid>
-     </Grid>
-
-
-        <!--<Image Grid.Column="1" Grid.Row="0" Source="/Images/For ShopWindow/cards1.jpg"/>
-            <Image Grid.Column="1" Grid.Row="0" Source="/Images/For ShopWindow/monopoly.jpg"/>
-            <Image Grid.Column="2" Grid.Row="0" Source="/Images/For ShopWindow/scrabble.jpg"/>
-            <Image Grid.Column="3" Grid.Row="0" Source="/Images/For ShopWindow/brothersgame1.jpg"/>
-            <Image Grid.Column="0" Grid.Row="1" Source="/Images/For ShopWindow/sah.jpg"/>
-            <Image Grid.Column="1" Grid.Row="1" Source="/Images/For ShopWindow/activity1.jpg"/>
-            <Image Grid.Column="2" Grid.Row="1" Source="/Images/For ShopWindow/table.jpg"/>
-            <Image Grid.Column="3" Grid.Row="1" Source="/Images/For ShopWindow/rummy.jpg"/>-->
-        </Grid>
-
-           
+    </Grid>
 </Window>
