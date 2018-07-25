@@ -14,9 +14,6 @@ using GameManager.ViewModels.Scoreboard;
 using GameManager.ViewModels.Snake;
 using GameManager.ViewModels.TicTacToe;
 using GameManager.Views.Login;
-using GameManager.Views.Rating;
-using GameManager.Views;
-
 using GameManager.Views.Money;
 using GameManager.Views.Pairs;
 using GameManager.Views.Rating;
