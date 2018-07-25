@@ -168,5 +168,13 @@ namespace GameManager.DataAccessLayer
                 gameContext.SaveChanges();
             }
         }
+
+        public string GetGameState(int playerId, string gameName)
+        {
+            using (GameContext gameContext = new GameContext())
+            {
+                return gameContext.GameStates.FirstOrDefault(p => p.PlayerId == playerId && p.Game == gameName)?.SaveState ?? "";
+            }
+        }
     }
 }

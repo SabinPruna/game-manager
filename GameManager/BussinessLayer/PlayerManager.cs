@@ -81,5 +81,9 @@ namespace GameManager.BussinessLayer
             _playerRepository.SetGameState(playerId, gameName, saveState);
         }
 
+        public string GetGameState(int playerId, string gameName)
+        {
+            return _playerRepository.GetGameState(playerId, gameName);
+        }
     }
 }

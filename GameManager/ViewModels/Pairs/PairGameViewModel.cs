@@ -19,7 +19,6 @@ namespace GameManager.ViewModels.Pairs
     public class PairGameViewModel : BaseViewModel
     {
         private int _gridSize;
-        private int _gridSizeSave;
         private List<CardViewModel> _cards;
         private int _currentTime;
         private GameRecordManager _gameRecordManager;
@@ -56,13 +55,7 @@ namespace GameManager.ViewModels.Pairs
             get { return _gridSize; }
             set { SetProperty(ref _gridSize, value); }
         }
-
-        public int GridSizeSave
-        {
-            get { return _gridSizeSave; }
-            set { SetProperty(ref _gridSizeSave, value); }
-        }
-
+        
         public List<CardViewModel> Cards
         {
             get { return _cards; }
@@ -88,17 +81,18 @@ namespace GameManager.ViewModels.Pairs
             PairsSerialize ps = new PairsSerialize();
             ps.Cards = Cards;
             ps.CurrentTime = CurrentTime;
-            Output=JsonConvert.SerializeObject(ps);
+            ps.GridSize = (int)Math.Sqrt(Cards.Count);
+            Output =JsonConvert.SerializeObject(ps);
             _playerManager.SetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame", Output);
-            GridSizeSave = (int) Math.Sqrt(Cards.Count);
         }
 
         public void OpenGame()
         {
-            GridSize = GridSizeSave;
+            Output = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame");
             PairGameViewModel deserializedObject = JsonConvert.DeserializeObject<PairGameViewModel>(Output);
             Cards = deserializedObject.Cards;
             CurrentTime = deserializedObject.CurrentTime;
+            GridSize = deserializedObject.GridSize;
         }
 
         public void StartGame(string param)

@@ -11,20 +11,25 @@ namespace GameManager.Models.SerializeObject
     {
         private List<CardViewModel> _cards;
         private int _currentTime;
-        public List<CardViewModel> Cards
-        {
-            get;
-            set;
-        }
+        private int _gridSize;
 
-        public int CurrentTime
-        {
-            get;
-            set;
-        }
+        #region Properties
+
+        public List<CardViewModel> Cards { get; set; }
+
+        public int CurrentTime { get; set; }
+
+        public int GridSize { get; set; }
+
+        #endregion
+
+        #region Constructors
+
         public PairsSerialize()
         {
             Cards = new List<CardViewModel>();
         }
+
+        #endregion
     }
 }
