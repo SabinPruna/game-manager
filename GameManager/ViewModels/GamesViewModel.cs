@@ -211,6 +211,8 @@ namespace GameManager.ViewModels
             {
                 case "PairGame":
                     PairGameView pairGameView = new PairGameView();
+                    PairGameViewModel.Time = 0;
+                    PairGameViewModel.RefreshGame();
                     pairGameView.ShowDialog();
                     break;
                 case "TicTacToe":
@@ -236,6 +238,8 @@ namespace GameManager.ViewModels
             {
                 case "PairGame":
                     PairGameView pairGameView = new PairGameView();
+                    PairGameViewModel.Time = 0;
+                    PairGameViewModel.RefreshGame();
                     pairGameView.ShowDialog();
                     break;
                 case "TicTacToe":
