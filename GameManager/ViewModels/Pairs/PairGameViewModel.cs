@@ -24,6 +24,7 @@ namespace GameManager.ViewModels.Pairs
         private GameRecordManager _gameRecordManager;
         private string _output;
         private readonly PlayerManager _playerManager;
+        private int _time;
 
         #region Constructors
 
@@ -35,7 +36,6 @@ namespace GameManager.ViewModels.Pairs
             SaveGameCommand = new RelayCommand(param => SaveGame());
             OpenGameCommand = new RelayCommand(param => OpenGame());
             _gameRecordManager = new GameRecordManager();
-            CurrentTime = 200;
             Score = 0;
             _playerManager = new PlayerManager();
             DispatcherTimer = new DispatcherTimer();
@@ -69,6 +69,12 @@ namespace GameManager.ViewModels.Pairs
             set { SetProperty(ref _currentTime, value); }
         }
 
+        public int Time
+        {
+            get { return _time; }
+            set { SetProperty(ref _time, value); }
+        }
+
         private DispatcherTimer DispatcherTimer { get; set; }
 
         private int Score { get; set; }
@@ -98,51 +104,49 @@ namespace GameManager.ViewModels.Pairs
 
         public void StartGame(string param)
         {
-            if (CurrentTime != 0)
+            if (param == "Easy")
             {
-                if (param == "Easy")
-                {
-                    GridSize = 4;
-                    Score = 100;
-                }
-                if (param == "Medium")
-                {
-                    GridSize = 6;
-                    Score = 200;
-                }
-                if (param == "Hard")
-                {
-                    GridSize = 8;
-                    Score = 300;
-                }
-
-                RefreshGame();
-
-                List<CardViewModel> cards = new List<CardViewModel>();
-                for (int i = 0; i < GridSize * GridSize / 2; i++)
-                {
-                    CardViewModel cvm = new CardViewModel()
-                    {
-                        Visibility = false,
-                        ImageDown = $"../../Images/For MatchGame/cardBack.jpg",
-                        ImageUp = $"../../Images/For MatchGame/{i + 1}.jpg"
-
-                    };
-                    cards.Add(cvm);
-                    CardViewModel cvm2 = new CardViewModel()
-                    {
-                        Visibility = false,
-                        ImageDown = $"../../Images/For MatchGame/cardBack.jpg",
-                        ImageUp = $"../../Images/For MatchGame/{i + 1}.jpg"
-                    };
-                    cards.Add(cvm2);
-                }
-                Shuffle(cards);
-                Cards = cards;
-                StartTimer();
+                GridSize = 4;
+                Score = 100;
+                Time = 100;
             }
-            else
-                MessageBox.Show("Set the timer!");
+            if (param == "Medium")
+            {
+                GridSize = 6;
+                Score = 200;
+                Time = 150;
+            }
+            if (param == "Hard")
+            {
+                GridSize = 8;
+                Score = 300;
+                Time = 200;
+            }
+
+            RefreshGame();
+
+            List<CardViewModel> cards = new List<CardViewModel>();
+            for (int i = 0; i < GridSize * GridSize / 2; i++)
+            {
+                CardViewModel cvm = new CardViewModel()
+                {
+                    Visibility = false,
+                    ImageDown = $"../../Images/For MatchGame/cardBack.jpg",
+                    ImageUp = $"../../Images/For MatchGame/{i + 1}.jpg"
+
+                };
+                cards.Add(cvm);
+                CardViewModel cvm2 = new CardViewModel()
+                {
+                    Visibility = false,
+                    ImageDown = $"../../Images/For MatchGame/cardBack.jpg",
+                    ImageUp = $"../../Images/For MatchGame/{i + 1}.jpg"
+                };
+                cards.Add(cvm2);
+            }
+            Shuffle(cards);
+            Cards = cards;
+            StartTimer();
         }
 
         private void Shuffle(List<CardViewModel> list)
@@ -202,7 +206,7 @@ namespace GameManager.ViewModels.Pairs
                 };
                 _gameRecordManager.Add(gameRecord);
                 App.CurrentApp.MainViewModel.Refresh();
-                RefreshGame();
+                CurrentTime = 0;
             }
             else
             if (nrhidden != GridSize * GridSize && CurrentTime == 0)
@@ -210,7 +214,7 @@ namespace GameManager.ViewModels.Pairs
                 DispatcherTimer.Stop();
                 MessageBox.Show("You Lost!", "Loser", MessageBoxButton.OK,
                                        MessageBoxImage.Exclamation);
-                RefreshGame();
+                CurrentTime = 0;
             }
         }
 
@@ -228,14 +232,14 @@ namespace GameManager.ViewModels.Pairs
                 DispatcherTimer.Stop();
                 MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
                                        MessageBoxImage.Exclamation);
-                RefreshGame();
+                CurrentTime = 0;
             }
         }
 
         private void RefreshGame()
         {
             DispatcherTimer.Stop();
-            CurrentTime = 200;
+            CurrentTime = Time;
             Score = 0;
             Cards = new List<CardViewModel>();
             DispatcherTimer = new DispatcherTimer();
