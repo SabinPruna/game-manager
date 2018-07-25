@@ -17,7 +17,7 @@ namespace GameManager
     /// <summary>
     /// Interaction logic for TicTacToeView.xaml
     /// </summary>
-    public partial class TicTacToeView : Window
+    public partial class TicTacToeView
     {
         public TicTacToeView()
         {

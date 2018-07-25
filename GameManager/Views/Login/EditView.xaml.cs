@@ -17,7 +17,7 @@ namespace GameManager.Views.Login
     /// <summary>
     /// Interaction logic for EditView.xaml
     /// </summary>
-    public partial class EditView : Window
+    public partial class EditView 
     {
         public EditView()
         {

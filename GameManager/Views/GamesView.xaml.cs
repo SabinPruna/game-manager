@@ -2,7 +2,7 @@
 
 namespace GameManager.Views
 {
-    public partial class GamesView : Window
+    public partial class GamesView
     {
         #region Constructors
 

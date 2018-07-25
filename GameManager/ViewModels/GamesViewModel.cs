@@ -82,7 +82,7 @@ namespace GameManager.ViewModels
             });
 
             StartGameTestingCommand = new RelayCommand(param => { StartGameTesting((string) param); });
-        }
+
 
             BuyItemCommand = new RelayCommand(param =>
             {

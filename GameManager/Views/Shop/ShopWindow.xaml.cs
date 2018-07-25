@@ -5,7 +5,7 @@ namespace GameManager
     /// <summary>
     ///     Interaction logic for ShopWindow.xaml
     /// </summary>
-    public partial class ShopWindow : Window
+    public partial class ShopWindow
     {
         #region Constructors
 

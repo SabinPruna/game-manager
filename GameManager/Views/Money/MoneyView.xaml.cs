@@ -17,7 +17,7 @@ namespace GameManager.Views.Money
     /// <summary>
     /// Interaction logic for MoneyView.xaml
     /// </summary>
-    public partial class MoneyView : Window
+    public partial class MoneyView
     {
         public MoneyView()
         {

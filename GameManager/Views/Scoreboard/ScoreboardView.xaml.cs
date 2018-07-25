@@ -17,7 +17,7 @@ namespace GameManager.Views.Scoreboard
     /// <summary>
     /// Interaction logic for ScoreboardView.xaml
     /// </summary>
-    public partial class ScoreboardView : Window
+    public partial class ScoreboardView 
     {
         public ScoreboardView()
         {

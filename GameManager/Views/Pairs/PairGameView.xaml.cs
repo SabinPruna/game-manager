@@ -17,7 +17,7 @@ namespace GameManager.Views.Pairs
     /// <summary>
     /// Interaction logic for PairGameView.xaml
     /// </summary>
-    public partial class PairGameView : Window
+    public partial class PairGameView
     {
         public PairGameView()
         {

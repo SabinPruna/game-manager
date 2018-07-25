@@ -1,10 +1,11 @@
-﻿<Window x:Class="GameManager.Views.Scoreboard.ScoreboardView"
+﻿<mah:MetroWindow x:Class="GameManager.Views.Scoreboard.ScoreboardView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:gm="clr-namespace:GameManager"
         xmlns:scoreboard="clr-namespace:GameManager.ViewModels.Scoreboard"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         Icon="..\..\Images\Icons\scoreboard.ico"
         mc:Ignorable="d"
         Title="Scoreboard" Height="450" Width="380"
@@ -156,4 +157,4 @@
             </TabItem>
         </TabControl>
     </Grid>
-</Window>
+</mah:MetroWindow>
