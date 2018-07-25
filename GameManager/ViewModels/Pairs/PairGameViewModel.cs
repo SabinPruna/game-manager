@@ -236,7 +236,7 @@ namespace GameManager.ViewModels.Pairs
             }
         }
 
-        private void RefreshGame()
+        public void RefreshGame()
         {
             DispatcherTimer.Stop();
             CurrentTime = Time;
