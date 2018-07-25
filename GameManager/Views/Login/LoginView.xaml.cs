@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Windows;
 using GameManager.ViewModels.Login;
+using MahApps.Metro.Controls;
 
 namespace GameManager.Views.Login
 {
     /// <summary>
     ///     Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : Window
+    public partial class LoginView
     {
         #region Constructors
 

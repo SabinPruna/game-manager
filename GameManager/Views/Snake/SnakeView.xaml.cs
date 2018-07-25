@@ -18,7 +18,7 @@ namespace GameManager
     /// <summary>
     /// Interaction logic for SnakeView.xaml
     /// </summary>
-    public partial class SnakeView : Window
+    public partial class SnakeView
     {
         public SnakeView()
         {

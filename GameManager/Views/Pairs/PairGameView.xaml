@@ -1,4 +1,4 @@
-﻿<Window x:Class="GameManager.Views.Pairs.PairGameView"
+﻿<mah:MetroWindow x:Class="GameManager.Views.Pairs.PairGameView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,6 +7,7 @@
         xmlns:gm="clr-namespace:GameManager"
         xmlns:conv="clr-namespace:GameManager.Convertors"
         xmlns:local="clr-namespace:GameManager.ViewModels.Pairs"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         DataContext="{Binding MainViewModel.PairGameViewModel,Source={x:Static gm:App.CurrentApp}}"
         Icon="..\..\Images\Icons\pairs.ico"
         Title="PairGame" Height="550" Width="469.2" Background="#FFB3B3C7"
@@ -77,4 +78,4 @@
         </ItemsControl>
         
     </DockPanel>
-</Window>
+</mah:MetroWindow>

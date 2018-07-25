@@ -17,7 +17,7 @@ namespace GameManager.Views.Rating
     /// <summary>
     /// Interaction logic for RatingView.xaml
     /// </summary>
-    public partial class RatingView : Window
+    public partial class RatingView 
     {
         public RatingView()
         {
