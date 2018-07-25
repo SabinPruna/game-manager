@@ -10,6 +10,10 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 using GameManager.ViewModels;
+using GameManager.Models.SerializeObject;
+using GameManager.Views;
+using Newtonsoft.Json;
+
 
 namespace GameManager.ViewModels.Doors
 {
@@ -20,16 +24,23 @@ namespace GameManager.ViewModels.Doors
         public static bool flippegImage { get; set; }
         public static string lastParam;
         private GameRecordManager _gameRecordManager;
+        private string _doorsOutput;
+        private readonly PlayerManager _playerManager;
 
 
 
         public DoorsGameViewModel()
         {
+            _playerManager = new PlayerManager();
             flippegImage = false;
             IsEnabled = true;
             Score = 0;
             _gameRecordManager = new GameRecordManager();
             NewGameCommand = new RelayCommand(param => StartGame((string)param));
+            DoorsCommand = new RelayCommand(param => ResetScore());
+
+            SaveDoorsCommand = new RelayCommand(param => SaveGame());
+            OpenDoorsCommand = new RelayCommand(param => OpenGame());
             FlipCardCommand = new RelayCommand(param => DoorsCardFlipped((DoorsCardViewModel)param));
         }
 
@@ -55,6 +66,12 @@ namespace GameManager.ViewModels.Doors
         public void ResetGame()
         {
             DoorsCards = new List<DoorsCardViewModel>();
+        }
+
+        public string DoorsOutput
+        {
+            get { return _doorsOutput; }
+            set { SetProperty(ref _doorsOutput, value); }
         }
 
         private int score;
@@ -175,8 +192,24 @@ namespace GameManager.ViewModels.Doors
                 }
             }
         }
-        
+        public void SaveGame()
+        {
+            DoorsSerialize dss = new DoorsSerialize();
+            dss.Score = Score;
+            DoorsOutput = JsonConvert.SerializeObject(dss);
+            _playerManager.SetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "DoorsGame", DoorsOutput);
+        }
 
+        public void OpenGame()
+        {
+            DoorsGameViewModel deserializedObject = JsonConvert.DeserializeObject<DoorsGameViewModel>(DoorsOutput);
+            Score = deserializedObject.Score;
+            
+        }
+
+        public ICommand DoorsCommand { get; private set; }
+        public ICommand SaveDoorsCommand { get; private set; }
+        public ICommand OpenDoorsCommand { get; private set; }
         public ICommand NewGameCommand { get; }
        
     }

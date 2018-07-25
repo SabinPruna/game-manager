@@ -204,7 +204,7 @@ namespace GameManager.ViewModels
 
                     break;
                 case "DoorsGame":
-                    if (Score > 2500)
+                    if (Score >= 0)
                     {
                         DoorsView dv = new DoorsView();
                         DoorsGameViewModel.ResetGame();
@@ -212,7 +212,7 @@ namespace GameManager.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("You need at least 2500 points for this game", "Message", MessageBoxButton.OK,
+                       MessageBox.Show("You need at least 2500 points for this game", "Message", MessageBoxButton.OK,
                             MessageBoxImage.Error);
                     }
 
