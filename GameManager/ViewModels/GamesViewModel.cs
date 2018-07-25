@@ -84,6 +84,21 @@ namespace GameManager.ViewModels
             StartGameTestingCommand = new RelayCommand(param => { StartGameTesting((string) param); });
         }
 
+            BuyItemCommand = new RelayCommand(param =>
+            {
+                if (int.Parse(param.ToString()) > Money)
+                {
+                    MessageBox.Show("You do not have enough to buy this game.\n Consider adding money to your balance.",
+                        "Message", MessageBoxButton.OK);
+                }
+                else
+                {
+                    _playerManager.AddMoney(LoginViewModel.Player.Id, -int.Parse(param.ToString()));
+                    Money = Money;
+                }
+            });
+        }
+
         #endregion
 
         #region  Properties
@@ -311,6 +326,7 @@ namespace GameManager.ViewModels
         public ICommand RatingCommand { get; }
         public ICommand AddMoneyCommand { get; }
         public ICommand StartGameTestingCommand { get; }
+        public ICommand BuyItemCommand { get; }
 
         #endregion
     }
