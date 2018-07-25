@@ -8,10 +8,9 @@ namespace GameManager.Models.SerializeObject
 {
     public class DoorsSerialize
     {
-        public int Score
-        {
-            get;
-            set;
-        }
+        public string level { get; set; }
+
+        public int Score { get; set; }
+        
     }
 }

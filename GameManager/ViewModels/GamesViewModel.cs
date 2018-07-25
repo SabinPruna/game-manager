@@ -15,7 +15,7 @@ using GameManager.ViewModels.Rating;
 using GameManager.Views.Login;
 using GameManager.Views.Rating;
 using GameManager.Views;
-using GameManager.Views.Login;
+
 using GameManager.Views.Money;
 using GameManager.Views.Pairs;
 using GameManager.Views.Scoreboard;
@@ -204,7 +204,7 @@ namespace GameManager.ViewModels
 
                     break;
                 case "DoorsGame":
-                    if (Score >= 0)
+                    if (Score > 2500)
                     {
                         DoorsView dv = new DoorsView();
                         DoorsGameViewModel.ResetGame();
