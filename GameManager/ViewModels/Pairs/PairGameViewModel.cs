@@ -38,6 +38,7 @@ namespace GameManager.ViewModels.Pairs
             CurrentTime = 200;
             Score = 0;
             _playerManager = new PlayerManager();
+            DispatcherTimer = new DispatcherTimer();
         }
 
         #endregion
@@ -116,6 +117,7 @@ namespace GameManager.ViewModels.Pairs
                 }
 
                 RefreshGame();
+
                 List<CardViewModel> cards = new List<CardViewModel>();
                 for (int i = 0; i < GridSize * GridSize / 2; i++)
                 {
@@ -214,9 +216,7 @@ namespace GameManager.ViewModels.Pairs
 
         private void StartTimer()
         {
-            DispatcherTimer = new DispatcherTimer();
-            DispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            DispatcherTimer.Tick += new EventHandler(timer_Tick);
+            DispatcherTimer.Tick += timer_Tick;
             DispatcherTimer.Start();
         }
 
@@ -234,9 +234,12 @@ namespace GameManager.ViewModels.Pairs
 
         private void RefreshGame()
         {
+            DispatcherTimer.Stop();
             CurrentTime = 200;
             Score = 0;
             Cards = new List<CardViewModel>();
+            DispatcherTimer = new DispatcherTimer();
+            DispatcherTimer.Interval = new TimeSpan(0, 0, 1);
         }
 
         #endregion
