@@ -19,21 +19,23 @@ namespace GameManager.ViewModels.Doors
 {
    public class DoorsGameViewModel : BaseViewModel
     {
-        List<DoorsCardViewModel> _DoorsCards;
+        //List<DoorsCardViewModel> _DoorsCards;
 
         public static bool flippegImage { get; set; }
         public static string level;
         private GameRecordManager _gameRecordManager;
-        private string _doorsOutput;
+        private string _output;
         private readonly PlayerManager _playerManager;
+        private int score;
+        private bool _isEnabledOpen;
+        private bool _isEnabledSave;
 
-
+        #region Constructors
 
         public DoorsGameViewModel()
         {
             _playerManager = new PlayerManager();
             flippegImage = false;
-            IsEnabled = true;
             Score = 0;
             _gameRecordManager = new GameRecordManager();
             NewGameCommand = new RelayCommand(param => StartGame((string)param));
@@ -44,9 +46,11 @@ namespace GameManager.ViewModels.Doors
             FlipCardCommand = new RelayCommand(param => DoorsCardFlipped((DoorsCardViewModel)param));
         }
 
-                
+        #endregion
+
+        #region Properties
+
         private List<DoorsCardViewModel> doorsCards;
-        private bool isEnabled;
 
         public List<DoorsCardViewModel> DoorsCards
         {
@@ -54,43 +58,52 @@ namespace GameManager.ViewModels.Doors
             set { SetProperty(ref doorsCards, value); }
         }
 
-        public RelayCommand DoorsGameCommand { get; }
-        public RelayCommand FlipCardCommand { get; }
         public string backImage { get; private set; }
+
         public string frontImage { get; private set; }
-
-        public void ResetScore()
+        
+        public string Output
         {
-            Score = 0;
-        }
-        public void ResetGame()
-        {
-            DoorsCards = new List<DoorsCardViewModel>();
+            get { return _output; }
+            set { SetProperty(ref _output, value); }
         }
 
-        public string DoorsOutput
-        {
-            get { return _doorsOutput; }
-            set { SetProperty(ref _doorsOutput, value); }
-        }
-
-        private int score;
-       
         public int Score
         {
             get { return score; }
             set { SetProperty(ref score, value); }
         }
 
-        public bool IsEnabled
+        public bool IsEnabledOpen
         {
-            get { return isEnabled; }
-            set { SetProperty(ref isEnabled, value); }
+            get { return _isEnabledOpen; }
+            set { SetProperty(ref _isEnabledOpen, value); }
         }
 
+        public bool IsEnabledSave
+        {
+            get { return _isEnabledSave; }
+            set { SetProperty(ref _isEnabledSave, value); }
+        }
+
+        #endregion
+
+        #region Methods
 
         public void StartGame(string param)
         {
+            Output = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "DoorsGame");
+            if (Output != "")
+            {
+                IsEnabledOpen = true;
+            }
+            else
+            {
+                IsEnabledOpen = false;
+            }
+            IsEnabledSave = true;
+
+
             int nrcartiBune = 0;
             int nrcartiRele = 0;
             
@@ -113,7 +126,6 @@ namespace GameManager.ViewModels.Doors
                 nrcartiRele = 3;
             }
             
-            IsEnabled = false;
             List<DoorsCardViewModel> doorsCards = new List<DoorsCardViewModel>();
             for (int i = 0; i < nrcartiBune; i++)
             {
@@ -140,7 +152,6 @@ namespace GameManager.ViewModels.Doors
             DoorsCards = doorsCards;
             ResetScore();
         }
-        
 
         private void Shuffle(List<DoorsCardViewModel> list)
         {
@@ -155,6 +166,7 @@ namespace GameManager.ViewModels.Doors
                 list[n] = value;
             }
         }
+
         private void DoorsCardFlipped(DoorsCardViewModel card)
         {
 
@@ -193,28 +205,59 @@ namespace GameManager.ViewModels.Doors
                 }
             }
         }
+
         public void SaveGame()
         {
             DoorsSerialize dss = new DoorsSerialize();
             dss.level = level;
             dss.Score = Score;
-            DoorsOutput = JsonConvert.SerializeObject(dss);
-            _playerManager.SetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "DoorsGame", DoorsOutput);
+            Output = JsonConvert.SerializeObject(dss);
+            _playerManager.SetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "DoorsGame", Output);
+            IsEnabledOpen = true;
         }
 
         public void OpenGame()
         {
-            DoorsOutput = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "DoorsGame");
-            DoorsSerialize deserializedObject = JsonConvert.DeserializeObject<DoorsSerialize>(DoorsOutput);
+            DoorsSerialize deserializedObject = JsonConvert.DeserializeObject<DoorsSerialize>(Output);
             level = deserializedObject.level;
             StartGame(level);
             Score = deserializedObject.Score;
+            IsEnabledSave = true;
         }
+
+        public void ResetScore()
+        {
+            Score = 0;
+        }
+
+        public void ResetGame()
+        {
+            DoorsCards = new List<DoorsCardViewModel>();
+            Output = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "DoorsGame");
+            if (Output != "")
+            {
+                IsEnabledOpen = true;
+            }
+            else
+            {
+                IsEnabledOpen = false;
+            }
+            IsEnabledSave = false;
+            ResetScore();
+        }
+
+        #endregion
+
+        #region Commands
 
         public ICommand DoorsCommand { get; private set; }
         public ICommand SaveDoorsCommand { get; private set; }
         public ICommand OpenDoorsCommand { get; private set; }
         public ICommand NewGameCommand { get; }
-       
+        public RelayCommand DoorsGameCommand { get; }
+        public RelayCommand FlipCardCommand { get; }
+
+        #endregion
+
     }
 }

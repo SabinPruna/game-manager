@@ -26,10 +26,13 @@
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Name="File" Header="File" FontSize="12">
-                <MenuItem Name="NewGame" Header="New Game" FontSize="12" Command="{Binding NewGameCommand}"/>
-                <MenuItem Name="Save" Header="Save" FontSize="12" Command="{Binding SaveTicTacToeCommand}"/>
-                <MenuItem Name="Open" Header="Open" FontSize="12" Command="{Binding OpenTicTacToeCommand}" CommandParameter="Output"/>
+            <MenuItem Name="File" Header="File" FontSize="16">
+                <MenuItem Header="New Game" FontSize="12" Command="{Binding NewGameCommand}"/>
+                <Separator/>
+                <MenuItem Header="Save" FontSize="12" IsEnabled="{Binding IsEnabledSave}"
+                          Command="{Binding SaveTicTacToeCommand}" />
+                <MenuItem Header="Open" FontSize="12" IsEnabled="{Binding IsEnabledOpen}"
+                          Command="{Binding OpenTicTacToeCommand}"/>
             </MenuItem>
         </Menu>
             <Grid>
@@ -42,9 +45,8 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button
-                        Command="{Binding DataContext.TicTacToeCommand, ElementName=WndTicTacToe}"
-                        CommandParameter="{Binding}" Background="#74D0F1">
+                        <Button Command="{Binding DataContext.TicTacToeCommand, ElementName=WndTicTacToe}"
+                                CommandParameter="{Binding}" Background="#578c8e">
                             <Image Source="{Binding Card}"/>
                         </Button>
                     </DataTemplate>

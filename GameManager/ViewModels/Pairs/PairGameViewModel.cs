@@ -25,6 +25,8 @@ namespace GameManager.ViewModels.Pairs
         private string _output;
         private readonly PlayerManager _playerManager;
         private int _time;
+        private bool _isEnabledOpen;
+        private bool _isEnabledSave;
 
         #region Constructors
 
@@ -79,6 +81,18 @@ namespace GameManager.ViewModels.Pairs
 
         private int Score { get; set; }
 
+        public bool IsEnabledOpen
+        {
+            get { return _isEnabledOpen; }
+            set { SetProperty(ref _isEnabledOpen, value); }
+        }
+
+        public bool IsEnabledSave
+        {
+            get { return _isEnabledSave; }
+            set { SetProperty(ref _isEnabledSave, value); }
+        }
+
         #endregion
 
         #region Methods
@@ -91,19 +105,31 @@ namespace GameManager.ViewModels.Pairs
             ps.GridSize = (int)Math.Sqrt(Cards.Count);
             Output =JsonConvert.SerializeObject(ps);
             _playerManager.SetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame", Output);
+            IsEnabledOpen = true;
         }
 
         public void OpenGame()
         {
-            Output = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame");
             PairGameViewModel deserializedObject = JsonConvert.DeserializeObject<PairGameViewModel>(Output);
             Cards = deserializedObject.Cards;
             CurrentTime = deserializedObject.CurrentTime;
             GridSize = deserializedObject.GridSize;
+            IsEnabledSave = true;
         }
 
         public void StartGame(string param)
         {
+            Output = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame");
+            if (Output != "")
+            {
+                IsEnabledOpen = true;
+            }
+            else
+            {
+                IsEnabledOpen = false;
+            }
+            IsEnabledSave = true;
+
             if (param == "Easy")
             {
                 GridSize = 4;
@@ -124,7 +150,6 @@ namespace GameManager.ViewModels.Pairs
             }
 
             RefreshGame();
-
             List<CardViewModel> cards = new List<CardViewModel>();
             for (int i = 0; i < GridSize * GridSize / 2; i++)
             {
@@ -232,8 +257,25 @@ namespace GameManager.ViewModels.Pairs
                 DispatcherTimer.Stop();
                 MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
                                        MessageBoxImage.Exclamation);
-                CurrentTime = 0;
+                Time = 0;
+                RefreshGame();
             }
+        }
+
+        public void ResetGame()
+        {
+            Time = 0;
+            Output = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame");
+            if (Output != "")
+            {
+                IsEnabledOpen = true;
+            }
+            else
+            {
+                IsEnabledOpen = false;
+            }
+            IsEnabledSave = false;
+            RefreshGame();
         }
 
         public void RefreshGame()

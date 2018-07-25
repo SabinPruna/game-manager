@@ -211,13 +211,12 @@ namespace GameManager.ViewModels
             {
                 case "PairGame":
                     PairGameView pairGameView = new PairGameView();
-                    PairGameViewModel.Time = 0;
-                    PairGameViewModel.RefreshGame();
+                    PairGameViewModel.ResetGame();
                     pairGameView.ShowDialog();
                     break;
                 case "TicTacToe":
                     TicTacToeView ticTacToeView = new TicTacToeView();
-                    TicTacToeViewModel.newWindow();
+                    TicTacToeViewModel.ResetGame();
                     ticTacToeView.ShowDialog();
                     break;
                 case "DoorsGame":
@@ -238,15 +237,14 @@ namespace GameManager.ViewModels
             {
                 case "PairGame":
                     PairGameView pairGameView = new PairGameView();
-                    PairGameViewModel.Time = 0;
-                    PairGameViewModel.RefreshGame();
+                    PairGameViewModel.ResetGame();
                     pairGameView.ShowDialog();
                     break;
                 case "TicTacToe":
                     if (Score > 1500 || CanPlayTicTacToe)
                     {
                         TicTacToeView ticTacToeView = new TicTacToeView();
-                        TicTacToeViewModel.newWindow();
+                        TicTacToeViewModel.ResetGame();
                         ticTacToeView.ShowDialog();
                     }
                     else
