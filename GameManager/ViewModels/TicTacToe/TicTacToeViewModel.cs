@@ -90,6 +90,7 @@ namespace GameManager.ViewModels.TicTacToe
 
        public void OpenGame()
         {
+            Output = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "TicTacToe");
             TicTacToeViewModel deserializedObject = JsonConvert.DeserializeObject<TicTacToeViewModel>(Output);
             deserializedObject.Cards.RemoveRange(0, 9);
             win = deserializedObject.win;
