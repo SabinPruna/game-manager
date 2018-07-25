@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using GameManager.BussinessLayer;
@@ -8,31 +9,28 @@ using GameManager.ViewModels.Doors;
 using GameManager.ViewModels.Login;
 using GameManager.ViewModels.Money;
 using GameManager.ViewModels.Pairs;
+using GameManager.ViewModels.Rating;
 using GameManager.ViewModels.Scoreboard;
 using GameManager.ViewModels.Snake;
 using GameManager.ViewModels.TicTacToe;
-using GameManager.ViewModels.Rating;
-using GameManager.Views.Login;
-using GameManager.Views.Rating;
-using GameManager.Views;
 using GameManager.Views.Login;
 using GameManager.Views.Money;
 using GameManager.Views.Pairs;
+using GameManager.Views.Rating;
 using GameManager.Views.Scoreboard;
-using System;
 
 namespace GameManager.ViewModels
 {
     public class GamesViewModel : BaseViewModel
     {
         private readonly PlayerManager _playerManager;
+        private int _money;
+        private double _numberStarsDoors;
+        private double _numberStarsPair;
+        private double _numberStarsSnake;
+        private double _numberStarsTicTacToe;
         private int _score;
         private ImageSource _userProfilePicture;
-        private double _numberStarsPair;
-        private double _numberStarsDoors;
-        private double _numberStarsTicTacToe;
-        private double _numberStarsSnake;
-        private int _money;
 
         #region Constructors
 
@@ -82,6 +80,8 @@ namespace GameManager.ViewModels
                 MoneyView moneyView = new MoneyView();
                 moneyView.ShowDialog();
             });
+
+            StartGameTestingCommand = new RelayCommand(param => { StartGameTesting((string) param); });
         }
 
         #endregion
@@ -145,7 +145,8 @@ namespace GameManager.ViewModels
         public double NumberStarsSnake
         {
             get => Math.Round(_playerManager.GetRating("SnakeGame"), 2);
-            set {
+            set
+            {
                 if (value == _numberStarsSnake)
                 {
                     return;
@@ -174,12 +175,42 @@ namespace GameManager.ViewModels
         public int Money
         {
             get => _playerManager.GetPlayerMoney(LoginViewModel.Player?.Id);
-            set => SetProperty(ref _money, value);      
+            set => SetProperty(ref _money, value);
         }
+
+        public bool CanPlaySnake { get; set; }
+        public bool CanPlayDoors { get; set; }
+        public bool CanPlayTicTacToe { get; set; }
 
         #endregion
 
+
         #region Methods
+
+        private void StartGameTesting(string gameName)
+        {
+            switch (gameName)
+            {
+                case "PairGame":
+                    PairGameView pairGameView = new PairGameView();
+                    pairGameView.ShowDialog();
+                    break;
+                case "TicTacToe":
+                    TicTacToeView ticTacToeView = new TicTacToeView();
+                    TicTacToeViewModel.newWindow();
+                    ticTacToeView.ShowDialog();
+                    break;
+                case "DoorsGame":
+                    DoorsView dv = new DoorsView();
+                    DoorsGameViewModel.ResetGame();
+                    dv.ShowDialog();
+                    break;
+                case "SnakeGame":
+                    SnakeView snake = new SnakeView();
+                    snake.ShowDialog();
+                    break;
+            }
+        }
 
         public void StartGame(string param)
         {
@@ -190,7 +221,7 @@ namespace GameManager.ViewModels
                     pairGameView.ShowDialog();
                     break;
                 case "TicTacToe":
-                    if (Score > 1500)
+                    if (Score > 1500 || CanPlayTicTacToe)
                     {
                         TicTacToeView ticTacToeView = new TicTacToeView();
                         TicTacToeViewModel.newWindow();
@@ -198,13 +229,12 @@ namespace GameManager.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("You need at least 1500 points for this game", "Message", MessageBoxButton.OK,
-                            MessageBoxImage.Error);
+                        CanPlayTicTacToe = AllowPlayerToPlayGame(1500, 100);
                     }
 
                     break;
                 case "DoorsGame":
-                    if (Score > 2500)
+                    if (Score > 2500 || CanPlayDoors)
                     {
                         DoorsView dv = new DoorsView();
                         DoorsGameViewModel.ResetGame();
@@ -212,25 +242,45 @@ namespace GameManager.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("You need at least 2500 points for this game", "Message", MessageBoxButton.OK,
-                            MessageBoxImage.Error);
+                        CanPlayDoors = AllowPlayerToPlayGame(2500, 150);
                     }
 
                     break;
                 case "SnakeGame":
-                    if (Score > 3500)
+                    if (Score > 3500 || CanPlaySnake)
                     {
                         SnakeView snake = new SnakeView();
                         snake.ShowDialog();
                     }
                     else
                     {
-                        MessageBox.Show("You need at least 3500 points for this game", "Message", MessageBoxButton.OK,
-                            MessageBoxImage.Error);
+                        CanPlaySnake = AllowPlayerToPlayGame(3500, 200);
                     }
 
                     break;
             }
+        }
+
+        private bool AllowPlayerToPlayGame(int pointsRequired, int moneyRequired)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show(
+                $"You need at least {pointsRequired} points for this game.\n Would you like to pay ${moneyRequired} to unlock this game for this game session?",
+                "Message", MessageBoxButton.YesNo,
+                MessageBoxImage.Error);
+
+            switch (messageBoxResult)
+            {
+                case MessageBoxResult.Yes when Money < moneyRequired:
+                    MessageBox.Show("You do not have enough money. Consider adding some to your balance.",
+                        "Message", MessageBoxButton.OK);
+                    break;
+                case MessageBoxResult.Yes:
+                    _playerManager.AddMoney(LoginViewModel.Player.Id, -moneyRequired);
+                    Refresh();
+                    return true;
+            }
+
+            return false;
         }
 
         public void Refresh()
@@ -260,6 +310,7 @@ namespace GameManager.ViewModels
         public ICommand PlayerEditCommand { get; }
         public ICommand RatingCommand { get; }
         public ICommand AddMoneyCommand { get; }
+        public ICommand StartGameTestingCommand { get; }
 
         #endregion
     }
