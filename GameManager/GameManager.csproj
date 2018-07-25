@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="Models\Entities\GameState.cs" />
     <Compile Include="Models\Entities\Rating.cs" />
+    <Compile Include="Models\SerializeObject\DoorsSerialize.cs" />
     <Compile Include="Models\SerializeObject\PairsSerialize.cs" />
     <Compile Include="Models\SerializeObject\TicTacToeSerialize.cs" />
     <Compile Include="Models\TopPlayersScoreboardRecord.cs" />

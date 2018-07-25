@@ -10,6 +10,10 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 using GameManager.ViewModels;
+using GameManager.Models.SerializeObject;
+using GameManager.Views;
+using Newtonsoft.Json;
+
 
 namespace GameManager.ViewModels.Doors
 {
@@ -18,18 +22,25 @@ namespace GameManager.ViewModels.Doors
         List<DoorsCardViewModel> _DoorsCards;
 
         public static bool flippegImage { get; set; }
-        public static string lastParam;
+        public static string level;
         private GameRecordManager _gameRecordManager;
+        private string _doorsOutput;
+        private readonly PlayerManager _playerManager;
 
 
 
         public DoorsGameViewModel()
         {
+            _playerManager = new PlayerManager();
             flippegImage = false;
             IsEnabled = true;
             Score = 0;
             _gameRecordManager = new GameRecordManager();
             NewGameCommand = new RelayCommand(param => StartGame((string)param));
+            DoorsCommand = new RelayCommand(param => ResetScore());
+
+            SaveDoorsCommand = new RelayCommand(param => SaveGame());
+            OpenDoorsCommand = new RelayCommand(param => OpenGame());
             FlipCardCommand = new RelayCommand(param => DoorsCardFlipped((DoorsCardViewModel)param));
         }
 
@@ -57,6 +68,12 @@ namespace GameManager.ViewModels.Doors
             DoorsCards = new List<DoorsCardViewModel>();
         }
 
+        public string DoorsOutput
+        {
+            get { return _doorsOutput; }
+            set { SetProperty(ref _doorsOutput, value); }
+        }
+
         private int score;
        
         public int Score
@@ -76,7 +93,8 @@ namespace GameManager.ViewModels.Doors
         {
             int nrcartiBune = 0;
             int nrcartiRele = 0;
-            lastParam = param;
+            
+            level = param;
             flippegImage = false;
             if (param == "Easy")
             {
@@ -94,7 +112,7 @@ namespace GameManager.ViewModels.Doors
                 nrcartiBune = 6;
                 nrcartiRele = 3;
             }
-
+            
             IsEnabled = false;
             List<DoorsCardViewModel> doorsCards = new List<DoorsCardViewModel>();
             for (int i = 0; i < nrcartiBune; i++)
@@ -120,9 +138,10 @@ namespace GameManager.ViewModels.Doors
             }
             Shuffle(doorsCards);
             DoorsCards = doorsCards;
+            ResetScore();
         }
+        
 
-                
         private void Shuffle(List<DoorsCardViewModel> list)
         {
             int n = list.Count;
@@ -143,19 +162,18 @@ namespace GameManager.ViewModels.Doors
             {
                 card.Visibility = true;
 
-            int nrflipped = doorsCards.Count(c => c.Visibility && !c.Hidden);
+                int nrflipped = doorsCards.Count(c => c.Visibility && !c.Hidden);
 
-            //int nrhidden = doorsCards.Count(c => c.Hidden);
                 if (DoorsCards[DoorsCards.IndexOf(card)].FrontImage == $"../../Images/Doors/door4.jpg")
                 {
                     MessageBox.Show("You Won! Try next step!", "Message", MessageBoxButton.OK,
                                              MessageBoxImage.Exclamation);
                     flippegImage = true;
-                    StartGame(lastParam);
-                    Score += 10;
+                    int oldScore = Score;
+                    StartGame(level);
+                    Score = oldScore + 10;
                 }
-                else
-              if (DoorsCards[DoorsCards.IndexOf(card)].FrontImage == $"../../Images/Doors/blackcat.jpg")
+                else if (DoorsCards[DoorsCards.IndexOf(card)].FrontImage == $"../../Images/Doors/blackcat.jpg")
                 {
                     MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
                                            MessageBoxImage.Exclamation);
@@ -171,12 +189,31 @@ namespace GameManager.ViewModels.Doors
                     App.CurrentApp.MainViewModel.Refresh();
                     ResetGame();
                     ResetScore();
-                    
+
                 }
             }
         }
-        
+        public void SaveGame()
+        {
+            DoorsSerialize dss = new DoorsSerialize();
+            dss.level = level;
+            dss.Score = Score;
+            DoorsOutput = JsonConvert.SerializeObject(dss);
+            _playerManager.SetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "DoorsGame", DoorsOutput);
+        }
 
+        public void OpenGame()
+        {
+            DoorsOutput = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "DoorsGame");
+            DoorsSerialize deserializedObject = JsonConvert.DeserializeObject<DoorsSerialize>(DoorsOutput);
+            level = deserializedObject.level;
+            StartGame(level);
+            Score = deserializedObject.Score;
+        }
+
+        public ICommand DoorsCommand { get; private set; }
+        public ICommand SaveDoorsCommand { get; private set; }
+        public ICommand OpenDoorsCommand { get; private set; }
         public ICommand NewGameCommand { get; }
        
     }

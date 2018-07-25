@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Name="WndDoors"
         DataContext="{Binding MainViewModel.DoorsGameViewModel, Source={x:Static gm:App.CurrentApp}}"
-        Title="Doors_Game" Height="450" Width="800"
+        Title="Doors_Game" Height="450" Width="750"
         Icon="..\..\Images\Icons\doors.ico">
     <Window.Resources>
         <Style TargetType="Grid" x:Key="Imagini">
@@ -35,16 +35,18 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition ></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         
 
-        <Menu Grid.Row ="0" Background="DarkGray" VerticalAlignment="Top" FontSize="25" Grid.ColumnSpan="3">
+        <Menu Grid.Row ="0" Background="DarkGray" VerticalAlignment="Top" FontSize="16" Grid.ColumnSpan="3">
             <MenuItem Name="MenuFile" Header="File">
                 <MenuItem Header="New Game Easy" FontSize="12" Command="{Binding NewGameCommand}" CommandParameter="Easy"/>
                 <MenuItem Header="New Game Medium" FontSize="12" Command="{Binding NewGameCommand}" CommandParameter="Medium"/>
                 <MenuItem Header="New Game Hard" FontSize="12" Command="{Binding NewGameCommand}" CommandParameter="Hard"/>
+                <MenuItem Header="Save" FontSize="12" Command="{Binding SaveDoorsCommand}"/>
+                <MenuItem Header="Open" FontSize="12" Command="{Binding OpenDoorsCommand}" CommandParameter="DoorsOutput"/>
                 <MenuItem Name="Exit" Header="Exit" FontSize="12" Click="Exit_Click" />
             </MenuItem>
         </Menu>
@@ -58,10 +60,10 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button
-                        Command="{Binding DataContext.FlipCardCommand,  ElementName=WndDoors}" 
+                        Command="{Binding DataContext.FlipCardCommand, ElementName=WndDoors}" 
                         CommandParameter="{Binding}" 
                         Visibility="{Binding Visible}"
-                        Margin="20" >
+                        Margin="20" Background="Black">
                         <Image Source="{Binding CurrentImage}"/>
                     </Button>
                 </DataTemplate>
