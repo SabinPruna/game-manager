@@ -12,7 +12,7 @@ namespace GameManager.DataAccessLayer
         {
             using (GameContext db = new GameContext())
             {
-                return db.Players.FirstOrDefault(p => p.Username == player.Username);
+                return db.Players.FirstOrDefault(p => p.Username == player.Username && p.Password == player.Password);
             }
         }
 

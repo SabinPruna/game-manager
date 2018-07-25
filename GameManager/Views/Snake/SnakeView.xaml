@@ -1,37 +1,38 @@
 ﻿<mah:MetroWindow x:Class="GameManager.SnakeView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:local="clr-namespace:GameManager"
-        xmlns:gm="clr-namespace:GameManager"
-    xmlns:ctx="clr-namespace:GameManager.ViewModels.Snake"
-    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-    mc:Ignorable="d"
-        Title="SnakeGame" Height="350" Width="470"
-        DataContext="{Binding MainViewModel.SnakeViewModel,Source={x:Static gm:App.CurrentApp}}"
-        Icon="..\..\Images\Icons\snake.ico">
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                 xmlns:local="clr-namespace:GameManager"
+                 xmlns:gm="clr-namespace:GameManager"
+                 xmlns:ctx="clr-namespace:GameManager.ViewModels.Snake"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 mc:Ignorable="d"
+                 Title="SnakeGame" Height="350" Width="470"
+                 DataContext="{Binding MainViewModel.SnakeViewModel,Source={x:Static gm:App.CurrentApp}}"
+                 Icon="..\..\Images\Icons\snake.ico"
+                 WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ctx:IntToColorConverter x:Key="intToColorConverter" />
         <DrawingImage x:Key="Overlay">
             <DrawingImage.Drawing>
-                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\snake.ico"></ImageDrawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\snake.ico" />
             </DrawingImage.Drawing>
         </DrawingImage>
     </Window.Resources>
     <Window.TaskbarItemInfo>
-        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}" />
     </Window.TaskbarItemInfo>
     <i:Interaction.Behaviors>
-        <ctx:WindowBehaviour/>
+        <ctx:WindowBehaviour />
     </i:Interaction.Behaviors>
 
     <Grid>
         <ItemsControl ItemsSource="{Binding Board}" BorderBrush="Black" BorderThickness="1" Margin="0,0,143,0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Columns="{Binding Path=Width}"/>
+                    <UniformGrid Columns="{Binding Path=Width}" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
@@ -42,16 +43,17 @@
         </ItemsControl>
         <GroupBox Header="Stats" Margin="0,0,10,159" HorizontalAlignment="Right" Width="128">
             <StackPanel Orientation="Vertical" Height="297" VerticalAlignment="Top">
-                <Label Content="Points:"/>
-                <TextBox Height="20" VerticalAlignment="Top" Text="{Binding Points}" TextAlignment="Right" IsReadOnly="True"/>
-                <Label FontSize="10" Content="Movement every(ms):"/>
-                <TextBox Height="20" VerticalAlignment="Top" Text="{Binding Path=Movement}" 
-                         TextAlignment="Right" IsEnabled="{Binding ElementName=startBtn, Path=IsEnabled, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Points:" />
+                <TextBox Height="20" VerticalAlignment="Top" Text="{Binding Points}" TextAlignment="Right"
+                         IsReadOnly="True" />
+                <Label FontSize="10" Content="Movement every(ms):" />
+                <TextBox Height="20" VerticalAlignment="Top" Text="{Binding Path=Movement}"
+                         TextAlignment="Right"
+                         IsEnabled="{Binding ElementName=startBtn, Path=IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </GroupBox>
-        <Button Width="70" Height="25" Margin="0,0,36,63" RenderTransformOrigin="0.412,0.785" 
+        <Button Width="70" Height="25" Margin="0,0,36,63" RenderTransformOrigin="0.412,0.785"
                 VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Start"
-                Command="{Binding Path=StartButtonClick, UpdateSourceTrigger=PropertyChanged}" x:Name='startBtn'/>
+                Command="{Binding Path=StartButtonClick, UpdateSourceTrigger=PropertyChanged}" x:Name='startBtn' />
     </Grid>
 </mah:MetroWindow>
-

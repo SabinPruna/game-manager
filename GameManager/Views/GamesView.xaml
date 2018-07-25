@@ -1,20 +1,21 @@
 ﻿<mah:MetroWindow x:Class="GameManager.Views.GamesView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:gm="clr-namespace:GameManager"
-        DataContext="{Binding MainViewModel,Source={x:Static gm:App.CurrentApp}}"
-        mc:Ignorable="d"
-        xmlns:viewModels="clr-namespace:GameManager.ViewModels"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-        Title="Games" Height="750" Width="800"
-        Icon="..\Images\Icons\games.ico">
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:gm="clr-namespace:GameManager"
+                 DataContext="{Binding MainViewModel,Source={x:Static gm:App.CurrentApp}}"
+                 mc:Ignorable="d"
+                 xmlns:viewModels="clr-namespace:GameManager.ViewModels"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 Title="Games" Height="700" Width="800"
+                 Icon="..\Images\Icons\games.ico"
+                 WindowStartupLocation="CenterScreen">
     <Viewbox>
         <Grid x:Name="MainGrid" HorizontalAlignment="Center" Margin="50,0,50,10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -42,15 +43,16 @@
                        Source="/Images/pairGame.jpg" />
                 <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
                         FontWeight="Bold" Content="Pair Game" Background="White" BorderBrush="White"
-                        Command="{Binding NewGameCommand}" CommandParameter="PairGame" >
+                        Command="{Binding NewGameCommand}" CommandParameter="PairGame">
                     <Button.InputBindings>
-                        <MouseBinding Gesture="Shift+LeftClick" Command="{Binding StartGameTestingCommand}" CommandParameter="PairGame"/>
+                        <MouseBinding Gesture="Shift+LeftClick" Command="{Binding StartGameTestingCommand}"
+                                      CommandParameter="PairGame" />
                     </Button.InputBindings>
                 </Button>
-                   
+
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Top">
-                    <TextBlock FontSize="40" Text="{Binding NumberStarsPair}"/>
-                    <Image Height="40" Source="..\Images\star.png"></Image>
+                    <TextBlock FontSize="40" Text="{Binding NumberStarsPair}" />
+                    <Image Height="40" Source="..\Images\star.png" />
                 </StackPanel>
                 <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Pairs is a memory game where you need to match pairs of tiles. <LineBreak /> Playing is very simple:
@@ -70,15 +72,17 @@
                        Margin="3,0,0,0"
                        Source="/Images/ticTacToe.jpg" />
                 <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
-                        FontWeight="Bold" Content="Tic Tac Toe" Background="White" BorderBrush="White"  Command="{Binding NewGameCommand}" CommandParameter="TicTacToe">
+                        FontWeight="Bold" Content="Tic Tac Toe" Background="White" BorderBrush="White"
+                        Command="{Binding NewGameCommand}" CommandParameter="TicTacToe">
                     <Button.InputBindings>
-                        <MouseBinding Gesture="Shift+LeftClick" Command="{Binding StartGameTestingCommand}" CommandParameter="TicTacToe"/>
+                        <MouseBinding Gesture="Shift+LeftClick" Command="{Binding StartGameTestingCommand}"
+                                      CommandParameter="TicTacToe" />
                     </Button.InputBindings>
                 </Button>
-                
+
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Top">
-                    <TextBlock FontSize="40" Text="{Binding NumberStarsTicTacToe}"/>
-                    <Image Height="40" Source="..\Images\star.png"></Image>
+                    <TextBlock FontSize="40" Text="{Binding NumberStarsTicTacToe}" />
+                    <Image Height="40" Source="..\Images\star.png" />
                 </StackPanel>
                 <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Tic-tac-toe is a game for two players.The player wins by placing <LineBreak /> three of their marks in a horizontal, vertical, or diagonal row.
@@ -98,15 +102,17 @@
                        Margin="0,0,3,0"
                        Source="/Images/doorsGame.jpg" />
                 <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
-                        FontWeight="Bold" Content="Doors Game" Background="White" BorderBrush="White"  Command="{Binding NewGameCommand}" CommandParameter="DoorsGame">
+                        FontWeight="Bold" Content="Doors Game" Background="White" BorderBrush="White"
+                        Command="{Binding NewGameCommand}" CommandParameter="DoorsGame">
                     <Button.InputBindings>
-                        <MouseBinding Gesture="Shift+LeftClick" Command="{Binding StartGameTestingCommand}" CommandParameter="DoorsGame"/>
+                        <MouseBinding Gesture="Shift+LeftClick" Command="{Binding StartGameTestingCommand}"
+                                      CommandParameter="DoorsGame" />
                     </Button.InputBindings>
                 </Button>
-               
+
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Top">
-                    <TextBlock FontSize="40" Text="{Binding NumberStarsDoors}"/>
-                    <Image Height="40" Source="..\Images\star.png"></Image>
+                    <TextBlock FontSize="40" Text="{Binding NumberStarsDoors}" />
+                    <Image Height="40" Source="..\Images\star.png" />
                 </StackPanel>
                 <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Doors is a quess game in which the player has to open a door. <LineBreak /> There are three doors to pick from.
@@ -125,14 +131,16 @@
                        Grid.Row="0"
                        Source="/Images/snakeGame.png" />
                 <Button Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60"
-                        FontWeight="Bold" Content="Snake Game" Background="White" BorderBrush="White"  Command="{Binding NewGameCommand}" CommandParameter="SnakeGame">
+                        FontWeight="Bold" Content="Snake Game" Background="White" BorderBrush="White"
+                        Command="{Binding NewGameCommand}" CommandParameter="SnakeGame">
                     <Button.InputBindings>
-                        <MouseBinding Gesture="Shift+LeftClick" Command="{Binding StartGameTestingCommand}"  CommandParameter="SnakeGame" />
+                        <MouseBinding Gesture="Shift+LeftClick" Command="{Binding StartGameTestingCommand}"
+                                      CommandParameter="SnakeGame" />
                     </Button.InputBindings>
                 </Button>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Top">
-                    <TextBlock FontSize="40" Text="{Binding NumberStarsSnake}"/>
-                    <Image Height="40" Source="..\Images\star.png"></Image>
+                    <TextBlock FontSize="40" Text="{Binding NumberStarsSnake}" />
+                    <Image Height="40" Source="..\Images\star.png" />
                 </StackPanel>
                 <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="30" FontStyle="Italic" Margin="20,0,20,20">
                     Snake is the common name for a video game concept where <LineBreak /> the player maneuvers a line which grows in length, with the line
@@ -161,23 +169,22 @@
                            TextAlignment="Right" Text="{Binding Money}" />
             </Grid>
 
-                    
 
             <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Command="{Binding RatingCommand}"
                     HorizontalAlignment="Left" Width="210"
-                     FontSize="48" Content="RATING"  Background="#FFDAD5A4"
+                    FontSize="48" Content="RATING" Background="#FFDAD5A4"
                     BorderBrush="Black" />
             <Button Grid.Row="3" Grid.Column="0" Margin="0,0,0,10" Command="{Binding PlayerEditCommand}"
                     HorizontalAlignment="Left" Width="200"
-                    FontSize="48" Content="EDIT"  Background="#FFDAD5A4"
+                    FontSize="48" Content="EDIT" Background="#FFDAD5A4"
                     BorderBrush="Black" />
             <Button Grid.Row="3" Grid.Column="0" Margin="0,0,0,10" Command="{Binding AddMoneyCommand}"
                     HorizontalAlignment="Center" Width="200"
-                    FontSize="48" Content="BUY"  Background="#FFDAD5A4"
+                    FontSize="48" Content="BUY" Background="#FFDAD5A4"
                     BorderBrush="Black" />
             <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Command="{Binding ScoreboardCommand}"
                     HorizontalAlignment="Center" Width="360"
-                     FontSize="48" Content="SCOREBOARD"  Background="#FFDAD5A4"
+                    FontSize="48" Content="SCOREBOARD" Background="#FFDAD5A4"
                     BorderBrush="Black" />
             <Button Grid.Row="3" Grid.Column="1" Margin="0,0,0,10" Command="{Binding ShopCommand}"
                     HorizontalAlignment="Right"

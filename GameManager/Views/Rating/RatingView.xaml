@@ -1,37 +1,37 @@
 ﻿<mah:MetroWindow x:Class="GameManager.Views.Rating.RatingView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GameManager.Views.Rating"
-        xmlns:gm="clr-namespace:GameManager"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-        DataContext="{Binding MainViewModel.RatingViewModel,Source={x:Static gm:App.CurrentApp}}"
-        Icon="..\..\Images\Icons\rating2.ico"
-        mc:Ignorable="d"
-        Title="Rating" Height="155" Width="300">
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:local="clr-namespace:GameManager.Views.Rating"
+                 xmlns:gm="clr-namespace:GameManager"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 DataContext="{Binding MainViewModel.RatingViewModel,Source={x:Static gm:App.CurrentApp}}"
+                 Icon="..\..\Images\Icons\rating2.ico"
+                 mc:Ignorable="d"
+                 Title="Rating" Height="155" Width="300"
+                 WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <DrawingImage x:Key="Overlay">
             <DrawingImage.Drawing>
-                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\rating2.ico"></ImageDrawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\rating2.ico" />
             </DrawingImage.Drawing>
         </DrawingImage>
     </Window.Resources>
     <Window.TaskbarItemInfo>
-        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}" />
     </Window.TaskbarItemInfo>
-    
     <Viewbox MaxWidth="700">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Rating" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
             <ComboBox SelectedValuePath="Content" SelectedValue="{Binding Path=GameName}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16" Width="140" Margin="10,0,5,0">
@@ -40,40 +40,41 @@
                 <ComboBoxItem Content="TicTacToe"/>
                 <ComboBoxItem Content="SnakeGame"/>
             </ComboBox>
-            <ComboBox SelectedIndex="{Binding Path=NumberStars}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Width="140" Margin="5,0,10,0">
+            <ComboBox SelectedIndex="{Binding Path=NumberStars}" Grid.Row="1" Grid.Column="1"
+                      HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Width="140" Margin="5,0,10,0">
                 <ComboBoxItem>
                     <StackPanel Orientation="Horizontal" Height="20">
-                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png" />
                     </StackPanel>
                 </ComboBoxItem>
                 <ComboBoxItem>
                     <StackPanel Orientation="Horizontal" Height="20">
-                        <Image Source="..\..\Images\star.png"></Image>
-                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png" />
+                        <Image Source="..\..\Images\star.png" />
                     </StackPanel>
                 </ComboBoxItem>
                 <ComboBoxItem>
                     <StackPanel Orientation="Horizontal" Height="20">
-                        <Image Source="..\..\Images\star.png"></Image>
-                        <Image Source="..\..\Images\star.png"></Image>
-                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png" />
+                        <Image Source="..\..\Images\star.png" />
+                        <Image Source="..\..\Images\star.png" />
                     </StackPanel>
                 </ComboBoxItem>
                 <ComboBoxItem>
                     <StackPanel Orientation="Horizontal" Height="20">
-                        <Image Source="..\..\Images\star.png"></Image>
-                        <Image Source="..\..\Images\star.png"></Image>
-                        <Image Source="..\..\Images\star.png"></Image>
-                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png" />
+                        <Image Source="..\..\Images\star.png" />
+                        <Image Source="..\..\Images\star.png" />
+                        <Image Source="..\..\Images\star.png" />
                     </StackPanel>
                 </ComboBoxItem>
                 <ComboBoxItem>
                     <StackPanel Orientation="Horizontal" Height="20">
-                        <Image Source="..\..\Images\star.png"></Image>
-                        <Image Source="..\..\Images\star.png"></Image>
-                        <Image Source="..\..\Images\star.png"></Image>
-                        <Image Source="..\..\Images\star.png"></Image>
-                        <Image Source="..\..\Images\star.png"></Image>
+                        <Image Source="..\..\Images\star.png" />
+                        <Image Source="..\..\Images\star.png" />
+                        <Image Source="..\..\Images\star.png" />
+                        <Image Source="..\..\Images\star.png" />
+                        <Image Source="..\..\Images\star.png" />
                     </StackPanel>
                 </ComboBoxItem>
             </ComboBox>
@@ -81,4 +82,3 @@
         </Grid>
     </Viewbox>
 </mah:MetroWindow>
-

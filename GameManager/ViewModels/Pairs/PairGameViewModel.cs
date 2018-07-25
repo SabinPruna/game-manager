@@ -110,11 +110,13 @@ namespace GameManager.ViewModels.Pairs
 
         public void OpenGame()
         {
+            DispatcherTimer.Stop();
             PairGameViewModel deserializedObject = JsonConvert.DeserializeObject<PairGameViewModel>(Output);
             Cards = deserializedObject.Cards;
             CurrentTime = deserializedObject.CurrentTime;
             GridSize = deserializedObject.GridSize;
             IsEnabledSave = true;
+            StartTimer();
         }
 
         public void StartGame(string param)

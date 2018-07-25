@@ -1,27 +1,28 @@
 ﻿<mah:MetroWindow x:Class="GameManager.TicTacToeView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GameManager"
-        mc:Ignorable="d"
-        xmlns:ticTacToeViewModels="clr-namespace:GameManager.ViewModels.TicTacToe"
-        xmlns:gm="clr-namespace:GameManager"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-        DataContext="{Binding MainViewModel.TicTacToeViewModel,Source={x:Static gm:App.CurrentApp}}"
-        Name="WndTicTacToe"
-        Title="TicTacToe" Height="400" Width="400" Icon="../../Images/Icons/tictactoe.ico">
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:local="clr-namespace:GameManager"
+                 mc:Ignorable="d"
+                 xmlns:ticTacToeViewModels="clr-namespace:GameManager.ViewModels.TicTacToe"
+                 xmlns:gm="clr-namespace:GameManager"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 DataContext="{Binding MainViewModel.TicTacToeViewModel,Source={x:Static gm:App.CurrentApp}}"
+                 Name="WndTicTacToe"
+                 Title="TicTacToe" Height="400" Width="400" Icon="../../Images/Icons/tictactoe.ico"
+                 WindowStartupLocation="CenterScreen">
 
-    
+
     <Window.Resources>
         <DrawingImage x:Key="Overlay">
             <DrawingImage.Drawing>
-                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\tictactoe.ico"></ImageDrawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\tictactoe.ico" />
             </DrawingImage.Drawing>
         </DrawingImage>
     </Window.Resources>
     <Window.TaskbarItemInfo>
-        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}" />
     </Window.TaskbarItemInfo>
 
     <DockPanel>
@@ -35,19 +36,20 @@
                           Command="{Binding OpenTicTacToeCommand}"/>
             </MenuItem>
         </Menu>
-            <Grid>
-            <ItemsControl 
-            ItemsSource="{Binding Cards}">
+        <Grid>
+            <ItemsControl
+                ItemsSource="{Binding Cards}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Rows="3" Columns="3"/>
+                        <UniformGrid Rows="3" Columns="3" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Command="{Binding DataContext.TicTacToeCommand, ElementName=WndTicTacToe}"
-                                CommandParameter="{Binding}" Background="#578c8e">
-                            <Image Source="{Binding Card}"/>
+                        <Button
+                            Command="{Binding DataContext.TicTacToeCommand, ElementName=WndTicTacToe}"
+                            CommandParameter="{Binding}" Background="#517d99">
+                            <Image Source="{Binding Card}" />
                         </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

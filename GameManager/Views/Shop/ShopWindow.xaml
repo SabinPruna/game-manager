@@ -1,149 +1,149 @@
 ﻿<mah:MetroWindow x:Class="GameManager.ShopWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GameManager"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-        mc:Ignorable="d"
-        Title="Shop" Height="450" Width="800"
-        DataContext="{Binding MainViewModel,Source={x:Static local:App.CurrentApp}}"
-        Icon="..\..\Images\Icons\shop.ico">
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:local="clr-namespace:GameManager"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 mc:Ignorable="d"
+                 Title="Shop" Height="450" Width="800"
+                 DataContext="{Binding MainViewModel,Source={x:Static local:App.CurrentApp}}"
+                 Icon="..\..\Images\Icons\shop.ico"
+                 WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="Grid" x:Key="Imagini">
-            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Margin" Value="10" />
         </Style>
         <Style TargetType="TextBlock" x:Key="Titlu">
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontWeight" Value="ExtraBold"/>
-        </Style>
-        <Style TargetType="Button" x:Key="Pret">
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="ExtraBold" />
         </Style>
         <DrawingImage x:Key="Overlay">
             <DrawingImage.Drawing>
-                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\shop.ico"></ImageDrawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\shop.ico" />
             </DrawingImage.Drawing>
         </DrawingImage>
     </Window.Resources>
 
     <Window.TaskbarItemInfo>
-        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}" />
     </Window.TaskbarItemInfo>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="/Images/For ShopWindow/abstract.jpg"/>
+            <ImageBrush ImageSource="/Images/For ShopWindow/abstract.jpg" />
         </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,20,0" Width="300" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25"
+        <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,20,0" Width="300" HorizontalAlignment="Left"
+                   VerticalAlignment="Center" FontSize="25"
                    TextAlignment="Left" Text="{Binding Money, StringFormat='Money: {0}'}" />
-        
+
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Grid Grid.Column="0" Grid.Row="0" Style="{StaticResource Imagini}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="22*"/>
-                    <ColumnDefinition Width="123*"/>
+                    <ColumnDefinition Width="22*" />
+                    <ColumnDefinition Width="123*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Stretch="Fill" Grid.Row="0" Source="/Images/For ShopWindow/cards1.jpg" Grid.ColumnSpan="2"/>
+                <Image Stretch="Fill" Grid.Row="0" Source="/Images/For ShopWindow/cards1.jpg" Grid.ColumnSpan="2" />
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" Grid.ColumnSpan="2" HorizontalAlignment="Center">Uno Game</TextBlock>
-                <Button Grid.Row="2" Style="{StaticResource Pret}" Grid.ColumnSpan="2" Command="{Binding BuyItemCommand}" CommandParameter="2">Price 2$</Button>
+                <Button Grid.Row="2" FontSize="13" Grid.ColumnSpan="2" Command="{Binding BuyItemCommand}"
+                        CommandParameter="2">
+                    Price 2$
+                </Button>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="0" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/monopoly.jpg"/>
+                <Image Stretch="Fill" Grid.Row="0" Source="/Images/For ShopWindow/monopoly.jpg" />
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Monopoly</TextBlock>
-                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="30"> Price 30$</Button>
+                <Button Grid.Row="2" FontSize="13" Command="{Binding BuyItemCommand}" CommandParameter="30"> Price 30$</Button>
             </Grid>
             <Grid Grid.Column="2" Grid.Row="0" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/scrabble.jpg"/>
+                <Image Stretch="Fill" Grid.Row="0" Source="/Images/For ShopWindow/scrabble.jpg" />
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Scrubble</TextBlock>
-                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="30">Price 30$</Button>
+                <Button Grid.Row="2" FontSize="13" Command="{Binding BuyItemCommand}" CommandParameter="30">Price 30$</Button>
             </Grid>
             <Grid Grid.Column="3" Grid.Row="0" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/brothersgame1.jpg"/>
+                <Image Stretch="Fill" Grid.Row="0" Source="/Images/For ShopWindow/brothersgame1.jpg" />
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Ludo Game</TextBlock>
-                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="7">Price 7$</Button>
+                <Button Grid.Row="2" FontSize="13" Command="{Binding BuyItemCommand}" CommandParameter="7">Price 7$</Button>
             </Grid>
             <Grid Grid.Column="0" Grid.Row="1" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/sah.jpg"/>
+                <Image Stretch="Fill" Grid.Row="0" Source="/Images/For ShopWindow/sah.jpg" />
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Chess</TextBlock>
-                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="15">Price 15$</Button>
+                <Button Grid.Row="2" FontSize="13" Command="{Binding BuyItemCommand}" CommandParameter="15">Price 15$</Button>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="1" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/activity1.jpg"/>
+                <Image Stretch="Fill" Grid.Row="0" Source="/Images/For ShopWindow/activity1.jpg" />
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Activity</TextBlock>
-                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="20">Price 20$</Button>
+                <Button Grid.Row="2" FontSize="13" Command="{Binding BuyItemCommand}" CommandParameter="20">Price 20$</Button>
             </Grid>
             <Grid Grid.Column="2" Grid.Row="1" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/table.jpg"/>
+                <Image Stretch="Fill" Grid.Row="0" Source="/Images/For ShopWindow/table.jpg" />
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Backgammon</TextBlock>
-                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="15">Price 15$</Button>
+                <Button Grid.Row="2" FontSize="13" Command="{Binding BuyItemCommand}" CommandParameter="15">Price 15$</Button>
             </Grid>
             <Grid Grid.Column="3" Grid.Row="1" Style="{StaticResource Imagini}">
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Stretch="Fill" Grid.Row="0"  Source="/Images/For ShopWindow/rummy.jpg"/>
+                <Image Stretch="Fill" Grid.Row="0" Source="/Images/For ShopWindow/rummy.jpg" />
                 <TextBlock Grid.Row="1" Style="{StaticResource Titlu}" HorizontalAlignment="Center">Rummy</TextBlock>
-                <Button Grid.Row="2" Style="{StaticResource Pret}" Command="{Binding BuyItemCommand}" CommandParameter="20">Price 20$</Button>
+                <Button Grid.Row="2" FontSize="13" Command="{Binding BuyItemCommand}" CommandParameter="20">Price 20$</Button>
             </Grid>
         </Grid>
     </Grid>
 </mah:MetroWindow>
-

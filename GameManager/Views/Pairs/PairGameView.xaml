@@ -12,22 +12,22 @@
         Icon="..\..\Images\Icons\pairs.ico"
         Title="PairGame" Height="550" Width="469.2" Background="#b1abba"
         Name="wndPairs"
-        mc:Ignorable="d">
-    
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <DrawingImage x:Key="Overlay">
             <DrawingImage.Drawing>
-                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\pairs.ico"></ImageDrawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\pairs.ico" />
             </DrawingImage.Drawing>
         </DrawingImage>
     </Window.Resources>
     <Window.TaskbarItemInfo>
-        <TaskbarItemInfo Overlay="{StaticResource Overlay}"></TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}" />
     </Window.TaskbarItemInfo>
-    
+
     <DockPanel>
         <DockPanel.Resources>
-            <conv:BoolToVisibilityConverter x:Key="boolVisConverter" Invert="True"/>
+            <conv:BoolToVisibilityConverter x:Key="boolVisConverter" Invert="True" />
         </DockPanel.Resources>
         <Menu DockPanel.Dock="Top">
             <MenuItem Name="MenuFile" Header="File" FontSize="16">
@@ -49,8 +49,8 @@
         <Viewbox DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Right" Stretch="Uniform" MaxWidth="120" Margin="3">
             <Grid VerticalAlignment="Bottom">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Column="0" Content="Time" FontSize="12" VerticalAlignment="Center"/>
@@ -62,14 +62,14 @@
         <ItemsControl ItemsSource="{Binding Cards}" DockPanel.Dock="Top">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Rows="{Binding GridSize}" Columns="{Binding GridSize}"/>
+                    <UniformGrid Rows="{Binding GridSize}" Columns="{Binding GridSize}" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button
                         Command="{Binding DataContext.FlipCardCommand, ElementName=wndPairs}"
-                        CommandParameter="{Binding}" 
+                        CommandParameter="{Binding}"
                         Visibility="{Binding Hidden, Converter={StaticResource boolVisConverter}}"
                         Margin="1" Background="{x:Null}">
                         <Image Source="{Binding CurrentImageCard}"/>
@@ -77,6 +77,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        
+
     </DockPanel>
 </mah:MetroWindow>
