@@ -21,6 +21,8 @@ namespace GameManager.ViewModels.TicTacToe
         private List<CardTicTacToe> cards;
         private string _output;
         private readonly PlayerManager _playerManager;
+        private bool _isEnabledOpen;
+        private bool _isEnabledSave;
 
         #region Properties
 
@@ -39,6 +41,18 @@ namespace GameManager.ViewModels.TicTacToe
         {
             get { return _output; }
             set { SetProperty(ref _output, value); }
+        }
+
+        public bool IsEnabledOpen
+        {
+            get { return _isEnabledOpen; }
+            set { SetProperty(ref _isEnabledOpen, value); }
+        }
+
+        public bool IsEnabledSave
+        {
+            get { return _isEnabledSave; }
+            set { SetProperty(ref _isEnabledSave, value); }
         }
 
         #endregion
@@ -70,12 +84,17 @@ namespace GameManager.ViewModels.TicTacToe
 
         public void NewGame()
         {
-            for (int i = 0; i < 9; i++)
+            Output = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "TicTacToe");
+            if (Output != "")
             {
-                Cards[i].Card = "";
+                IsEnabledOpen = true;
             }
-            win = 0;
-            numberOcupatedSpaces = 0;
+            else
+            {
+                IsEnabledOpen = false;
+            }
+            IsEnabledSave = true;
+            RefreshGame();
         }
 
         public void SaveGame()
@@ -86,11 +105,11 @@ namespace GameManager.ViewModels.TicTacToe
             ttts.win= win;
             Output = JsonConvert.SerializeObject(ttts);
             _playerManager.SetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "TicTacToe", Output);
+            IsEnabledOpen = true;
         }
 
        public void OpenGame()
         {
-            Output = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "TicTacToe");
             TicTacToeViewModel deserializedObject = JsonConvert.DeserializeObject<TicTacToeViewModel>(Output);
             deserializedObject.Cards.RemoveRange(0, 9);
             win = deserializedObject.win;
@@ -105,6 +124,7 @@ namespace GameManager.ViewModels.TicTacToe
                 if (list[i].Card != "" && Cards[i].Card == "")
                     Cards[i].Card = list[i].Card;
             }
+            IsEnabledSave = true;
         }
 
         private void Logica(CardTicTacToe card)
@@ -160,7 +180,22 @@ namespace GameManager.ViewModels.TicTacToe
             }
         }
 
-        public void newWindow()
+        public void ResetGame()
+        {
+            Output = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "TicTacToe");
+            if (Output != "")
+            {
+                IsEnabledOpen = true;
+            }
+            else
+            {
+                IsEnabledOpen = false;
+            }
+            IsEnabledSave = false;
+            RefreshGame();
+        }
+
+        public void RefreshGame()
         {
             for (int i = 0; i < 9; i++)
                 Cards[i].Card = "";

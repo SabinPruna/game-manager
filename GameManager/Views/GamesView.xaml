@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         xmlns:viewModels="clr-namespace:GameManager.ViewModels"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-        Title="Games" Height="700" Width="800"
+        Title="Games" Height="750" Width="800"
         Icon="..\Images\Icons\games.ico">
     <Viewbox>
         <Grid x:Name="MainGrid" HorizontalAlignment="Center" Margin="50,0,50,10">
@@ -22,7 +22,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Ellipse Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="100" Width="100" Margin="0,0,0,30"
+            <Ellipse Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="120" Width="120" Margin="0,0,0,20"
                      VerticalAlignment="Center">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="{Binding Path=UserProfilePicture}" />
@@ -141,23 +141,24 @@
             </Grid>
 
             <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="45"
-                       Margin="110,0,0,30" Text="{Binding LoginViewModel.Player.Username}" />
+                       Margin="130,0,0,30" Text="{Binding LoginViewModel.Player.Username}" />
 
-            <Grid x:Name="SecondGrid" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center">
+            <Grid x:Name="SecondGrid" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,0,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0"   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45">Money:</TextBlock>
-                <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,20,0" Width="300" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="45"
-                           TextAlignment="Right" Text="{Binding Money}" />
-
-
-                <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" FontSize="45" >Score:</TextBlock>
-                <TextBlock Grid.Row="0" Grid.Column="3"  Width="300" VerticalAlignment="Center" FontSize="45"
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="40" Text="Score:"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Width="350" VerticalAlignment="Center" FontSize="40" HorizontalAlignment="Right"
                            TextAlignment="Right" Text="{Binding Score}" />
+
+                <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="40" Text="Money:"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontSize="40" HorizontalAlignment="Right"
+                           TextAlignment="Right" Text="{Binding Money}" />
             </Grid>
 
                     

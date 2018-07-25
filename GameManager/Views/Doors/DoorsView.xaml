@@ -46,9 +46,11 @@
                 <MenuItem Header="New Game Easy" FontSize="12" Command="{Binding NewGameCommand}" CommandParameter="Easy"/>
                 <MenuItem Header="New Game Medium" FontSize="12" Command="{Binding NewGameCommand}" CommandParameter="Medium"/>
                 <MenuItem Header="New Game Hard" FontSize="12" Command="{Binding NewGameCommand}" CommandParameter="Hard"/>
-                <MenuItem Header="Save" FontSize="12" Command="{Binding SaveDoorsCommand}"/>
-                <MenuItem Header="Open" FontSize="12" Command="{Binding OpenDoorsCommand}" CommandParameter="DoorsOutput"/>
-                <MenuItem Name="Exit" Header="Exit" FontSize="12" Click="Exit_Click" />
+                <Separator/>
+                <MenuItem Header="Save" FontSize="12" IsEnabled="{Binding IsEnabledSave}"
+                          Command="{Binding SaveDoorsCommand}"/>
+                <MenuItem Header="Open" FontSize="12" IsEnabled="{Binding IsEnabledOpen}"
+                          Command="{Binding OpenDoorsCommand}"/>
             </MenuItem>
         </Menu>
         
@@ -70,11 +72,11 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-
-        <Label Grid.Row="2" Foreground="WhiteSmoke" Content="Score" FontSize="14" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="2" Background="WhiteSmoke" FontSize="14" Margin="2" TextAlignment="Right" Width="60" VerticalAlignment="Center"
-                  IsEnabled="{Binding IsEnabled}"
-                    Text="{Binding Score}"/>
+        <StackPanel Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="3">
+            <Label Grid.Row="2" Foreground="WhiteSmoke" Content="Score" FontSize="14" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="2" Background="WhiteSmoke" FontSize="14" Margin="2" TextAlignment="Right" Width="60" VerticalAlignment="Center"
+                     IsEnabled="False" Text="{Binding Score}"/>
+        </StackPanel>
 
     </Grid>
     

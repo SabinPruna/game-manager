@@ -77,7 +77,7 @@
                     </StackPanel>
                 </ComboBoxItem>
             </ComboBox>
-            <Button Grid.ColumnSpan="2" Grid.Row="2" Content="OK" VerticalAlignment="Top" Margin="0,20,0,10" Width="70" Background="#b1efb1" Command="{Binding RateGameCommand}"/>
+            <Button Grid.ColumnSpan="2" Grid.Row="2" Content="OK" VerticalAlignment="Top" Margin="0,20,0,10" Width="70" Background="#c9d4e5" Command="{Binding RateGameCommand}"/>
         </Grid>
     </Viewbox>
 </mah:MetroWindow>

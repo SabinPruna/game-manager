@@ -23,7 +23,7 @@
                 <ComboBoxItem Content="100"/>
                 <ComboBoxItem Content="250"/>
             </ComboBox>
-            <Button Grid.Row="2" Content="OK" VerticalAlignment="Top" Margin="0,20,0,10" Width="70" Background="#50C878" Command="{Binding AddMoneyCommand}"/>
+            <Button Grid.Row="2" Content="OK" VerticalAlignment="Top" Margin="0,20,0,10" Width="70" Background="#c9d4e5" Command="{Binding AddMoneyCommand}"/>
         </Grid>
     </Viewbox>
 </mah:MetroWindow>
