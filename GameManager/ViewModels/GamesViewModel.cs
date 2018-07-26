@@ -225,6 +225,9 @@ namespace GameManager.ViewModels
                 case "SnakeGame":
                     SnakeView snake = new SnakeView();
                     snake.ShowDialog();
+                    SnakeViewModel.Timer.Stop();
+                    SnakeViewModel.Run = false;
+                   
                     break;
             }
         }
@@ -245,6 +248,7 @@ namespace GameManager.ViewModels
                         TicTacToeView ticTacToeView = new TicTacToeView();
                         TicTacToeViewModel.ResetGame();
                         ticTacToeView.ShowDialog();
+
                     }
                     else
                     {
@@ -270,6 +274,9 @@ namespace GameManager.ViewModels
                     {
                         SnakeView snake = new SnakeView();
                         snake.ShowDialog();
+                        SnakeViewModel.Timer.Stop();
+                        SnakeViewModel._timer.Dispose();
+                        SnakeViewModel.Run = false;
                     }
                     else
                     {

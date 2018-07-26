@@ -17,7 +17,7 @@ namespace GameManager.ViewModels.Snake
         public Models.Snake.Snake Snake;
         public DispatcherTimer Timer;
         private Board _board;
-        private Timer _timer;
+        public Timer _timer;
         private int _movement;
         private bool _run;
         private int _points;
