@@ -228,7 +228,7 @@ namespace GameManager.ViewModels.Pairs
             if (nrhidden == GridSize * GridSize && CurrentTime > 0)
             {
                 DispatcherTimer.Stop();
-                MessageBox.Show("You Won!", "Winner", MessageBoxButton.OK,
+                MessageBox.Show("You Won!", "Message", MessageBoxButton.OK,
                                          MessageBoxImage.Exclamation);
 
                 GameRecord gameRecord = new GameRecord
@@ -242,16 +242,18 @@ namespace GameManager.ViewModels.Pairs
                 App.CurrentApp.MainViewModel.Refresh();
                 CurrentTime = 0;
                 Score = 0;
+                IsEnabledSave = false;
             }
-            else
-            if (nrhidden != GridSize * GridSize && CurrentTime == 0)
-            {
-                DispatcherTimer.Stop();
-                MessageBox.Show("You Lost!", "Loser", MessageBoxButton.OK,
-                                       MessageBoxImage.Exclamation);
-                CurrentTime = 0;
-                Score = 0;
-            }
+            //else
+            //if (nrhidden != GridSize * GridSize && CurrentTime == 0)
+            //{
+            //    DispatcherTimer.Stop();
+            //    MessageBox.Show("You Lost!", "Loser", MessageBoxButton.OK,
+            //                           MessageBoxImage.Exclamation);
+            //    CurrentTime = 0;
+            //    Score = 0;
+            //    IsEnabledSave = false;
+            //}
         }
 
         private void StartTimer()
@@ -271,6 +273,7 @@ namespace GameManager.ViewModels.Pairs
                 MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
                                        MessageBoxImage.Exclamation);
                 Time = 0;
+                IsEnabledSave = false;
                 RefreshGame();
             }
         }

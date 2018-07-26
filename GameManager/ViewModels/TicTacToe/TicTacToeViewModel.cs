@@ -167,6 +167,7 @@ namespace GameManager.ViewModels.TicTacToe
                                             MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
                                                  MessageBoxImage.Exclamation);
                                             win = 2;
+                                            IsEnabledSave = false;
                                             break;
                                         }
                                     } while (ok == 0);
@@ -176,6 +177,7 @@ namespace GameManager.ViewModels.TicTacToe
                             {
                                 MessageBox.Show("Drow!", "Message", MessageBoxButton.OK,
                                                  MessageBoxImage.Exclamation);
+                                IsEnabledSave = false;
                                 return;
                             }
                         else
@@ -183,6 +185,7 @@ namespace GameManager.ViewModels.TicTacToe
                             MessageBox.Show("You Won!", "Message", MessageBoxButton.OK,
                                                  MessageBoxImage.Exclamation);
                             win = 1;
+                            IsEnabledSave = false;
                             IsXWinner();
                         }
                     }

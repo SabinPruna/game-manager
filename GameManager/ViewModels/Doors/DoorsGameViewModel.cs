@@ -191,15 +191,19 @@ namespace GameManager.ViewModels.Doors
                     MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
                                            MessageBoxImage.Exclamation);
                     flippegImage = true;
-                    GameRecord gameRecord = new GameRecord
+                    IsEnabledSave = false;
+                    if (Score != 0)
                     {
-                        Date = DateTime.Now,
-                        Game = "DoorsGame",
-                        Player = App.CurrentApp.MainViewModel.LoginViewModel.Player,
-                        Score = Score
-                    };
-                    _gameRecordManager.Add(gameRecord);
-                    App.CurrentApp.MainViewModel.Refresh();
+                        GameRecord gameRecord = new GameRecord
+                        {
+                            Date = DateTime.Now,
+                            Game = "DoorsGame",
+                            Player = App.CurrentApp.MainViewModel.LoginViewModel.Player,
+                            Score = Score
+                        };
+                        _gameRecordManager.Add(gameRecord);
+                        App.CurrentApp.MainViewModel.Refresh();
+                    }
                     ResetGame();
                     ResetScore();
 
