@@ -210,6 +210,7 @@ namespace GameManager.ViewModels
                     PairGameView pairGameView = new PairGameView();
                     PairGameViewModel.ResetGame();
                     pairGameView.ShowDialog();
+                    PairGameViewModel.DispatcherTimer.Stop();
                     break;
                 case "TicTacToe":
                     TicTacToeView ticTacToeView = new TicTacToeView();
@@ -236,6 +237,7 @@ namespace GameManager.ViewModels
                     PairGameView pairGameView = new PairGameView();
                     PairGameViewModel.ResetGame();
                     pairGameView.ShowDialog();
+                    PairGameViewModel.DispatcherTimer.Stop();
                     break;
                 case "TicTacToe":
                     if (Score > 1500 || CanPlayTicTacToe)

@@ -77,7 +77,7 @@ namespace GameManager.ViewModels.Pairs
             set { SetProperty(ref _time, value); }
         }
 
-        private DispatcherTimer DispatcherTimer { get; set; }
+        public DispatcherTimer DispatcherTimer { get; set; }
 
         private int Score { get; set; }
 
@@ -111,6 +111,7 @@ namespace GameManager.ViewModels.Pairs
         public void OpenGame()
         {
             DispatcherTimer.Stop();
+
             PairGameViewModel deserializedObject = JsonConvert.DeserializeObject<PairGameViewModel>(Output);
             Cards = deserializedObject.Cards;
             CurrentTime = deserializedObject.CurrentTime;
@@ -247,6 +248,8 @@ namespace GameManager.ViewModels.Pairs
 
         private void StartTimer()
         {
+            DispatcherTimer = new DispatcherTimer();
+            DispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             DispatcherTimer.Tick += timer_Tick;
             DispatcherTimer.Start();
         }
@@ -267,6 +270,7 @@ namespace GameManager.ViewModels.Pairs
         public void ResetGame()
         {
             Time = 0;
+            Score = 0;
             Output = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame");
             if (Output != "")
             {
@@ -284,10 +288,7 @@ namespace GameManager.ViewModels.Pairs
         {
             DispatcherTimer.Stop();
             CurrentTime = Time;
-            Score = 0;
             Cards = new List<CardViewModel>();
-            DispatcherTimer = new DispatcherTimer();
-            DispatcherTimer.Interval = new TimeSpan(0, 0, 1);
         }
 
         #endregion
