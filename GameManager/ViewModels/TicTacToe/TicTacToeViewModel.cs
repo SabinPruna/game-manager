@@ -25,6 +25,7 @@ namespace GameManager.ViewModels.TicTacToe
         private readonly PlayerManager _playerManager;
         private bool _isEnabledOpen;
         private bool _isEnabledSave;
+        private string _message;
 
         #region Properties
         public int CheckIfCatCanAppear { get; set; }
@@ -37,6 +38,15 @@ namespace GameManager.ViewModels.TicTacToe
             {
                 cards = value;
                 OnPropertyChanged("Cards");
+            }
+        }
+        public string Message
+        {
+            get { return _message; }
+            set
+            {
+                _message = value;
+                OnPropertyChanged("Message");
             }
         }
         public string Output
@@ -71,6 +81,7 @@ namespace GameManager.ViewModels.TicTacToe
                 CardTicTacToe card = new CardTicTacToe("");
                 Cards.Add(card);
             }
+            Message = "It is the turn of player";
             win = 0;
             numberOcupatedSpaces = 0;
             _gameRecordManager = new GameRecordManager();
@@ -143,52 +154,59 @@ namespace GameManager.ViewModels.TicTacToe
                 else
                 {
                     int ok = 0;
-                    {
                         Cards[Cards.IndexOf(card)].Card = $"../../Images/For TicTacToe/cat.jpg";
-                        CheckIfCatCanAppear = 1;
+                    Message = "It is the turn of the computer";
+                    CheckIfCatCanAppear = 1;
                         await Task.Delay(400);
                         numberOcupatedSpaces++;
-                        if (Winner() != $"../../Images/For TicTacToe/cat.jpg")
-                            if (numberOcupatedSpaces < 8)
-                            {
-                                if (win == 0)
-                                    do
+                    if (Winner() != $"../../Images/For TicTacToe/cat.jpg")
+                    {
+                        if (numberOcupatedSpaces < 8)
+                        {
+                            if (win == 0)
+                                do
+                                {
+                                    int r = rnd.Next(9);
+                                    if (Cards[r].Card.Equals(""))
                                     {
-                                        int r = rnd.Next(9);
-                                        if (Cards[r].Card.Equals(""))
-                                        {
 
-                                            Cards[r].Card = $"../../Images/For TicTacToe/mouse.jpg";
-                                            CheckIfCatCanAppear = 0;
-                                            ok = 1;
-                                        }
-                                        if (Winner() == $"../../Images/For TicTacToe/mouse.jpg")
-                                        {
-                                            MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
-                                                 MessageBoxImage.Exclamation);
-                                            win = 2;
-                                            IsEnabledSave = false;
-                                            break;
-                                        }
-                                    } while (ok == 0);
-                                numberOcupatedSpaces++;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Drow!", "Message", MessageBoxButton.OK,
-                                                 MessageBoxImage.Exclamation);
-                                IsEnabledSave = false;
-                                return;
-                            }
+                                        Cards[r].Card = $"../../Images/For TicTacToe/mouse.jpg";
+                                        Message = "It is the turn of player";
+                                        CheckIfCatCanAppear = 0;
+                                        ok = 1;
+                                    }
+                                    if (Winner() == $"../../Images/For TicTacToe/mouse.jpg")
+                                    {
+                                        Message = "";
+                                        MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
+                                             MessageBoxImage.Exclamation);
+                                        win = 2;
+                                        IsEnabledSave = false;
+                                        break;
+                                    }
+                                } while (ok == 0);
+                            Message = "It is the turn of player";
+                            numberOcupatedSpaces++;
+                        }
                         else
                         {
-                            MessageBox.Show("You Won!", "Message", MessageBoxButton.OK,
-                                                 MessageBoxImage.Exclamation);
-                            win = 1;
+                            Message = "";
+                            MessageBox.Show("Drow!", "Message", MessageBoxButton.OK,
+                                             MessageBoxImage.Exclamation);
                             IsEnabledSave = false;
-                            IsXWinner();
+                            return;
                         }
                     }
+                    else
+                    {
+                        Message = "";
+                        MessageBox.Show("You Won!", "Message", MessageBoxButton.OK,
+                                             MessageBoxImage.Exclamation);
+                        win = 1;
+                        IsEnabledSave = false;
+                        IsXWinner();
+                    }
+                    
                 }
         }
 
