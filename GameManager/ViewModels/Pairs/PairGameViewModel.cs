@@ -77,7 +77,7 @@ namespace GameManager.ViewModels.Pairs
             set { SetProperty(ref _time, value); }
         }
 
-        private DispatcherTimer DispatcherTimer { get; set; }
+        public DispatcherTimer DispatcherTimer { get; set; }
 
         private int Score { get; set; }
 
