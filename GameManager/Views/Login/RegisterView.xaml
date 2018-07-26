@@ -6,11 +6,22 @@
                  xmlns:gm="clr-namespace:GameManager"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  mc:Ignorable="d"
+                 Icon="..\..\Images\Icons\login.ico"
                  Title="Register" Height="407.297" Width="267.202" ResizeMode="CanMinimize"
                  DataContext="{Binding MainViewModel.LoginViewModel, Source={x:Static gm:App.CurrentApp}}"
                  WindowStartupLocation="CenterScreen">
-    <Grid>
 
+    <Window.Resources>
+        <DrawingImage x:Key="Overlay">
+            <DrawingImage.Drawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\..\Images\Icons\login.ico" />
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </Window.Resources>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{StaticResource Overlay}" />
+    </Window.TaskbarItemInfo>
+    <Grid>
         <Grid.Background>
             <SolidColorBrush Color="#FF636E72" />
         </Grid.Background>
