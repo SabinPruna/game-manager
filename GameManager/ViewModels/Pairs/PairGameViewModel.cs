@@ -27,6 +27,7 @@ namespace GameManager.ViewModels.Pairs
         private int _time;
         private bool _isEnabledOpen;
         private bool _isEnabledSave;
+        private int _score;
 
         #region Constructors
 
@@ -79,7 +80,11 @@ namespace GameManager.ViewModels.Pairs
 
         public DispatcherTimer DispatcherTimer { get; set; }
 
-        private int Score { get; set; }
+        public int Score
+        {
+            get { return _score; }
+            set { SetProperty(ref _score, value); }
+        }
 
         public bool IsEnabledOpen
         {
@@ -103,6 +108,7 @@ namespace GameManager.ViewModels.Pairs
             ps.Cards = Cards;
             ps.CurrentTime = CurrentTime;
             ps.GridSize = (int)Math.Sqrt(Cards.Count);
+            ps.Score = Score;
             Output =JsonConvert.SerializeObject(ps);
             _playerManager.SetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame", Output);
             IsEnabledOpen = true;
@@ -116,12 +122,14 @@ namespace GameManager.ViewModels.Pairs
             Cards = deserializedObject.Cards;
             CurrentTime = deserializedObject.CurrentTime;
             GridSize = deserializedObject.GridSize;
+            Score = deserializedObject.Score;
             IsEnabledSave = true;
             StartTimer();
         }
 
         public void StartGame(string param)
         {
+            Score = 0;
             Output = _playerManager.GetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "PairGame");
             if (Output != "")
             {
@@ -136,19 +144,16 @@ namespace GameManager.ViewModels.Pairs
             if (param == "Easy")
             {
                 GridSize = 4;
-                Score = 100;
                 Time = 100;
             }
             if (param == "Medium")
             {
                 GridSize = 6;
-                Score = 200;
                 Time = 150;
             }
             if (param == "Hard")
             {
                 GridSize = 8;
-                Score = 300;
                 Time = 200;
             }
 
@@ -208,6 +213,7 @@ namespace GameManager.ViewModels.Pairs
                     {
                         c.Hidden = true;
                     }
+                    Score += 10;
                 }
                 else
                 {
@@ -224,7 +230,7 @@ namespace GameManager.ViewModels.Pairs
                 DispatcherTimer.Stop();
                 MessageBox.Show("You Won!", "Winner", MessageBoxButton.OK,
                                          MessageBoxImage.Exclamation);
-                
+
                 GameRecord gameRecord = new GameRecord
                 {
                     Date = DateTime.Now,
@@ -235,6 +241,7 @@ namespace GameManager.ViewModels.Pairs
                 _gameRecordManager.Add(gameRecord);
                 App.CurrentApp.MainViewModel.Refresh();
                 CurrentTime = 0;
+                Score = 0;
             }
             else
             if (nrhidden != GridSize * GridSize && CurrentTime == 0)
@@ -243,6 +250,7 @@ namespace GameManager.ViewModels.Pairs
                 MessageBox.Show("You Lost!", "Loser", MessageBoxButton.OK,
                                        MessageBoxImage.Exclamation);
                 CurrentTime = 0;
+                Score = 0;
             }
         }
 

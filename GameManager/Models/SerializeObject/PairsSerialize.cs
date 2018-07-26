@@ -21,6 +21,8 @@ namespace GameManager.Models.SerializeObject
 
         public int GridSize { get; set; }
 
+        public int Score { get; set; }
+
         #endregion
 
         #region Constructors
