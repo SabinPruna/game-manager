@@ -5,11 +5,12 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       xmlns:gm="clr-namespace:GameManager"
-                      Title="Login" Height="407.297" Width="267.202" ResizeMode="CanMinimize"
+                      Title="Login" Height="441.486" Width="267.202"
                       DataContext="{Binding MainViewModel.LoginViewModel,Source={x:Static gm:App.CurrentApp}}"
                       Icon="..\..\Images\Icons\login.ico"
                       Loaded="Window_Loaded"
                       mc:Ignorable="d"
+                      Background="#FF436572"
                       WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <DrawingImage x:Key="Overlay">
@@ -21,31 +22,30 @@
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo Overlay="{StaticResource Overlay}" />
     </Window.TaskbarItemInfo>
-    <Grid>
-        <Grid.Background>
-            <SolidColorBrush Color="#FF436572" />
-        </Grid.Background>
-        <StackPanel Margin="30,10">
+    <Viewbox>
+        <Grid Margin="20,10" Width="180">
+        <StackPanel>
             <Label x:Name="LabelCopy" Content="GAME MANAGER" VerticalAlignment="Top" HorizontalAlignment="Center"
                    FontSize="16" Foreground="White" FontWeight="Bold" />
 
             <Label x:Name="Username" Content="Username" VerticalAlignment="Top" HorizontalAlignment="Left"
-                   FontSize="9.333" Foreground="White" Margin="0,15,0,0" />
+                   FontSize="9.333" Foreground="White" Margin="-5,15,0,0" />
             <DockPanel FocusManager.FocusedElement="{Binding ElementName=UsernameTextBox}">
                 <TextBox Name="UsernameTextBox" Height="23" TextWrapping="Wrap" Text="{Binding Username}" />
             </DockPanel>
 
 
             <Label x:Name="Password" Content="Password" VerticalAlignment="Top" HorizontalAlignment="Left"
-                   FontSize="9.333" Foreground="White" />
-            <PasswordBox Height="23" Name="PasswordBox" />
+                   FontSize="9.333" Foreground="White"  Margin="-5,15,0,0"/>
+            <PasswordBox Height="23" Name="PasswordBox"/>
 
             <Button x:Name="PlayButton" IsDefault="True" Command="{Binding LoginCommand}"
-                    CommandParameter="{Binding ElementName=PasswordBox}" Content="LOGIN" Height="20"
+                    CommandParameter="{Binding ElementName=PasswordBox}" Content="LOGIN"
                     VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF5D5D5D" Margin="0,100,0,0" />
-            <Button x:Name="RegsterButton" Command="{Binding ShowRegisterCommand}" Content="CREATE ACCOUNT" Height="20"
+            <Button x:Name="RegsterButton" Command="{Binding ShowRegisterCommand}" Content="CREATE ACCOUNT"
                     VerticalAlignment="Bottom" Background="#FFDDDDDD" BorderBrush="{x:Null}" Foreground="#FF515151"
-                    Margin="0,10,0,0" />
+                    Margin="0,10,0,30" />
         </StackPanel>
     </Grid>
+    </Viewbox>
 </Controls:MetroWindow>

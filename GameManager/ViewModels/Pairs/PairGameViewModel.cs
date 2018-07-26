@@ -228,7 +228,7 @@ namespace GameManager.ViewModels.Pairs
             if (nrhidden == GridSize * GridSize && CurrentTime > 0)
             {
                 DispatcherTimer.Stop();
-                MessageBox.Show("You Won!", "Winner", MessageBoxButton.OK,
+                MessageBox.Show("You Won!", "Message", MessageBoxButton.OK,
                                          MessageBoxImage.Exclamation);
 
                 GameRecord gameRecord = new GameRecord
