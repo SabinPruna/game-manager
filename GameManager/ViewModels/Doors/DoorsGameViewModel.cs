@@ -191,6 +191,7 @@ namespace GameManager.ViewModels.Doors
                     MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
                                            MessageBoxImage.Exclamation);
                     flippegImage = true;
+                    IsEnabledSave = false;
                     GameRecord gameRecord = new GameRecord
                     {
                         Date = DateTime.Now,
