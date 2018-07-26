@@ -138,6 +138,7 @@ namespace GameManager.ViewModels.TicTacToe
                     Cards[i].Card = list[i].Card;
             }
             IsEnabledSave = true;
+            Message = "It is the turn of player";
         }
 
         private async void Logica(CardTicTacToe card)
@@ -156,6 +157,7 @@ namespace GameManager.ViewModels.TicTacToe
                     int ok = 0;
                         Cards[Cards.IndexOf(card)].Card = $"../../Images/For TicTacToe/cat.jpg";
                     Message = "It is the turn of the computer";
+                    IsEnabledSave = true;
                     CheckIfCatCanAppear = 1;
                         await Task.Delay(400);
                         numberOcupatedSpaces++;
@@ -234,7 +236,7 @@ namespace GameManager.ViewModels.TicTacToe
             win = 0;
             numberOcupatedSpaces = 0;
             CheckIfCatCanAppear = 0;
-
+            Message = "It is the turn of player";
 
         }
 
