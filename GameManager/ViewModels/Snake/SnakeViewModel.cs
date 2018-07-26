@@ -23,12 +23,13 @@ namespace GameManager.ViewModels.Snake
         private int _points;
         private readonly GameRecordManager _gameRecordManager;
 
+
         #region Constructor
 
         public SnakeViewModel()
         {
             Width = Height = 15;
-
+            GameStarted = false;
             Board = new ObservableCollection<int>();
             Snake = new Models.Snake.Snake(new Point(5, 2), 5, Direction.Right);
             Run = false;
@@ -46,7 +47,7 @@ namespace GameManager.ViewModels.Snake
         #endregion
 
         #region Properties
-
+        public bool GameStarted { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
 
@@ -91,6 +92,7 @@ namespace GameManager.ViewModels.Snake
 
         private void TimerInit()
         {
+            GameStarted = true;
             Timer = new DispatcherTimer();
             Timer.Interval = TimeSpan.FromMilliseconds(_movement);
 

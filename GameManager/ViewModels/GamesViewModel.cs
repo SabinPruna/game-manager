@@ -274,9 +274,12 @@ namespace GameManager.ViewModels
                     {
                         SnakeView snake = new SnakeView();
                         snake.ShowDialog();
-                        SnakeViewModel.Timer.Stop();
-                        SnakeViewModel._timer.Dispose();
-                        SnakeViewModel.Run = false;
+                        if (SnakeViewModel.GameStarted)
+                        {
+                            SnakeViewModel.Timer.Stop();
+                            SnakeViewModel._timer.Dispose();
+                            SnakeViewModel.Run = false;
+                        }
                     }
                     else
                     {
