@@ -29,31 +29,39 @@
     </i:Interaction.Behaviors>
 
     <Grid>
-        <ItemsControl ItemsSource="{Binding Board}" BorderBrush="Black" BorderThickness="1" Margin="0,0,143,0">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Columns="{Binding Path=Width}" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Rectangle Fill="{Binding Converter={StaticResource intToColorConverter}, Mode=OneWay}" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        <GroupBox Header="Stats" Margin="0,0,10,159" HorizontalAlignment="Right" Width="128">
-            <StackPanel Orientation="Vertical" Height="297" VerticalAlignment="Top">
-                <Label Content="Points:" />
-                <TextBox Height="20" VerticalAlignment="Top" Text="{Binding Points}" TextAlignment="Right"
-                         IsReadOnly="True" />
-                <Label FontSize="10" Content="Movement every(ms):" />
-                <TextBox Height="20" VerticalAlignment="Top" Text="{Binding Path=Movement}"
-                         TextAlignment="Right"
-                         IsEnabled="{Binding ElementName=startBtn, Path=IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <ItemsControl ItemsSource="{Binding Board}" BorderBrush="Black" BorderThickness="2">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="{Binding Path=Width}" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Rectangle Fill="{Binding Converter={StaticResource intToColorConverter}, Mode=OneWay}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+        <Viewbox Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" MaxHeight="550">
+            <StackPanel>
+                <GroupBox Header="Stats" >
+                    <StackPanel Orientation="Vertical"  VerticalAlignment="Top">
+                        <Label Content="Points:" />
+                        <TextBox Height="20" VerticalAlignment="Top" Text="{Binding Points}" TextAlignment="Right"
+                             IsReadOnly="True" />
+                        <Label FontSize="10" Content="Movement every(ms):" />
+                        <TextBox Height="20" VerticalAlignment="Top" Text="{Binding Path=Movement}"
+                             TextAlignment="Right"
+                             IsEnabled="{Binding ElementName=startBtn, Path=IsEnabled, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </GroupBox>
+                <Button Content="Start" Margin="20,10,20,0" Command="{Binding Path=StartButtonClick, UpdateSourceTrigger=PropertyChanged}" x:Name='startBtn'/>
             </StackPanel>
-        </GroupBox>
-        <Button Width="70" Height="25" Margin="0,0,36,63" RenderTransformOrigin="0.412,0.785"
-                VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Start"
-                Command="{Binding Path=StartButtonClick, UpdateSourceTrigger=PropertyChanged}" x:Name='startBtn' />
+        </Viewbox>
     </Grid>
 </mah:MetroWindow>
