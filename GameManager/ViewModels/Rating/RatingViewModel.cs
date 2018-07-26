@@ -27,6 +27,8 @@ namespace GameManager.ViewModels.Rating
                 _playerManager.SetRating(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, GameName, NumberStars+1);
                 MessageBox.Show("Thank you for your feedback!");
                 App.CurrentApp.MainViewModel.Refresh();
+                Window window = param as Window;
+                window.Close();
             });
         }
 

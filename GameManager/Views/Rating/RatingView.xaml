@@ -9,8 +9,9 @@
                  DataContext="{Binding MainViewModel.RatingViewModel,Source={x:Static gm:App.CurrentApp}}"
                  Icon="..\..\Images\Icons\rating2.ico"
                  mc:Ignorable="d"
-                 Title="Rating" Height="155" Width="300"
-                 WindowStartupLocation="CenterScreen">
+                 Title="Rating" Height="190" Width="310"
+                 WindowStartupLocation="CenterScreen"
+                 x:Name="RatingWindow">
 
     <Window.Resources>
         <DrawingImage x:Key="Overlay">
@@ -78,7 +79,8 @@
                     </StackPanel>
                 </ComboBoxItem>
             </ComboBox>
-            <Button Grid.ColumnSpan="2" Grid.Row="2" Content="OK" VerticalAlignment="Top" Margin="0,20,0,10" Width="70" Background="#c9d4e5" Command="{Binding RateGameCommand}"/>
+            <Button Grid.ColumnSpan="2" Grid.Row="2" Content="OK" VerticalAlignment="Top" Margin="0,20,0,10" Width="70" Background="#c9d4e5" 
+                    Command="{Binding RateGameCommand}" CommandParameter="{Binding ElementName=RatingWindow}"/>
         </Grid>
     </Viewbox>
 </mah:MetroWindow>

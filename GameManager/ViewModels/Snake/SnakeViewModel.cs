@@ -55,34 +55,19 @@ namespace GameManager.ViewModels.Snake
         public int Movement
         {
             get { return _movement; }
-            set
-            {
-                //_movement = value;
-                //OnPropertyChanged("Movement");
-                SetProperty(ref _movement, value);
-            }
+            set { SetProperty(ref _movement, value); }
         }
 
         public bool Run
         {
             get { return _run; }
-            set
-            {
-                // _run = value;
-                // OnPropertyChanged("Run");
-                SetProperty(ref _run, value);
-            }
+            set { SetProperty(ref _run, value); }
         }
 
         public int Points
         {
             get { return _points; }
-            set
-            {
-                // _points = value;
-                //OnPropertyChanged("Points");
-                SetProperty(ref _points, value);
-            }
+            set { SetProperty(ref _points, value); }
         }
 
         #endregion
@@ -163,18 +148,22 @@ namespace GameManager.ViewModels.Snake
             {
                 Timer.Stop();
                 _timer.Dispose();
-                MessageBox.Show("You lost!");
+                MessageBox.Show("You Lost!","Message", MessageBoxButton.OK,
+                                                 MessageBoxImage.Exclamation);
 
-                GameRecord game = new GameRecord
+                if (Points != 0)
                 {
-                    Date = DateTime.Now,
-                    Game = "SnakeGame",
-                    Player = App.CurrentApp.MainViewModel.LoginViewModel.Player,
-                    Score = Points
-                };
-                _gameRecordManager.Add(game);
-                App.CurrentApp.MainViewModel.Refresh();
-                
+                    GameRecord game = new GameRecord
+                    {
+                        Date = DateTime.Now,
+                        Game = "SnakeGame",
+                        Player = App.CurrentApp.MainViewModel.LoginViewModel.Player,
+                        Score = Points
+                    };
+                    _gameRecordManager.Add(game);
+                    App.CurrentApp.MainViewModel.Refresh();
+                }
+
             };
                 Run = false;
             }

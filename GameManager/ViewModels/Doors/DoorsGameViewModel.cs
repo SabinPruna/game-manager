@@ -192,15 +192,18 @@ namespace GameManager.ViewModels.Doors
                                            MessageBoxImage.Exclamation);
                     flippegImage = true;
                     IsEnabledSave = false;
-                    GameRecord gameRecord = new GameRecord
+                    if (Score != 0)
                     {
-                        Date = DateTime.Now,
-                        Game = "DoorsGame",
-                        Player = App.CurrentApp.MainViewModel.LoginViewModel.Player,
-                        Score = Score
-                    };
-                    _gameRecordManager.Add(gameRecord);
-                    App.CurrentApp.MainViewModel.Refresh();
+                        GameRecord gameRecord = new GameRecord
+                        {
+                            Date = DateTime.Now,
+                            Game = "DoorsGame",
+                            Player = App.CurrentApp.MainViewModel.LoginViewModel.Player,
+                            Score = Score
+                        };
+                        _gameRecordManager.Add(gameRecord);
+                        App.CurrentApp.MainViewModel.Refresh();
+                    }
                     ResetGame();
                     ResetScore();
 

@@ -7,8 +7,9 @@
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  mc:Ignorable="d"
                  Icon="..\..\Images\Icons\login.ico"
-                 Title="Register" Height="407.297" Width="267.202" ResizeMode="CanMinimize"
+                 Title="Register" Height="441.486" Width="267.202"
                  DataContext="{Binding MainViewModel.LoginViewModel, Source={x:Static gm:App.CurrentApp}}"
+                 Background="#FF636E72"
                  WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -21,12 +22,9 @@
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo Overlay="{StaticResource Overlay}" />
     </Window.TaskbarItemInfo>
-    <Grid>
-        <Grid.Background>
-            <SolidColorBrush Color="#FF636E72" />
-        </Grid.Background>
-
-        <StackPanel Margin="30,10">
+    <Viewbox>
+        <Grid Margin="20,10" Width="180">
+            <StackPanel>
             <Label x:Name="LabelCopy" Content="Register an account" VerticalAlignment="Top" HorizontalAlignment="Left"
                    FontSize="16" Foreground="White" FontWeight="Bold" Margin="-5,0,0,0" />
 
@@ -50,12 +48,15 @@
             <PasswordBox x:Name="PasswordBox" Height="23" />
 
             <Button x:Name="RegisterAccount" Command="{Binding RegisterCommand}"
-                    CommandParameter="{Binding ElementName=PasswordBox}" Content="REGISTER" Height="20"
+                    CommandParameter="{Binding ElementName=PasswordBox}" Content="REGISTER"
                     VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF5D5D5D" Margin="0,30,0,0" />
 
-            <Button x:Name="CancelButton" Command="{Binding QuitCommand}" Content="CANCEL" Height="20"
+            <Button x:Name="CancelButton" Command="{Binding QuitCommand}" Content="CANCEL"
                     VerticalAlignment="Bottom" Background="#FFDDDDDD" BorderBrush="{x:Null}" Foreground="#FF515151"
-                    Margin="0,10,0,0" />
+                    Margin="0,10,0,30" />
         </StackPanel>
-    </Grid>
+            <Label x:Name="Username_Copy" Content="Full name" VerticalAlignment="Top" HorizontalAlignment="Left"
+                FontSize="9.333" Foreground="White" Margin="-5,127,0,0" />
+        </Grid>
+    </Viewbox>
 </mah:MetroWindow>
