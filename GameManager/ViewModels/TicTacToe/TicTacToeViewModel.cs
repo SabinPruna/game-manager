@@ -9,9 +9,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace GameManager.ViewModels.TicTacToe
 {
@@ -25,7 +27,7 @@ namespace GameManager.ViewModels.TicTacToe
         private bool _isEnabledSave;
 
         #region Properties
-
+        public int CheckIfCatCanAppear { get; set; }
         public int win { get; set; }
         public int numberOcupatedSpaces { get; set; }
         public List<CardTicTacToe> Cards
@@ -62,6 +64,7 @@ namespace GameManager.ViewModels.TicTacToe
         public TicTacToeViewModel()
         {
             _playerManager = new PlayerManager();
+            CheckIfCatCanAppear = 0;
             Cards = new List<CardTicTacToe>();
             for (int i = 0; i < 9; i++)
             {
@@ -107,8 +110,7 @@ namespace GameManager.ViewModels.TicTacToe
             _playerManager.SetGameState(App.CurrentApp.MainViewModel.LoginViewModel.Player.Id, "TicTacToe", Output);
             IsEnabledOpen = true;
         }
-
-       public void OpenGame()
+        public void OpenGame()
         {
             TicTacToeViewModel deserializedObject = JsonConvert.DeserializeObject<TicTacToeViewModel>(Output);
             deserializedObject.Cards.RemoveRange(0, 9);
@@ -127,57 +129,67 @@ namespace GameManager.ViewModels.TicTacToe
             IsEnabledSave = true;
         }
 
-        private void Logica(CardTicTacToe card)
+        private async void Logica(CardTicTacToe card)
         {
             if (win != 0)
                 return;
             Random rnd = new Random();
-            if (!Cards[Cards.IndexOf(card)].Card.Equals(""))
-            {
-                if (numberOcupatedSpaces <= 8)
-                    MessageBox.Show("Press another one");
-            }
-            else
-            {
-                int ok = 0;
-                Cards[Cards.IndexOf(card)].Card = $"../../Images/For TicTacToe/cat.jpg";
-                numberOcupatedSpaces++;
-                if (Winner() != $"../../Images/For TicTacToe/cat.jpg")
-                    if (numberOcupatedSpaces < 8)
-                    {
-                        if (win == 0)
-                            do
-                            {
-                                int r = rnd.Next(9);
-                                if (Cards[r].Card.Equals(""))
-                                {
-                                    Cards[r].Card = $"../../Images/For TicTacToe/mouse.jpg";
-                                    ok = 1;
-                                }
-                                if (Winner() == $"../../Images/For TicTacToe/mouse.jpg")
-                                {
-                                    MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
-                                         MessageBoxImage.Exclamation);
-                                    win = 2;
-                                    break;
-                                }
-                            } while (ok == 0);
-                        numberOcupatedSpaces++;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Drow!", "Message", MessageBoxButton.OK,
-                                         MessageBoxImage.Exclamation);
-                        return;
-                    }
+            if (CheckIfCatCanAppear == 0)
+                if (!Cards[Cards.IndexOf(card)].Card.Equals(""))
+                {
+                    if (numberOcupatedSpaces <= 8)
+                        MessageBox.Show("Press another one");
+                }
                 else
                 {
-                    MessageBox.Show("You Won!", "Message", MessageBoxButton.OK,
-                                         MessageBoxImage.Exclamation);
-                    win = 1;
-                    IsXWinner();
+                    int ok = 0;
+                    {
+                        Cards[Cards.IndexOf(card)].Card = $"../../Images/For TicTacToe/cat.jpg";
+                        CheckIfCatCanAppear = 1;
+                        await Task.Delay(1000);
+                        numberOcupatedSpaces++;
+                        if (Winner() != $"../../Images/For TicTacToe/cat.jpg")
+                            if (numberOcupatedSpaces < 8)
+                            {
+                                if (win == 0)
+                                    do
+                                    {
+                                        int r = rnd.Next(9);
+                                        if (Cards[r].Card.Equals(""))
+                                        {
+
+                                            Cards[r].Card = $"../../Images/For TicTacToe/mouse.jpg";
+                                            CheckIfCatCanAppear = 0;
+                                            ok = 1;
+                                        }
+                                        if (Winner() == $"../../Images/For TicTacToe/mouse.jpg")
+                                        {
+                                            MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
+                                                 MessageBoxImage.Exclamation);
+                                            win = 2;
+                                            IsEnabledSave = false;
+                                            break;
+                                        }
+                                    } while (ok == 0);
+                                numberOcupatedSpaces++;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Drow!", "Message", MessageBoxButton.OK,
+                                                 MessageBoxImage.Exclamation);
+                                IsEnabledSave = false;
+                                return;
+                            }
+                        else
+                        {
+                            MessageBox.Show("You Won!", "Message", MessageBoxButton.OK,
+                                                 MessageBoxImage.Exclamation);
+                            win = 1;
+                            IsEnabledSave = false;
+                            IsXWinner();
+                        }
+                    }
                 }
-            }
         }
 
         public void ResetGame()
@@ -201,6 +213,9 @@ namespace GameManager.ViewModels.TicTacToe
                 Cards[i].Card = "";
             win = 0;
             numberOcupatedSpaces = 0;
+            CheckIfCatCanAppear = 0;
+
+
         }
 
         public string Winner()

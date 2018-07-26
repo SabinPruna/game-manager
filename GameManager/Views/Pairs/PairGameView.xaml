@@ -45,21 +45,26 @@
             </MenuItem>
         </Menu>
 
-
-        <Viewbox DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Right" Stretch="Uniform" MaxWidth="120" Margin="3">
-            <Grid VerticalAlignment="Bottom">
+        <Viewbox DockPanel.Dock="Bottom" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Stretch="Uniform">
+            <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-
-                <Label Grid.Column="0" Content="Time" FontSize="12" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" FontSize="12" TextAlignment="Right" Width="60" VerticalAlignment="Center"
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="0" Margin="5">
+                    <Label Content="Score" FontSize="12" VerticalAlignment="Center"/>
+                    <TextBox  FontSize="12" TextAlignment="Right" Width="60" VerticalAlignment="Center"
+                             IsEnabled="False" Text="{Binding Score}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Margin="5">
+                    <Label Content="Time" FontSize="12" VerticalAlignment="Center"/>
+                    <TextBox FontSize="12" TextAlignment="Right" Width="60" VerticalAlignment="Center"
                          IsEnabled="False" Text="{Binding CurrentTime}"/>
+                </StackPanel>
             </Grid>
         </Viewbox>
 
-        <ItemsControl ItemsSource="{Binding Cards}" DockPanel.Dock="Top">
+        <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding Cards}" Margin="2">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Rows="{Binding GridSize}" Columns="{Binding GridSize}" />
@@ -77,6 +82,5 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-
     </DockPanel>
 </mah:MetroWindow>

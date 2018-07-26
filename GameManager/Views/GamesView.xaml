@@ -12,7 +12,7 @@
                  Icon="..\Images\Icons\games.ico"
                  WindowStartupLocation="CenterScreen">
     <Viewbox>
-        <Grid x:Name="MainGrid" HorizontalAlignment="Center" Margin="50,0,50,10">
+        <Grid x:Name="MainGrid" HorizontalAlignment="Center" Margin="50,10,50,20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -161,7 +161,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="40" Text="Score:"/>
-                <TextBlock Grid.Row="0" Grid.Column="1" Width="350" VerticalAlignment="Center" FontSize="40" HorizontalAlignment="Right"
+                <TextBlock Grid.Row="0" Grid.Column="1" Width="320" VerticalAlignment="Center" FontSize="40" HorizontalAlignment="Right"
                            TextAlignment="Right" Text="{Binding Score}" />
 
                 <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="40" Text="Money:"/>

@@ -6,17 +6,15 @@
                  xmlns:gm="clr-namespace:GameManager"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  mc:Ignorable="d"
-                 Title="Edit" Height="407.297" Width="267.202" ResizeMode="CanMinimize"
+                 Title="Edit" Height="441.486" Width="267.202"
                  DataContext="{Binding MainViewModel.LoginViewModel, Source={x:Static gm:App.CurrentApp}}"
                  Icon="..\..\Images\Icons\login.ico"
+                 Background="#FF2AA7D4"
                  WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid.Background>
-            <SolidColorBrush Color="#FF2AA7D4" />
-        </Grid.Background>
-
-        <StackPanel Margin="30,10">
-            <Label x:Name="LabelCopy" Content="Edit your account" VerticalAlignment="Top" HorizontalAlignment="Center"
+    <Viewbox>
+        <Grid Margin="20,10" Width="180">
+        <StackPanel>
+            <Label x:Name="LabelCopy" Content="Edit your account" VerticalAlignment="Top" HorizontalAlignment="Left"
                    FontSize="16" Foreground="White" FontWeight="Bold" Margin="-5,0,0,0" />
 
             <Button Height="80" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -38,12 +36,13 @@
             <PasswordBox x:Name="PasswordBox" Height="23" />
 
             <Button x:Name="EditAccont" Command="{Binding EditCommand}"
-                    CommandParameter="{Binding ElementName=PasswordBox}" Content="EDIT" Height="20"
+                    CommandParameter="{Binding ElementName=PasswordBox}" Content="EDIT"
                     VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF5D5D5D" Margin="0,30,0,0" />
 
-            <Button x:Name="CancelButton" Command="{Binding QuitCommand}" Content="CANCEL" Height="20"
+            <Button x:Name="CancelButton" Command="{Binding QuitCommand}" Content="CANCEL"
                     VerticalAlignment="Bottom" Background="#FFDDDDDD" BorderBrush="{x:Null}" Foreground="#FF515151"
-                    Margin="0,10,0,0" />
+                    Margin="0,10,0,30" />
         </StackPanel>
     </Grid>
+    </Viewbox>
 </mah:MetroWindow>

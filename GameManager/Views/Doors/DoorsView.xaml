@@ -68,7 +68,7 @@
                         CommandParameter="{Binding}"
                         Visibility="{Binding Visible}"
                         Margin="20" Background="Black">
-                        <Image Source="{Binding CurrentImage}" />
+                        <Image Source="{Binding CurrentImage}"/>
                     </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

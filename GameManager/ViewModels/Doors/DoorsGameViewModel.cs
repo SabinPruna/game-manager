@@ -13,7 +13,7 @@ using GameManager.ViewModels;
 using GameManager.Models.SerializeObject;
 using GameManager.Views;
 using Newtonsoft.Json;
-
+using System.Threading;
 
 namespace GameManager.ViewModels.Doors
 {
@@ -167,7 +167,7 @@ namespace GameManager.ViewModels.Doors
             }
         }
 
-        private void DoorsCardFlipped(DoorsCardViewModel card)
+        private async void DoorsCardFlipped(DoorsCardViewModel card)
         {
 
             if (flippegImage == false)
@@ -178,8 +178,9 @@ namespace GameManager.ViewModels.Doors
 
                 if (DoorsCards[DoorsCards.IndexOf(card)].FrontImage == $"../../Images/Doors/door4.jpg")
                 {
-                    MessageBox.Show("You Won! Try next step!", "Message", MessageBoxButton.OK,
-                                             MessageBoxImage.Exclamation);
+
+                   // MessageBox.Show("You win! Try next door!");
+                    await Task.Delay(200);
                     flippegImage = true;
                     int oldScore = Score;
                     StartGame(level);
@@ -190,15 +191,19 @@ namespace GameManager.ViewModels.Doors
                     MessageBox.Show("You Lost!", "Message", MessageBoxButton.OK,
                                            MessageBoxImage.Exclamation);
                     flippegImage = true;
-                    GameRecord gameRecord = new GameRecord
+                    IsEnabledSave = false;
+                    if (Score != 0)
                     {
-                        Date = DateTime.Now,
-                        Game = "DoorsGame",
-                        Player = App.CurrentApp.MainViewModel.LoginViewModel.Player,
-                        Score = Score
-                    };
-                    _gameRecordManager.Add(gameRecord);
-                    App.CurrentApp.MainViewModel.Refresh();
+                        GameRecord gameRecord = new GameRecord
+                        {
+                            Date = DateTime.Now,
+                            Game = "DoorsGame",
+                            Player = App.CurrentApp.MainViewModel.LoginViewModel.Player,
+                            Score = Score
+                        };
+                        _gameRecordManager.Add(gameRecord);
+                        App.CurrentApp.MainViewModel.Refresh();
+                    }
                     ResetGame();
                     ResetScore();
 
