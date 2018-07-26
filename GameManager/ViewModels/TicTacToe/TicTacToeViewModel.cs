@@ -146,7 +146,7 @@ namespace GameManager.ViewModels.TicTacToe
                     {
                         Cards[Cards.IndexOf(card)].Card = $"../../Images/For TicTacToe/cat.jpg";
                         CheckIfCatCanAppear = 1;
-                        await Task.Delay(1000);
+                        await Task.Delay(400);
                         numberOcupatedSpaces++;
                         if (Winner() != $"../../Images/For TicTacToe/cat.jpg")
                             if (numberOcupatedSpaces < 8)
@@ -206,8 +206,10 @@ namespace GameManager.ViewModels.TicTacToe
 
         public void RefreshGame()
         {
+            List<CardTicTacToe> list = new List<CardTicTacToe>();
             for (int i = 0; i < 9; i++)
-                Cards[i].Card = "";
+                list.Add(new CardTicTacToe(""));
+            Cards = list;
             win = 0;
             numberOcupatedSpaces = 0;
             CheckIfCatCanAppear = 0;
