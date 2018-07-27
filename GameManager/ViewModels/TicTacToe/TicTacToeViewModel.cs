@@ -28,6 +28,7 @@ namespace GameManager.ViewModels.TicTacToe
         private string _message;
 
         #region Properties
+
         public int CheckIfCatCanAppear { get; set; }
         public int win { get; set; }
         public int numberOcupatedSpaces { get; set; }
@@ -130,13 +131,15 @@ namespace GameManager.ViewModels.TicTacToe
 
             List<CardTicTacToe> list = new List<CardTicTacToe>();
             list = deserializedObject.Cards;
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].Card == "" && Cards[i].Card != "")
-                    Cards[i].Card = "";
-                if (list[i].Card != "" && Cards[i].Card == "")
-                    Cards[i].Card = list[i].Card;
-            }
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    if (list[i].Card == "" && Cards[i].Card != "")
+            //        Cards[i].Card = "";
+            //    if (list[i].Card != "" && Cards[i].Card == "")
+            //        Cards[i].Card = list[i].Card;
+            //}
+            Cards.Clear();
+            Cards = list;
             IsEnabledSave = true;
             Message = "It is the turn of player";
         }
@@ -155,12 +158,13 @@ namespace GameManager.ViewModels.TicTacToe
                 else
                 {
                     int ok = 0;
-                        Cards[Cards.IndexOf(card)].Card = $"../../Images/For TicTacToe/cat.jpg";
+                    Cards[Cards.IndexOf(card)].Card = $"../../Images/For TicTacToe/cat.jpg";
                     Message = "It is the turn of the computer";
                     IsEnabledSave = true;
                     CheckIfCatCanAppear = 1;
-                        await Task.Delay(400);
-                        numberOcupatedSpaces++;
+                    await Task.Delay(400);
+                    numberOcupatedSpaces++;
+                    IsEnabledSave = true;
                     if (Winner() != $"../../Images/For TicTacToe/cat.jpg")
                     {
                         if (numberOcupatedSpaces < 8)
@@ -208,7 +212,7 @@ namespace GameManager.ViewModels.TicTacToe
                         IsEnabledSave = false;
                         IsXWinner();
                     }
-                    
+
                 }
         }
 
@@ -235,7 +239,7 @@ namespace GameManager.ViewModels.TicTacToe
             Cards = list;
             win = 0;
             numberOcupatedSpaces = 0;
-            CheckIfCatCanAppear = 0;
+            //CheckIfCatCanAppear = 0;
             Message = "It is the turn of player";
 
         }
